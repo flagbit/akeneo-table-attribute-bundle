@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption" table="pim_catalog_attribute_option">
+        <unique-constraints>
+            <unique-constraint columns="code,attribute_id" name="searchunique_idx" />
+        </unique-constraints>
+
+        <field name="type" column="type" type="string" nullable="true" />
+        <field name="typeConfig" column="type_config" type="json_array" nullable="true" />
+        <field name="constraints" column="constraints" type="json_array" nullable="true" />
+    </entity>
+
+</doctrine-mapping>
