@@ -24,5 +24,8 @@ class FlagbitTableAttributeExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        $loader->load('attribute_types.xml');
+        $loader->load('comparators.xml');
+        $loader->load('updaters.xml');
     }
 }
