@@ -1,0 +1,22 @@
+{
+  "name": "flagbit/table-attribute-bundle",
+  "description": "Add the new table attribute type for akeneo",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Claudio Zizza",
+      "email": "claudio.zizza@flagbit.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Flagbit\\Bundle\\TableAttributeBundle\\": "src/"
+    }
+  },
+  "require-dev": {
+    "symfony/dependency-injection": "2.7.*",
+    "symfony/config": "2.7.*",
+    "symfony/http-kernel": "2.7.*"
+  }
+}
