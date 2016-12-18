@@ -1,0 +1,4 @@
+config:
+    paths:
+        flagbit/table-field: flagbittable/js/product/field/table-field
+        flagbit/template/product/field/table: flagbittable/templates/product/field/table.html

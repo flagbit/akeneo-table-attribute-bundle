@@ -4,7 +4,19 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--<parameters></parameters>-->
+    <parameters>
+        <parameter key="flagbit_table_attribute.provider.field.Table.class">Flagbit\Bundle\TableAttributeBundle\Provider\Field\TableFieldProvider</parameter>
+        <parameter key="flagbit_table_attribute.event_listener.type_suffix.class">Flagbit\Bundle\TableAttributeBundle\EventListener\TypeSuffixListener</parameter>
+    </parameters>
 
-    <!--<services></services>-->
+    <services>
+        <service id="flagbit_table_attribute.provider.field.table" class="%flagbit_table_attribute.provider.field.table.class%">
+            <tag name="pim_enrich.provider.field" priority="90"/>
+        </service>
+
+        <service id="flagbit_table_attribute.event_listener.type_suffix" class="%flagbit_table_attribute.event_listener.type_suffix.class%">
+            <tag name="kernel.event_listener" event="kernel.request" method="addTypeSuffix" />
+            <tag name="kernel.event_listener" event="console.command" method="addTypeSuffix" />
+        </service>
+    </services>
 </container>
