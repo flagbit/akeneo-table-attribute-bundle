@@ -41,3 +41,5 @@ php app/console doctrine:migrations:migrate
 #### TODO ####
 
 Release package on packagist and add documentation for installation and configuration of this bundle for a Akeneo project.
+
+
