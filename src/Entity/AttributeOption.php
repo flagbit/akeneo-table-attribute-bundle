@@ -3,11 +3,12 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Entity;
 
 use Pim\Bundle\CatalogBundle\Entity\AttributeOption as BaseAttributeOption;
+use Pim\Component\Catalog\Model\AttributeOptionInterface;
 
 /**
  * @todo move Table specific columns into an own entity
  */
-class AttributeOption extends BaseAttributeOption
+class AttributeOption extends BaseAttributeOption implements AttributeOptionInterface
 {
     /**
      * @var string
