@@ -7,19 +7,25 @@ use Pim\Component\Catalog\Model\AttributeInterface;
 
 class TableType extends AbstractAttributeType
 {
+    const FLAGBIT_CATALOG_TABLE = 'flagbit_catalog_table';
     /**
      * {@inheritdoc}
      */
     protected function defineCustomAttributeProperties(AttributeInterface $attribute)
     {
         $properties = parent::defineCustomAttributeProperties($attribute) + [
-            'validationRule' => [
-                'name'      => 'validationRule',
-                'fieldType' => 'hidden',
-                'data'   => 'email',
+            'minimumInputLength' => [
+                'name'      => 'minimumInputLength',
+                'fieldType' => 'pim_number'
             ],
+            'columns' => [
+                'name'      => 'columns',
+                'fieldType' => 'pim_enrich_options',
+                'options'   => [
+                    'property_path' => 'properties[options]',
+                ]
+            ]
         ];
-
         return $properties;
     }
 
@@ -28,6 +34,6 @@ class TableType extends AbstractAttributeType
      */
     public function getName()
     {
-        return 'flagbit_catalog_table';
+        return self::FLAGBIT_CATALOG_TABLE;
     }
 }
