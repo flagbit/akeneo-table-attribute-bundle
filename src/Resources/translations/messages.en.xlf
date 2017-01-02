@@ -6,6 +6,11 @@
                 <source>flagbit_catalog_table</source>
                 <target>Table</target>
             </trans-unit>
+
+            <trans-unit id="flagbit_pane_accordion_column">
+                <source>pane.accordion.column</source>
+                <target>Columns</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
