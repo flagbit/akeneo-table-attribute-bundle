@@ -28,5 +28,6 @@ class FlagbitTableAttributeExtension extends Extension
         $loader->load('comparators.xml');
         $loader->load('updaters.xml');
         $loader->load('entities.xml');
+        $loader->load('validators.xml');
     }
 }

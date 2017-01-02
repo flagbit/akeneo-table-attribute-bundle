@@ -2,6 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\AttributeType;
 
+use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser\TableGuesser;
 use Pim\Bundle\CatalogBundle\AttributeType\AbstractAttributeType;
 use Pim\Component\Catalog\Model\AttributeInterface;
 
@@ -18,7 +19,7 @@ class TableType extends AbstractAttributeType
             'validationRule' => [
                 'name'      => 'validationRule',
                 'fieldType' => 'hidden',
-                'data'   => 'flagbit_table_rule',
+                'data'   => TableGuesser::VALIDATION_RULE,
             ],
             'minimumInputLength' => [
                 'name'      => 'minimumInputLength',
