@@ -47,6 +47,9 @@ define(
                 '</td>' +
                 '<% }); %>' +
                 '<td>' +
+                    '<span class="option-constraint"><%= item.type %></span>' +
+                '</td>' +
+                '<td>' +
                     '<span class="option-constraint"><%= item.constraints %></span>' +
                 '</td>' +
                 '<td>' +
@@ -73,6 +76,13 @@ define(
                     '<% } %>' +
                 '</td>' +
                 '<% }); %>' +
+                '<td>' +
+                    '<select class="attribute_option_type exclude" >' +
+                        '<option value="select" <% if (item.type == "select") { %> selected="selected"<% } %>>Select</option>' +
+                        '<option value="text" <% if (item.type == "text") { %> selected="selected"<% } %>>Text</option>' +
+                        '<option value="number" <% if (item.type == "number") { %> selected="selected"<% } %>>Number</option>' +
+                    '</select>' +
+                '</td>' +
                 '<td>' +
                     '<textarea class="attribute_option_constraints exclude" ><%= item.constraints %></textarea>' +
                 '</td>' +
@@ -244,6 +254,7 @@ define(
 
                 editedModel.set('code', this.$el.find('.attribute_option_code').val());
                 editedModel.set('optionValues', attributeOptions);
+                editedModel.set('type', this.$el.find('.attribute_option_type').val());
                 editedModel.set('constraints', this.$el.find('.attribute_option_constraints').val());
                 editedModel.set('type_config', this.$el.find('.attribute_option_config').val());
                 return editedModel;
@@ -271,6 +282,7 @@ define(
                 '<colgroup>' +
                     '<col class="code" span="1"></col>' +
                     '<col class="fields" span="<%= locales.length %>"></col>' +
+                    '<col class="type" span="1"></col>' +
                     '<col class="constaint" span="1"></col>' +
                     '<col class="config" span="1"></col>' +
                     '<col class="action" span="1"></col>' +
@@ -283,6 +295,7 @@ define(
                             '<%= locale %>' +
                         '</th>' +
                         '<% }); %>' +
+                        '<th><%= type_label %></th>' +
                         '<th><%= constraint_label %></th>' +
                         '<th><%= config_label %></th>' +
                         '<th>Action</th>' +
@@ -291,8 +304,8 @@ define(
                 '<tbody></tbody>' +
                 '<tfoot>' +
                     '<tr>' +
-                        '<td colspan="<%= 4 + locales.length %>">' +
-                            '<span class="btn option-add pull-right"><%= add_option_label %></span>' +
+                        '<td colspan="<%= 5 + locales.length %>">' +
+                            '<span class="btn option-add pull-right"><%= add_column_label %></span>' +
                         '</td>' +
                     '</tr>' +
                 '</tfoot>'
@@ -327,8 +340,9 @@ define(
 
                 this.$el.html(this.template({
                     locales: this.locales,
-                    add_option_label: __('label.attribute_option.add_option'),
+                    add_column_label: __('label.attribute_table.add_column'),
                     code_label: __('Code'),
+                    type_label: __('Type'),
                     constraint_label: __('Constraint'),
                     config_label: __('Config')
                 }));
