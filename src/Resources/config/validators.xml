@@ -6,12 +6,16 @@
 
     <parameters>
         <parameter key="flagbit_table_attribute.validator.constraint_guesser.table.class">Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser\TableGuesser</parameter>
+        <parameter key="flagbit_table_attribute.validator.constraint_factory.class">Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory</parameter>
     </parameters>
 
     <services>
         <service id="flagbit_table_attribute.validator.constraint_guesser.table"
                  class="%flagbit_table_attribute.validator.constraint_guesser.table.class%" public="false">
+            <argument id="flagbit_table_attribute.validator.constraint_factory" type="service" />
             <tag name="pim_catalog.constraint_guesser.attribute" alias="pim_enrich_attribute_option" />
         </service>
+
+        <service id="flagbit_table_attribute.validator.constraint_factory" class="%flagbit_table_attribute.validator.constraint_factory.class%" />
     </services>
 </container>

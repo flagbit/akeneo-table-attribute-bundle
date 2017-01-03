@@ -4,16 +4,24 @@ namespace Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser;
 
 use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
+use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory;
 use Pim\Component\Catalog\Model\AttributeInterface;
 use Pim\Component\Catalog\Validator\ConstraintGuesserInterface;
-use Symfony\Component\Validator\Constraints\IsNull;
 
 class TableGuesser implements ConstraintGuesserInterface
 {
     /**
-     * @var string A string with a max length of 10 chars
+     * @var ConstraintFactory
      */
-    const VALIDATION_RULE = 'fb_table';
+    private $constraintFactory;
+
+    /**
+     * @param ConstraintFactory $constraintFactory
+     */
+    public function __construct(ConstraintFactory $constraintFactory)
+    {
+        $this->constraintFactory = $constraintFactory;
+    }
 
     /**
      * {@inheritdoc}
@@ -29,17 +37,15 @@ class TableGuesser implements ConstraintGuesserInterface
     public function guessConstraints(AttributeInterface $attribute)
     {
         $constraints = [];
-
-        if (self::VALIDATION_RULE === $attribute->getValidationRule()) {
-            $constraint = [];
-            /** @var AttributeOption $option */
-            // DocBlock of getOptions() claims to be only ArrayAccess, but Options are a Doctrine Collection
-            foreach ($attribute->getOptions() as $option) {
-                $constraint[$option->getCode()] = $option->getConstraints();
-            }
-
-            $constraints[] = new IsNull();
+        
+        $fieldConstraints = [];
+        /** @var AttributeOption $option */
+        // DocBlock of getOptions() claims to be only ArrayAccess, but Options are a Doctrine Collection
+        foreach ($attribute->getOptions() as $option) {
+            $fieldConstraints[$option->getCode()] = $this->constraintFactory->createByConstraintConfig($option);
         }
+
+        $constraints[] = $this->constraintFactory->createCollectionConstraint($fieldConstraints);
 
         return $constraints;
     }
