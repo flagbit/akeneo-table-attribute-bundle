@@ -20,6 +20,7 @@ class AttributeOptionNormalizer extends BaseNormalizer
     {
 
         $normalizedValues = parent::normalize($object, $format, $context);
+        $normalizedValues['type'] = $object->getType();
         $normalizedValues['type_config'] = $object->getTypeConfig();
         $normalizedValues['constraints'] = $object->getConstraints();
 

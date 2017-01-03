@@ -5,6 +5,7 @@ namespace Flagbit\Bundle\TableAttributeBundle\Form\Extension;
 use Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Extension for option attribute form
@@ -19,6 +20,12 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('type', 'text', [
+            'required' => true,
+            'constraints' => [
+                new Choice(['select', 'text', 'number']),
+            ],
+        ]);
         $builder->add('constraints', 'text', ['required' => true]);
         $builder->add('type_config', 'text', ['required' => true]);
     }
