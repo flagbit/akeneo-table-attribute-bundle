@@ -20,9 +20,12 @@ class ConstraintFactorySpec extends ObjectBehavior
 
     public function it_creates_symfony_constraints_by_config(ConstraintConfigInterface $constraintConfig)
     {
-        $json = '{ "Email": null, "Range": {"max": 10, "min": 1} }';
+        $jsonConfig = [
+            'Email' => null,
+            'Range' => ['max' => 10, 'min' => 1]
+        ];
 
-        $constraintConfig->getConstraints()->willReturn($json);
+        $constraintConfig->getConstraints()->willReturn($jsonConfig);
 
         $this->createByConstraintConfig($constraintConfig)->shouldHaveCount(2);
         $result = $this->createByConstraintConfig($constraintConfig);
@@ -36,9 +39,11 @@ class ConstraintFactorySpec extends ObjectBehavior
 
     public function it_creates_custom_constraints_by_config(ConstraintConfigInterface $constraintConfig)
     {
-        $json = '{"Symfony\\\Component\\\Validator\\\Constraints\\\Email":null}';
+        $jsonConfig = [
+            C\Email::class => null
+        ];
 
-        $constraintConfig->getConstraints()->willReturn($json);
+        $constraintConfig->getConstraints()->willReturn($jsonConfig);
 
         $this->createByConstraintConfig($constraintConfig)->shouldHaveCount(1);
         $result = $this->createByConstraintConfig($constraintConfig);
@@ -48,18 +53,23 @@ class ConstraintFactorySpec extends ObjectBehavior
 
     public function it_skips_on_unknown_constraints_by_config(ConstraintConfigInterface $constraintConfig)
     {
-        $json = '{"Foo":null, "Symfony\\\Component\\\Validator\\\Constraints\\\Foo":null}';
+        $jsonConfig = [
+            'Foo' => null,
+            'Symfony\\Component\\Validator\\Constraints\\Foo' => null
+        ];
 
-        $constraintConfig->getConstraints()->willReturn($json);
+        $constraintConfig->getConstraints()->willReturn($jsonConfig);
 
         $this->createByConstraintConfig($constraintConfig)->shouldHaveCount(0);
     }
 
     public function it_skips_on_other_classes_than_constraints(ConstraintConfigInterface $constraintConfig)
     {
-        $json = '{"ArrayObject":null}';
+        $jsonConfig = [
+            'ArrayObject' => null
+        ];
 
-        $constraintConfig->getConstraints()->willReturn($json);
+        $constraintConfig->getConstraints()->willReturn($jsonConfig);
 
         $this->createByConstraintConfig($constraintConfig)->shouldHaveCount(0);
     }

@@ -20,10 +20,7 @@ class ConstraintFactory
     {
         $constraints = [];
 
-        // TODO json_decode needs to be removed after json_array returns an array instead of a json string.
-        $configs = json_decode($constraintConfig->getConstraints(), true);
-
-        foreach($configs as $class => $params) {
+        foreach($constraintConfig->getConstraints() as $class => $params) {
             try {
                 $constraints[] = $this->createInstance($class, $params);
             } catch (ExceptionInterface $e) {
