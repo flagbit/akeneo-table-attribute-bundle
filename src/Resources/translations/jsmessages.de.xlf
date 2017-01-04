@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label_attribute_table_add_column">
+                <source>label.attribute_table.add_column</source>
+                <target>Spalte hinzufügen</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_alert_json_error_text">
+                <source>flagbit.attribute_table.alert.json_error_text</source>
+                <target>Ein Fehler wurde bei einem der JSON Felder festgestellt.</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_alert_json_error_title">
+                <source>flagbit.attribute_table.alert.json_error_title</source>
+                <target>JSON Formatfehler</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
