@@ -8,7 +8,7 @@
     </parameters>
 
     <services>
-        <service id="flagbit_table.attribute_type.composition" class="%flagbit_table.attribute_type.table.class%">
+        <service id="flagbit_table.attribute_type.table" class="%flagbit_table.attribute_type.table.class%">
             <argument>text</argument>
             <argument>textarea</argument>
             <tag name="pim_catalog.attribute_type" alias="flagbit_catalog_table" entity="%pim_catalog.entity.product.class%"/>

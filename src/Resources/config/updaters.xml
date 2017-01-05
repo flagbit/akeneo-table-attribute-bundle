@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services
         http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="flagbit_table.updater.setter.composition" class="%pim_catalog.updater.setter.text_value.class%"
+        <service id="flagbit_table.updater.setter.table" class="%pim_catalog.updater.setter.text_value.class%"
                  parent="pim_catalog.updater.setter.abstract">
             <argument type="collection">
                 <argument>flagbit_catalog_table</argument>
