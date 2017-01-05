@@ -3,8 +3,8 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Validator;
 
 use Flagbit\Bundle\TableAttributeBundle\Entity\ConstraintConfigInterface;
+use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use Symfony\Component\Validator\Constraint;
-use Symfony\Component\Validator\Constraints\All;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Exception\ExceptionInterface;
 use Symfony\Component\Validator\Exception\RuntimeException;
@@ -44,9 +44,9 @@ class ConstraintFactory
      *
      * @throws ExceptionInterface
      */
-    public function createCollectionConstraint(array $constraints)
+    public function createTableConstraint(array $constraints)
     {
-        return new All(['constraints' => [
+        return new Table(['constraints' => [
             new Collection([
                 'fields' => $constraints,
             ])

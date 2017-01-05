@@ -45,7 +45,7 @@ class TableGuesser implements ConstraintGuesserInterface
             $fieldConstraints[$option->getCode()] = $this->constraintFactory->createByConstraintConfig($option);
         }
 
-        $constraints[] = $this->constraintFactory->createCollectionConstraint($fieldConstraints);
+        $constraints[] = $this->constraintFactory->createTableConstraint($fieldConstraints);
 
         return $constraints;
     }
