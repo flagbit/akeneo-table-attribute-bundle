@@ -1,1 +1,1 @@
-<input class="table-type" type="text" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= value.data %>" <%= editMode === 'view' ? 'disabled' : '' %> />
+<input class="table-type" type="text" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= _.escape(value.data) %>" <%= editMode === 'view' ? 'disabled' : '' %> />
