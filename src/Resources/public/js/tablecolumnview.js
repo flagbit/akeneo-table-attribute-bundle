@@ -17,8 +17,16 @@ define(
             defaults: {
                 code: '',
                 optionValues: {},
-                constraints: '',
-                type_config: ''
+                constraints: {},
+                type_config: {}
+            },
+            attributesToJson: function() {
+                if (typeof this.get('constraints') === 'object') {
+                    this.set('constraints', JSON.stringify(this.get('constraints')));
+                }
+                if (typeof this.get('type_config') === 'object') {
+                    this.set('type_config', JSON.stringify(this.get('type_config')));
+                }
             }
         });
 
@@ -125,6 +133,7 @@ define(
                     template = this.showTemplate;
                 }
 
+                this.model.attributesToJson();
                 this.$el.html(template({
                     item: this.model.toJSON(),
                     locales: this.locales
@@ -255,8 +264,16 @@ define(
                 editedModel.set('code', this.$el.find('.attribute_option_code').val());
                 editedModel.set('optionValues', attributeOptions);
                 editedModel.set('type', this.$el.find('.attribute_option_type').val());
-                editedModel.set('constraints', this.$el.find('.attribute_option_constraints').val());
-                editedModel.set('type_config', this.$el.find('.attribute_option_config').val());
+                try {
+                    editedModel.set('constraints', JSON.parse(this.$el.find('.attribute_option_constraints').val()));
+                    editedModel.set('type_config', JSON.parse(this.$el.find('.attribute_option_config').val()));
+                } catch (e) {
+                    Dialog.alert(
+                        __('flagbit.attribute_table.alert.json_error_text'),
+                        __('flagbit.attribute_table.alert.json_error_title')
+                    );
+                }
+
                 return editedModel;
             },
             inLoading: function (loading) {

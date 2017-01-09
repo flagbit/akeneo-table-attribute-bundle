@@ -14,9 +14,17 @@
       "Flagbit\\Bundle\\TableAttributeBundle\\": "src/"
     }
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/akeneo/pim-community-dev.git",
+      "branch": "master"
+    }
+  ],
+  "require": {
+    "akeneo/pim-community-dev": "1.6.*"
+  },
   "require-dev": {
-    "symfony/dependency-injection": "2.7.*",
-    "symfony/config": "2.7.*",
-    "symfony/http-kernel": "2.7.*"
+    "phpspec/phpspec": "^3.2"
   }
 }
