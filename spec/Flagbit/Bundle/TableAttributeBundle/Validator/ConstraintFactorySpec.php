@@ -4,6 +4,7 @@ namespace spec\Flagbit\Bundle\TableAttributeBundle\Validator;
 
 use Flagbit\Bundle\TableAttributeBundle\Entity\ConstraintConfigInterface;
 use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory;
+use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Form\Exception\ExceptionInterface;
 use Symfony\Component\Validator\Constraints as C;
@@ -82,8 +83,8 @@ class ConstraintFactorySpec extends ObjectBehavior
             'foo' => [new C\Email(), new C\IsNull()],
         ];
 
-        $constraint = $this->createCollectionConstraint($constraints);
-        $constraint->shouldBeAnInstanceOf(C\All::class);
+        $constraint = $this->createTableConstraint($constraints);
+        $constraint->shouldBeAnInstanceOf(Table::class);
         $constraint->constraints->shouldHaveCount(1);
         $constraint->constraints[0]->shouldBeAnInstanceOf(C\Collection::class);
 
@@ -99,6 +100,6 @@ class ConstraintFactorySpec extends ObjectBehavior
             'foo' => [new C\Email(), 'foo'],
         ];
 
-        $this->shouldThrow(ConstraintDefinitionException::class)->during('createCollectionConstraint', [$constraints]);
+        $this->shouldThrow(ConstraintDefinitionException::class)->during('createTableConstraint', [$constraints]);
     }
 }
