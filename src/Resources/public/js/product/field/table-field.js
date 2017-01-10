@@ -21,7 +21,7 @@ define([
         return Field.extend({
             fieldTemplate: _.template(fieldTemplate),
             events: {
-                'change .field-input:first .table-type': 'updateModel'
+                'change .field-input:first .table-data': 'updateModel'
             },
             renderInput: function (context) {
                 return this.fieldTemplate(context);
@@ -96,7 +96,7 @@ define([
                 ).promise();
             },
             updateModel: function () {
-                var data = this.$('.field-input:first .table-type').val();
+                var data = this.$('.field-input:first .table-data').val();
 
                 this.setCurrentValue(data);
             },

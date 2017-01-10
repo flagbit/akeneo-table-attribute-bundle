@@ -8,10 +8,9 @@ define(
                 var $headerRow = $target.find('thead tr');
                 var $footerRow = $target.find('tfoot tr');
                 var $tbody = $target.find('tbody');
-                var value = $target.find('input.table-data').val();
+                var values = $target.find('input.table-data').val();
 
-                value = $.parseJSON(value?value:'{}');
-console.log(value);
+                values = $.parseJSON(values?values:'{}');
 
                 _.each(columns.results, function (column) {
                     $headerRow.append("<th class='"+column.id+"'>"+column.text+"</th>");
@@ -22,17 +21,18 @@ console.log(value);
                     $footerRow.append("<th class='"+column.id+"'>"+column.text+"</th>");
                 }.bind(this));
 
-                _.each(value, function(row) {
-
-                    var $tr = $tbody.append('<tr></tr>');
-
+                _.each(values, function(row) {
+                    $tbody.append('<tr>');
                     _.each(columns.results, function (column) {
-                        $headerRow.append("<th class='"+column.id+"'>"+column.text+"</th>");
+                        var value = "";
+                        if (column.id in row) {
+                            value = row[column.id];
+                        }
+
+                        $tbody.append("<td class='"+column.id+"'>"+value+"</td>");
                     });
+                    $tbody.append('</tr>');
                 });
-
-
-
             },
             getInputByConfig: function(columnConfig) {
 
