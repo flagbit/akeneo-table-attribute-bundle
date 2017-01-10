@@ -9,6 +9,7 @@
         <parameter key="flagbit_table_attribute.event_listener.type_suffix.class">Flagbit\Bundle\TableAttributeBundle\EventListener\TypeSuffixListener</parameter>
         <parameter key="pim_catalog.validator.constraint.attribute_type_for_option.class">Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\AttributeTypeForOptionValidator</parameter>
         <parameter key="pim_enrich.normalizer.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer</parameter>
+        <parameter key="pim_enrich.normalizer.structured.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Normalizer\StructuredAttributeOptionNormalizer</parameter>
         <parameter key="flagbit_table_attribute.form.extension.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Form\Extension\AttributeOptionTypeExtension</parameter>
         <parameter key="pim_enrich.view_element.attribute.tab.value.template">FlagbitTableAttributeBundle:Attribute:Tab/value.html.twig</parameter>
     </parameters>
