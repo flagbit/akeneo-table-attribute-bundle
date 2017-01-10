@@ -48,42 +48,6 @@ define([
                         }
                     );
                 }.bind(this));
-                //
-                //    enrichedContext.columnConfig = $.ajax({
-                //        url: columnUrl,
-                //        quietMillis: 250,
-                //        cache: true,
-                //        data: function (term, page) {
-                //            return {
-                //                search: term,
-                //                options: {
-                //                    limit: 20,
-                //                    locale: UserContext.get('catalogLocale'),
-                //                    page: page
-                //                }
-                //            };
-                //        }.bind(this),
-                //        results: function (response) {
-                //            if (response.results) {
-                //                response.more = 20 === _.keys(response.results).length;
-                //
-                //                return response;
-                //            }
-                //
-                //            var data = {
-                //                more: 20 === _.keys(response).length,
-                //                results: []
-                //            };
-                //            _.each(response, function (value) {
-                //                data.results.push(this.convertBackendItem(value));
-                //            }.bind(this));
-                //
-                //            return data;
-                //        }.bind(this)
-                //    });
-                //}.bind(this));
-                //console.log(enrichedContext);
-
             },
             getColumnUrl: function () {
                 return $.Deferred().resolve(
@@ -103,7 +67,9 @@ define([
             convertBackendItem: function (item) {
                 return {
                     id: item.code,
-                    text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code)
+                    text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code),
+                    config: item.type_config,
+                    type: item.type
                 };
             }
         });
