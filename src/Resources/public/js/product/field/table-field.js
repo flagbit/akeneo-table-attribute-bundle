@@ -21,7 +21,8 @@ define([
         return Field.extend({
             fieldTemplate: _.template(fieldTemplate),
             events: {
-                'change .field-input:first .table-data': 'updateModel'
+                'change .field-input:first .table-data': 'updateModel',
+                'change .field-input:first .flagbit-table-values': 'updateJson'
             },
             renderInput: function (context) {
                 return this.fieldTemplate(context);
@@ -63,6 +64,26 @@ define([
                 var data = this.$('.field-input:first .table-data').val();
 
                 this.setCurrentValue(data);
+            },
+            updateJson: function () {
+                var rows = this.$('.flagbit-table-values tr.flagbit-row');
+
+                var values = [];
+                _.each(rows, function(row) {
+                    var fields = {};
+
+                    // TODO each field type needs an JS accessor to get the values in a normalized format
+                    // This selector only works if only one of these form-fields is in the field
+                    _.each($('td > input, textarea, select', row), function(field) {
+                        fields[$(field).prop('name')] = $(field).val();
+                    });
+
+                    values.push(fields);
+                });
+
+                var valuesAsJson = JSON.stringify(values);
+                // TODO check if the hidden field is needed and do this.setCurrentValue(valuesAsJson) instead
+                this.$('.field-input:first .table-data').val(valuesAsJson);
             },
             convertBackendItem: function (item) {
                 return {

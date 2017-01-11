@@ -2,36 +2,17 @@
     <header>
         <button class="btn btn-success pull-right pim-composition-add">Add item</button>
     </header>
-    <table class="pim-composition-values" style="width: 100%">
+    <table class="flagbit-table-values" style="width: 100%">
         <thead>
-        <tr>
-            <!--<% if (editMode !== 'view') { %>-->
-            <!--<th width="10"></th>-->
-            <!--<% } %>-->
-            <!--<th width="10">Name</th>-->
-            <!--<th>Amount</th>-->
-            <!--<% if (editMode !== 'view') { %>-->
-            <!--<th width="10"></th>-->
-            <!--<% } %>-->
-        </tr>
+            <tr></tr>
         </thead>
+
         <tbody>
 
         </tbody>
 
         <tfoot style="display: none">
-            <tr>
-                <!--<% if (editMode !== 'view') { %>-->
-                <!--<td class="handle"><i class="icon-reorder"></i></td>-->
-                <!--<% } %>-->
-                <!--<td><div class="pim-composition-field pim-composition-name" style="width: 350px"></div></td>-->
-                <!--<td><input type="number" min="0" max="100" class="pim-composition-field pim-composition-percentage" <%= editMode === 'view' ? 'disabled' : '' %>></td>-->
-                <!--<% if (editMode !== 'view') { %>-->
-                <!--<td>-->
-                    <!--<button class="btn btn-small action-delete-inline" type="button"><i class="icon-remove"></i></button>-->
-                <!--</td>-->
-                <!--<% } %>-->
-            </tr>
+            <tr></tr>
         </tfoot>
     </table>
     <input type="hidden" class="table-data" data-locale="<%= value.locale %>" value="<%= _.escape(value.data) %>" data-scope="<%= value.scope %>" <%= editMode === 'view' ? 'disabled' : '' %> />

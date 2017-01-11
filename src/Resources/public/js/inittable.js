@@ -21,16 +21,17 @@ define(
                 }.bind(this));
 
                 _.each(values, function(row) {
-                    $tbody.append('<tr>');
+                    var html = '<tr class="flagbit-row">';
                     _.each(columns.results, function (column) {
                         var value = "";
                         if (column.id in row) {
                             value = row[column.id];
                         }
 
-                        $tbody.append("<td class='"+column.id+"'>"+column.renderField({column: column, value: value})+"</td>");
+                        html += "<td class='"+column.id+"'>"+column.renderField({column: column, value: value})+"</td>";
                     });
-                    $tbody.append('</tr>');
+                    html += '</tr>';
+                    $tbody.append(html);
                 });
             },
             getInputByConfig: function(column) {
