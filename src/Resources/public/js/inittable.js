@@ -12,14 +12,22 @@ define(
 
                 values = $.parseJSON(values?values:'{}');
 
+                var emptyTitle = '<th style="width: 30px"></th>';
+                // Title for reorder column
+                $headerRow.append(emptyTitle);
+                $footerRow.append(emptyTitle);
                 _.each(columns, function (column) {
-                    $headerRow.append("<th class='"+column.id+"'>"+column.text+"</th>");
-
-                    $footerRow.append("<th class='"+column.id+"'>"+column.text+"</th>");
+                    var th = "<th class='"+column.id+"'>"+column.text+"</th>";
+                    $headerRow.append(th);
+                    $footerRow.append(th);
                 }.bind(this));
+                // Title for edit and delete buttons column
+                emptyTitle = '<th></th>';
+                $headerRow.append(emptyTitle);
+                $footerRow.append(emptyTitle);
 
                 _.each(values, function(row) {
-                    var html = '<tr class="flagbit-row">';
+                    var html = '<tr class="flagbit-row editable-item-row"><td><span class="handle"><i class="icon-reorder"></i></span></td>';
                     _.each(columns, function (column) {
                         var value = "";
                         if (column.id in row) {
@@ -28,6 +36,7 @@ define(
 
                         html += "<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
                     });
+                    html += '<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>';
                     html += '</tr>';
                     $tbody.append(html);
                 });

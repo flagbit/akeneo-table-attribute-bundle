@@ -73,7 +73,7 @@ define([
                 _.each(rows, function(row) {
                     var fields = {};
 
-                    _.each($('td', row), function(td) {
+                    _.each($('td[data-code]', row), function(td) {
                         var id = $(td).data('code');
                         fields[id] = columns[id].func.parseValue($(td));
                     });
