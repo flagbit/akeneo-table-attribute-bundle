@@ -24,6 +24,7 @@ define([
                 'change .field-input:first .table-data': 'updateModel',
                 'change .field-input:first .flagbit-table-values': 'updateJson'
             },
+            columns: {},
             renderInput: function (context) {
                 return this.fieldTemplate(context);
             },
@@ -37,13 +38,12 @@ define([
                             url: columnUrl,
                             success: function (response) {
                                 if (response) {
-                                    var data = {
-                                        results: []
-                                    };
                                     _.each(response, function (value) {
-                                        data.results.push(this.convertBackendItem(value));
+                                        // this.columns.push(this.convertBackendItem(value));
+                                        var column = this.convertBackendItem(value);
+                                        this.columns[column.id] = column;
                                     }.bind(this));
-                                    initTable.init(this.$('.flagbit-table-attribute'), data);
+                                    initTable.init(this.$('.flagbit-table-attribute'), this.columns);
                                 }
                             }.bind(this)
                         }
@@ -69,28 +69,62 @@ define([
                 var rows = this.$('.flagbit-table-values tr.flagbit-row');
 
                 var values = [];
+                var columns = this.columns;
                 _.each(rows, function(row) {
                     var fields = {};
 
-                    // TODO each field type needs an JS accessor to get the values in a normalized format
-                    // This selector only works if only one of these form-fields is in the field
+                    // This selector works if only one of these html form-fields is in <td>
                     _.each($('td > input, textarea, select', row), function(field) {
-                        fields[$(field).prop('name')] = $(field).val();
+                        var id = $(field).prop('name');
+                        fields[id] = columns[id].func.parseValue($(field));
                     });
 
                     values.push(fields);
                 });
 
                 var valuesAsJson = JSON.stringify(values);
-                // TODO check if the hidden field is needed and do this.setCurrentValue(valuesAsJson) instead
                 this.$('.field-input:first .table-data').val(valuesAsJson);
+                this.setCurrentValue(valuesAsJson);
             },
             convertBackendItem: function (item) {
                 return {
                     id: item.code,
                     text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code),
                     config: item.type_config,
-                    type: item.type
+                    type: item.type,
+                    func: this.createColumnFunctions(item)
+                };
+            },
+            createColumnFunctions: function(item) {
+                // TODO Move this mapping to Symfony tags for every type to make this extendable
+                var fieldTemplate;
+                var parser = function (field) {
+                    return field.val();
+                };
+
+                switch (item.type) {
+                    case "text":
+                        fieldTemplate = "<input type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value) %>' />";
+                        break;
+                    case "number":
+                        fieldTemplate = "<input type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
+                            parser = function (field) {
+                                return parseFloat(field.val());
+                            };
+                        } else {
+                            parser = function (field) {
+                                return parseInt(field.val());
+                            };
+                        }
+                        break;
+                    default:
+                        throw "Unknown type '"+item.type+"'";
+                }
+
+                return {
+                    renderField: _.template(fieldTemplate), // renders the template of the field
+                    parseValue: parser // parses the value into the proper type for the json result
                 };
             }
         });
