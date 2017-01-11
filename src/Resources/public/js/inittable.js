@@ -26,7 +26,7 @@ define(
                             value = row[column.id];
                         }
 
-                        html += "<td class='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
+                        html += "<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
                     });
                     html += '</tr>';
                     $tbody.append(html);

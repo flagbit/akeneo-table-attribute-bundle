@@ -73,10 +73,9 @@ define([
                 _.each(rows, function(row) {
                     var fields = {};
 
-                    // This selector works if only one of these html form-fields is in <td>
-                    _.each($('td > input, textarea, select', row), function(field) {
-                        var id = $(field).prop('name');
-                        fields[id] = columns[id].func.parseValue($(field));
+                    _.each($('td', row), function(td) {
+                        var id = $(td).data('code');
+                        fields[id] = columns[id].func.parseValue($(td));
                     });
 
                     values.push(fields);
@@ -98,8 +97,8 @@ define([
             createColumnFunctions: function(item) {
                 // TODO Move this mapping to Symfony tags for every type to make this extendable
                 var fieldTemplate;
-                var parser = function (field) {
-                    return field.val();
+                var parser = function (td) {
+                    return $('input', td).val();
                 };
 
                 switch (item.type) {
@@ -109,12 +108,12 @@ define([
                     case "number":
                         fieldTemplate = "<input type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
-                            parser = function (field) {
-                                return parseFloat(field.val());
+                            parser = function (td) {
+                                return parseFloat($('input', td).val());
                             };
                         } else {
-                            parser = function (field) {
-                                return parseInt(field.val());
+                            parser = function (td) {
+                                return parseInt($('input', td).val());
                             };
                         }
                         break;
