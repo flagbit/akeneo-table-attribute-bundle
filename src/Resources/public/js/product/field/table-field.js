@@ -22,7 +22,8 @@ define([
             fieldTemplate: _.template(fieldTemplate),
             events: {
                 'change .field-input:first .table-data': 'updateModel',
-                'change .field-input:first .flagbit-table-values': 'updateJson'
+                'change .field-input:first .flagbit-table-values': 'updateJson',
+                'click .field-input:first .flagbit-table-values .delete-row': 'deleteItem'
             },
             columns: {},
             renderInput: function (context) {
@@ -84,6 +85,10 @@ define([
                 var valuesAsJson = JSON.stringify(values);
                 this.$('.field-input:first .table-data').val(valuesAsJson);
                 this.setCurrentValue(valuesAsJson);
+            },
+            deleteItem: function (event) {
+                $(event.currentTarget).closest('tr').remove();
+                this.updateJson();
             },
             convertBackendItem: function (item) {
                 return {
