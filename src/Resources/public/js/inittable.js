@@ -27,19 +27,38 @@ define(
                 $footerRow.append(emptyTitle);
 
                 _.each(values, function(row) {
-                    var html = '<tr class="flagbit-row editable-item-row"><td><span class="handle"><i class="icon-reorder"></i></span></td>';
+                    var htmlColumns = [];
                     _.each(columns, function (column) {
                         var value = "";
                         if (column.id in row) {
                             value = row[column.id];
                         }
 
-                        html += "<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
-                    });
-                    html += '<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>';
-                    html += '</tr>';
-                    $tbody.append(html);
+                        htmlColumns.push(this.createColumn(column, value));
+                    }.bind(this));
+                    $tbody.append(this.createRow(htmlColumns));
+                }.bind(this));
+            },
+            createColumn: function (column, value) {
+                return "<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
+            },
+            createRow: function (htmlColumns) {
+                var row = '<tr class="flagbit-table-row editable-item-row"><td><span class="handle"><i class="icon-reorder"></i></span></td>';
+                _.each(htmlColumns, function (htmlColumn) {
+                    row += htmlColumn;
                 });
+                row += '<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>';
+                row += '</tr>';
+
+                return row;
+            },
+            createEmptyRow: function (columns) {
+                var htmlColumns = [];
+                _.each(columns, function (column) {
+                    htmlColumns.push(this.createColumn(column, ''));
+                }.bind(this));
+
+                return this.createRow(htmlColumns);
             }
         };
     }

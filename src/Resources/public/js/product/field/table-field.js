@@ -23,7 +23,8 @@ define([
             events: {
                 'change .field-input:first .table-data': 'updateModel',
                 'change .field-input:first .flagbit-table-values': 'updateJson',
-                'click .field-input:first .flagbit-table-values .delete-row': 'deleteItem'
+                'click .field-input:first .flagbit-table-values .delete-row': 'deleteItem',
+                'click .field-input:first .flagbit-table-attribute .item-add': 'addItem'
             },
             columns: {},
             renderInput: function (context) {
@@ -67,7 +68,7 @@ define([
                 this.setCurrentValue(data);
             },
             updateJson: function () {
-                var rows = this.$('.flagbit-table-values tr.flagbit-row');
+                var rows = this.$('.flagbit-table-values tr.flagbit-table-row');
 
                 var values = [];
                 var columns = this.columns;
@@ -89,6 +90,9 @@ define([
             deleteItem: function (event) {
                 $(event.currentTarget).closest('tr').remove();
                 this.updateJson();
+            },
+            addItem: function () {
+                this.$('table.flagbit-table-values').append(initTable.createEmptyRow(this.columns));
             },
             convertBackendItem: function (item) {
                 return {
