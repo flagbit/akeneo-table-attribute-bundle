@@ -118,10 +118,10 @@ define([
 
                 switch (item.type) {
                     case "text":
-                        fieldTemplate = "<input type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value) %>' />";
+                        fieldTemplate = "<input type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' />";
                         break;
                     case "number":
-                        fieldTemplate = "<input type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        fieldTemplate = "<input type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
                             parser = function (td) {
                                 return parseFloat($('input', td).val());
@@ -131,6 +131,32 @@ define([
                                 return parseInt($('input', td).val());
                             };
                         }
+                        break;
+                    case "select":
+                        // TODO check if the template literal of ECMAScript6 already can be used
+                        fieldTemplate = "<select name='<%= column.id %>' class='<%= column.id %>'> \
+                            <% if (false === $.isArray(value) && false === $.isPlainObject(value)) { %> \
+                                <% value = [value] %> \
+                            <% } %> \
+                            <% if ('options' in column.config) { %> \
+                                <% _.each(column.config.options, function(option, key) { %> \
+                                    <% var selected = '' %> \
+                                    <% if (key === value[0]) { %> \
+                                        <% selected = 'selected' %> \
+                                    <% } %> \
+                                    <option value='<%= key %>' <%= selected %>><%= option %></option> \
+                                <% }); %> \
+                            <% } %> \
+                        </select>";
+
+                        parser = function (td) {
+                            var values = [];
+                            _.each($('option:selected', td), function (option) {
+                                values.push(option.value);
+                            });
+
+                            return values;
+                        };
                         break;
                     default:
                         throw "Unknown type '"+item.type+"'";

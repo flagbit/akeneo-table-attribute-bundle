@@ -12,7 +12,7 @@ define(
 
                 values = $.parseJSON(values?values:'{}');
 
-                var emptyTitle = '<th style="width: 30px"></th>';
+                var emptyTitle = '<th style="width: 35px"></th>';
                 // Title for reorder column
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
@@ -21,8 +21,7 @@ define(
                     $headerRow.append(th);
                     $footerRow.append(th);
                 }.bind(this));
-                // Title for edit and delete buttons column
-                emptyTitle = '<th></th>';
+                // Title for delete button column
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
 
