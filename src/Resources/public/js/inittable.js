@@ -12,7 +12,7 @@ define(
 
                 values = $.parseJSON(values?values:'{}');
 
-                var emptyTitle = '<th style="width: 35px"></th>';
+                var emptyTitle = '<th style="width: 40px"></th>';
                 // Title for reorder column
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
@@ -37,17 +37,22 @@ define(
                     }.bind(this));
                     $tbody.append(this.createRow(htmlColumns));
                 }.bind(this));
+                // TODO Move style to css file
+                $(".flagbit-table-field").css('max-width', "100%");
             },
             createColumn: function (column, value) {
-                return "<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>";
+                var td =  $("<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>");
+                column.func.init(td, column, value);
+
+                return td;
             },
             createRow: function (htmlColumns) {
-                var row = '<tr class="flagbit-table-row editable-item-row"><td><span class="handle"><i class="icon-reorder"></i></span></td>';
+                var row = $('<tr class="flagbit-table-row editable-item-row"></tr>');
+                row.append($('<td><span class="handle"><i class="icon-reorder"></i></span></td>'));
                 _.each(htmlColumns, function (htmlColumn) {
-                    row += htmlColumn;
+                    row.append(htmlColumn);
                 });
-                row += '<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>';
-                row += '</tr>';
+                row.append($('<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>'));
 
                 return row;
             },

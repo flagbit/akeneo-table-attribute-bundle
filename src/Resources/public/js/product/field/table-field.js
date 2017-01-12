@@ -115,13 +115,15 @@ define([
                 var parser = function (td) {
                     return $('input', td).val();
                 };
+                var init = function (td, column, value) {
+                };
 
                 switch (item.type) {
                     case "text":
-                        fieldTemplate = "<input type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' />";
                         break;
                     case "number":
-                        fieldTemplate = "<input type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
                             parser = function (td) {
                                 return parseFloat($('input', td).val());
@@ -133,30 +135,32 @@ define([
                         }
                         break;
                     case "select":
-                        // TODO check if the template literal of ECMAScript6 already can be used
-                        fieldTemplate = "<select name='<%= column.id %>' class='<%= column.id %>'> \
-                            <% if (false === $.isArray(value) && false === $.isPlainObject(value)) { %> \
-                                <% value = [value] %> \
-                            <% } %> \
-                            <% if ('options' in column.config) { %> \
-                                <% _.each(column.config.options, function(option, key) { %> \
-                                    <% var selected = '' %> \
-                                    <% if (key === value[0]) { %> \
-                                        <% selected = 'selected' %> \
-                                    <% } %> \
-                                    <option value='<%= key %>' <%= selected %>><%= option %></option> \
-                                <% }); %> \
-                            <% } %> \
-                        </select>";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= value %>' />";
 
                         parser = function (td) {
-                            var values = [];
-                            _.each($('option:selected', td), function (option) {
-                                values.push(option.value);
-                            });
-
-                            return values;
+                            var option = $('input', td).select2('data');
+                            return [option.id];
                         };
+
+                        init = function (td, column, value) {
+                            var select2Config = {
+                                placeholder: ''
+                            };
+                            if ('options' in column.config) {
+                                var options = [];
+                                _.each(column.config.options, function(option, key) {
+                                    options.push({ id: key, text: option });
+                                });
+                                select2Config.data = options;
+                            } else {
+                                // TODO do ajax request
+                            }
+
+                            var select2 = $('input', td).select2(select2Config);
+                            select2.on('select2-close', function () {
+                                this.updateJson();
+                            }.bind(this));
+                        }.bind(this);
                         break;
                     default:
                         throw "Unknown type '"+item.type+"'";
@@ -164,7 +168,8 @@ define([
 
                 return {
                     renderField: _.template(fieldTemplate), // renders the template of the field
-                    parseValue: parser // parses the value into the proper type for the json result
+                    parseValue: parser, // parses the value into the proper type for the json result
+                    init: init // an optional function that allows to initialize third party plugins
                 };
             }
         });
