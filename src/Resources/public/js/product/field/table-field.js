@@ -41,11 +41,17 @@ define([
                             success: function (response) {
                                 if (response) {
                                     _.each(response, function (value) {
-                                        // this.columns.push(this.convertBackendItem(value));
                                         var column = this.convertBackendItem(value);
                                         this.columns[column.id] = column;
                                     }.bind(this));
                                     initTable.init(this.$('.flagbit-table-attribute'), this.columns);
+                                    // initialize dran & drop sorting
+                                    this.$('.flagbit-table-values tbody').sortable({
+                                        handle: ".handle",
+                                        stop: function() {
+                                            this.updateJson();
+                                        }.bind(this)
+                                    });
                                 }
                             }.bind(this)
                         }
