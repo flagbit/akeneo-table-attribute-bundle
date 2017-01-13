@@ -144,7 +144,7 @@ define([
 
                         init = function (td, column, value) {
                             var select2Config = {
-                                placeholder: ''
+                                placeholder: ' '
                             };
                             if ('options' in column.config) {
                                 var options = [];
@@ -152,8 +152,31 @@ define([
                                     options.push({ id: key, text: option });
                                 });
                                 select2Config.data = options;
-                            } else {
-                                // TODO do ajax request
+                            } else if ('options_url' in column.config) {
+                                select2Config.ajax = {
+                                    url: column.config.options_url,
+                                    cache: true,
+                                    minimumInputLength: 0,
+                                    dataType: 'json',
+                                    results: function (data) {
+                                        return data;
+                                    }
+                                };
+                                // initSelection needs to be cleaned up in the future without forcing a whole API
+                                select2Config.initSelection = function(element, callback) {
+                                    var option = $(element).val();
+
+                                    if (option !== '') {
+                                        $.ajax(column.config.options_url, {
+                                            dataType: "json"
+                                        }).done(function (data) {
+                                            var selected = _.find(data.results, function (row) {
+                                                return row.id === option;
+                                            });
+                                            callback(selected);
+                                        });
+                                    }
+                                };
                             }
 
                             var select2 = $('input', td).select2(select2Config);
