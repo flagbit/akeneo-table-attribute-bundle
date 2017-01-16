@@ -139,7 +139,7 @@ define([
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
-                            return [option.id];
+                            return option.id;
                         };
 
                         init = function (td, column, value) {
