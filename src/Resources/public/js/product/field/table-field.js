@@ -158,8 +158,14 @@ define([
                                     cache: true,
                                     minimumInputLength: 0,
                                     dataType: 'json',
+                                    quietMillis: 1000,
                                     results: function (data) {
                                         return data;
+                                    },
+                                    data: function (term) {
+                                        return {
+                                            q: term
+                                        };
                                     }
                                 };
                                 // initSelection needs to be cleaned up in the future without forcing a whole API
@@ -168,7 +174,8 @@ define([
 
                                     if (option !== '') {
                                         $.ajax(column.config.options_url, {
-                                            dataType: "json"
+                                            dataType: "json",
+                                            cache: true
                                         }).done(function (data) {
                                             var selected = _.find(data.results, function (row) {
                                                 return row.id === option;
