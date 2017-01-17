@@ -37,8 +37,6 @@ define(
                     }.bind(this));
                     $tbody.append(this.createRow(htmlColumns));
                 }.bind(this));
-                // TODO Move style to css file
-                $(".flagbit-table-field").css('max-width', "100%");
             },
             createColumn: function (column, value) {
                 var td =  $("<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>");
