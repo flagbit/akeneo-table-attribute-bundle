@@ -1,1 +1,19 @@
-<input class="table-type" type="text" data-locale="<%= value.locale %>" data-scope="<%= value.scope %>" value="<%= _.escape(value.data) %>" <%= editMode === 'view' ? 'disabled' : '' %> />
+<div class="flagbit-table-attribute asset-gallery">
+    <header>
+        <button class="btn btn-success item-add pull-right">Add item</button>
+    </header>
+    <table class="flagbit-table-values attribute-option-view ui-sortable" style="width: 100%; overflow-x: visible">
+        <thead>
+            <tr></tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+        <tfoot style="display: none">
+            <tr></tr>
+        </tfoot>
+    </table>
+    <input type="hidden" class="table-data" data-locale="<%= value.locale %>" value="<%= _.escape(value.data) %>" data-scope="<%= value.scope %>" <%= editMode === 'view' ? 'disabled' : '' %> />
+</div>

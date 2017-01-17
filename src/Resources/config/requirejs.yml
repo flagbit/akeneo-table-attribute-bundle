@@ -1,5 +1,6 @@
 config:
     paths:
-        flagbit/table-field: flagbittableattribute/js/product/field/table-field
+        flagbit/table-field:                  flagbittableattribute/js/product/field/table-field
         flagbit/template/product/field/table: flagbittableattribute/templates/product/field/table.html
-        flagbit/tablecolumnview:            flagbittableattribute/js/tablecolumnview
+        flagbit/tablecolumnview:              flagbittableattribute/js/tablecolumnview
+        flagbit/inittable:                    flagbittableattribute/js/inittable
