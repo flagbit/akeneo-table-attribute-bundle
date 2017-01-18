@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="pim_connector.array_converter.flat_to_standard.product.value_converter.text"
+        <service id="flagbit_table.array_converter.flat_to_standard.product.value_converter.text"
                  class="%pim_connector.array_converter.flat_to_standard.product.value_converter.text.class%"
                  parent="pim_connector.array_converter.flat_to_standard.product.value_converter.abstract">
             <tag name="pim_connector.array_converter.flat_to_standard.product.value_converter"/>
@@ -9,7 +9,7 @@
                 <argument>flagbit_catalog_table</argument>
             </argument>
         </service>
-        <service id="pim_connector.array_converter.standard_to_flat.product.value_converter.text" class="%pim_connector.array_converter.standard_to_flat.product.value_converter.text.class%">
+        <service id="flagbit_table.array_converter.standard_to_flat.product.value_converter.text" class="%pim_connector.array_converter.standard_to_flat.product.value_converter.text.class%">
             <tag name="pim_connector.array_converter.standard_to_flat.product.value_converter"/>
             <argument type="service" id="pim_connector.array_converter.flat_to_standard.product.attribute_columns_resolver"/>
             <argument type="collection">
