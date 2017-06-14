@@ -117,13 +117,20 @@ define([
                 };
                 var init = function (td, column, value) {
                 };
+                var formTypeValue = function (value) {
+                    if (typeof value === 'undefined' || null === value) {
+                        return '';
+                    }
+
+                    return value.toString();
+                };
 
                 switch (item.type) {
                     case "text":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
                         break;
                     case "number":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(value.toString()) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
                             parser = function (td) {
                                 return parseFloat($('input', td).val());
@@ -135,7 +142,7 @@ define([
                         }
                         break;
                     case "select":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= value %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
@@ -199,7 +206,8 @@ define([
                 return {
                     renderField: _.template(fieldTemplate), // renders the template of the field
                     parseValue: parser, // parses the value into the proper type for the json result
-                    init: init // an optional function that allows to initialize third party plugins
+                    init: init, // an optional function that allows to initialize third party plugins
+                    formTypeValue: formTypeValue // changes the value when it is put to the form field(s)
                 };
             }
         });
