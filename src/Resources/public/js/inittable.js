@@ -12,7 +12,7 @@ define(
 
                 values = $.parseJSON(values?values:'{}');
 
-                var emptyTitle = '<th style="width: 40px"></th>';
+                var emptyTitle = '<th style="width: 47px"></th>';
                 // Title for reorder column
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
