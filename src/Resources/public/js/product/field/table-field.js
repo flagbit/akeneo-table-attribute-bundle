@@ -40,6 +40,7 @@ define([
                             url: columnUrl,
                             success: function (response) {
                                 if (response) {
+                                    this.columns = {};
                                     _.each(response, function (value) {
                                         var column = this.convertBackendItem(value);
                                         this.columns[column.id] = column;
