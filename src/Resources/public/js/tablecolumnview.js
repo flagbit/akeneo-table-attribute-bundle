@@ -8,9 +8,10 @@ define(
         'oro/mediator',
         'oro/loading-mask',
         'pim/dialog',
+        'flagbit/JsonGenerator',
         'jquery-ui'
     ],
-    function ($, _, Backbone, __, Routing, mediator, LoadingMask, Dialog) {
+    function ($, _, Backbone, __, Routing, mediator, LoadingMask, Dialog, JsonGenerator) {
         'use strict';
 
         var AttributeOptionItem = Backbone.Model.extend({
@@ -61,7 +62,7 @@ define(
                     '<span class="option-constraint"><%= item.constraints %></span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="option-config"><%= item.type_config %></span>' +
+                    '<span class="option-config json-generator json-<%= item.type %>-generator"><%= item.type_config %></span>' +
                 '</td>' +
                 '<td>' +
                     '<span class="btn btn-small edit-row"><i class="icon-pencil"></i></span>' +
@@ -95,7 +96,7 @@ define(
                     '<textarea class="attribute_option_constraints exclude" ><%= item.constraints %></textarea>' +
                 '</td>' +
                 '<td>' +
-                    '<textarea class="attribute_option_config exclude" ><%= item.type_config %></textarea>' +
+                    '<textarea class="attribute_option_config exclude json-generator json-<%= item.type %>-generator" ><%= item.type_config %></textarea>' +
                 '</td>' +
                 '<td>' +
                     '<span class="btn btn-small update-row"><i class="icon-ok"></i></span>' +
@@ -138,6 +139,10 @@ define(
                     item: this.model.toJSON(),
                     locales: this.locales
                 }));
+
+                this.$el.find('.json-generator').each(function() {
+                    new JsonGenerator(this);
+                });
 
                 this.$el.attr('data-item-id', this.model.id);
 
