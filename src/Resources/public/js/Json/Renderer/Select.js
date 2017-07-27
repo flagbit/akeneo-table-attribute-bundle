@@ -98,6 +98,19 @@ define(
 
                 if($table === null) {
                     $table = document.createElement('table');
+
+                    var $thead = document.createElement('thead');
+                    var $thRow = document.createElement('tr');
+                    var $thCl1 = document.createElement('th');
+                    $thCl1.innerText = 'Key';
+                    var $thCl2 = document.createElement('th');
+                    $thCl2.innerText = 'Value';
+
+                    $thRow.appendChild($thCl1);
+                    $thRow.appendChild($thCl2);
+                    $thead.appendChild($thRow);
+                    $table.appendChild($thead);
+
                     var $tbody = document.createElement('tbody');
                     $table.appendChild($tbody);
 
