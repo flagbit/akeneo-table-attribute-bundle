@@ -9,6 +9,7 @@ config:
         flagbit/JsonGenerator/Renderer/Number: flagbittableattribute/js/Json/Renderer/Number
         flagbit/JsonGenerator/Renderer/Select: flagbittableattribute/js/Json/Renderer/Select
         flagbit/JsonGenerator/Renderer/Text:   flagbittableattribute/js/Json/Renderer/Text
+        flagbit/JsonGenerator/Renderer/Constraint:   flagbittableattribute/js/Json/Renderer/Constraint
         flagbit/JsonGenerator/Storage:        flagbittableattribute/js/Json/Storage
         flagbit/tablecolumnview:              flagbittableattribute/js/tablecolumnview
         flagbit/inittable:                    flagbittableattribute/js/inittable

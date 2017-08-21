@@ -93,7 +93,7 @@ define(
                     '</select>' +
                 '</td>' +
                 '<td>' +
-                    '<textarea class="attribute_option_constraints exclude" ><%= item.constraints %></textarea>' +
+                    '<textarea class="attribute_option_constraints exclude json-generator json-constraint-generator" ><%= item.constraints %></textarea>' +
                 '</td>' +
                 '<td>' +
                     '<textarea class="attribute_option_config exclude json-generator json-<%= item.type %>-generator" ><%= item.type_config %></textarea>' +
