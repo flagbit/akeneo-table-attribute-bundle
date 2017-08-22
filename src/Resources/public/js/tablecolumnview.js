@@ -59,7 +59,7 @@ define(
                     '<span class="option-constraint"><%= item.type %></span>' +
                 '</td>' +
                 '<td>' +
-                    '<span class="option-constraint"><%= item.constraints %></span>' +
+                    '<span class="option-constraint  json-generator json-constraint-generator"><%= item.constraints %></span>' +
                 '</td>' +
                 '<td>' +
                     '<span class="option-config json-generator json-<%= item.type %>-generator"><%= item.type_config %></span>' +
