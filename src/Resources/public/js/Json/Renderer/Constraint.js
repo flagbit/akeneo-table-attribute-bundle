@@ -59,7 +59,7 @@ define(
                     if($collection.hasOwnProperty($i)) {
                         var $option = $collection[$i];
                         if($option.selected) {
-                            $data[$option.value] = true;
+                            $data[$option.value] = {};
                         }
                     }
                 }
