@@ -22,7 +22,7 @@ define(
              */
             this.render = function($data) {
 
-                var $options = ['NotBlank', 'Blank', 'NotNull', 'IsNull', 'IsTrue', 'IsFalse', 'Email', 'Url', 'Ip', 'Uuid', 'Data', 'DateTime', 'Time', 'Language', 'Locale', 'Country', 'Bic', 'CardScheme', 'Currency', 'Luhn', 'Iban', 'Isbn', 'Issn'];
+                var $options = ['NotBlank', 'Blank', 'NotNull', 'IsNull', 'IsTrue', 'IsFalse', 'Email', 'Url', 'Ip', 'Uuid', 'Date', 'DateTime', 'Time', 'Language', 'Locale', 'Country', 'Currency', 'Luhn', 'Iban', 'Isbn', 'Issn'];
 
                 var $dropdown = createDropdown();
 
