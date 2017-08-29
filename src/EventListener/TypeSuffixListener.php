@@ -8,6 +8,9 @@ class TypeSuffixListener
 {
     public function addTypeSuffix()
     {
-        ProductQueryUtility::addTypeSuffix('flagbit_catalog_table', '-table');
+        // Class only existing and required if PIM EE and ElasticSearchBundle are used otherwise is not necessary at all
+        if (class_exists(ProductQueryUtility::class)) {
+            ProductQueryUtility::addTypeSuffix('flagbit_catalog_table', '-table');
+        }
     }
 }
