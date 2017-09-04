@@ -27,7 +27,12 @@ class AttributeTypeForOptionValidator extends BaseValidator
         /** @var AttributeOptionInterface */
         if ($attributeOption instanceof AttributeOptionInterface) {
             $attribute = $attributeOption->getAttribute();
-            $authorizedTypes = [AttributeTypes::OPTION_SIMPLE_SELECT, AttributeTypes::OPTION_MULTI_SELECT, TableType::FLAGBIT_CATALOG_TABLE];
+            $authorizedTypes = [
+                AttributeTypes::OPTION_SIMPLE_SELECT,
+                AttributeTypes::OPTION_MULTI_SELECT,
+                TableType::FLAGBIT_CATALOG_TABLE
+            ];
+
             if (!in_array($attribute->getAttributeType(), $authorizedTypes)) {
                 $this->addInvalidAttributeViolation($constraint, $attributeOption);
             }
