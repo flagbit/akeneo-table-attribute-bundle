@@ -31,6 +31,5 @@ class FlagbitTableAttributeExtension extends Extension
         $loader->load('entities.xml');
         $loader->load('validators.xml');
         $loader->load('attribute_icons.xml');
-        $loader->load('twig.xml');
     }
 }
