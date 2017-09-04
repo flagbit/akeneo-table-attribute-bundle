@@ -1,3 +1,4 @@
+/.phplint-cache
 /vendor/
 /phpunit.xml
 /build/

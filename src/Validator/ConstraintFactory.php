@@ -20,7 +20,7 @@ class ConstraintFactory
     {
         $constraints = [];
 
-        foreach($constraintConfig->getConstraints() as $class => $params) {
+        foreach ($constraintConfig->getConstraints() as $class => $params) {
             try {
                 $constraints[] = $this->createInstance($class, $params);
             } catch (ExceptionInterface $e) {
@@ -35,8 +35,8 @@ class ConstraintFactory
     /**
      * Creates one Contraint for a collection containing multiple field.
      *
-     * The given $constraints array must be a associative array where the keys are the same as the keys of the value array
-     * that needs to be validated.
+     * The given $constraints array must be a associative array where the keys are the same as the keys of the value
+     * array that needs to be validated.
      *
      * @param Constraint[] $constraints
      *
