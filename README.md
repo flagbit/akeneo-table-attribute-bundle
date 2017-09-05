@@ -4,11 +4,43 @@ Adds the new AttributeType *Table* for Akeneo products.
 
 ### Installation ###
 
-``` php
-composer require flagbit/table-attribute-bundle
+Since there is still no stable version and no releases in packagist.org, you must first manually add the repository 
+to your `composer.json`.
+
+``` json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://bitbucket.org/flagbit/tableattributebundle.git"
+        }
+    ],
 ```
 
-#### Override AttributeOption ####
+Now you can simply install the package with the following command. 
+
+``` bash
+composer require flagbit/table-attribute-bundle:@alpha
+```
+
+#### Enable the bundle ####
+
+Enable the bundle in the kernel:
+
+``` php
+<?php
+// app/AppKernel.php
+
+protected function registerProjectBundles()
+{
+    return [
+        // ...
+        new Flagbit\Bundle\TableAttributeBundle\FlagbitTableAttributeBundle(),
+        // ...
+    ];
+}
+```
+
+### Configuration ###
 
 Add to config yml to `mapping_overrides`:
 
@@ -22,19 +54,19 @@ akeneo_storage_utils:
 
 Update the database schema:
 
-```
-php app/console -e=prod d:s:u --force
+``` bash
+php app/console -e=prod doctrine:schema:update --force
 ```
 
 In case you're using Doctrine migrations, you have to create a new migration class
 
-```
+``` bash
 php app/console -e=prod doctrine:migration:diff
 ```
 
 and migrate the schema updates:
 
-```
+``` bash
 php app/console doctrine:migrations:migrate
 ```
 
