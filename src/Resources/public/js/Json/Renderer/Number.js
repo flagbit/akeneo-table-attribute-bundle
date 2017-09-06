@@ -67,7 +67,7 @@ define(
                 for(var $i in $collection) {
                     if($collection.hasOwnProperty($i)) {
                         var $dropdown = $collection[$i];
-                        $data[$dropdown.name] = $dropdown.value;
+                        $data[$dropdown.name] = $dropdown.value === 'true';
                     }
                 }
 
