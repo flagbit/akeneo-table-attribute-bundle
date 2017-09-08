@@ -21,7 +21,7 @@ define(
              */
             this.render = function($data) {
                 var $text = document.createElement('span');
-                $text.innerText = 'There is any configuration option.';
+                $text.innerText = 'There is no configuration option.';
                 $container.appendChild($text);
             };
 
