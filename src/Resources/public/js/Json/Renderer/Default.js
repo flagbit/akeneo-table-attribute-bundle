@@ -20,7 +20,9 @@ define(
              * @param {Object} $data
              */
             this.render = function($data) {
-                console.log("Rendering Default");
+                var $text = document.createElement('span');
+                $text.innerText = 'There is any configuration option.';
+                $container.appendChild($text);
             };
 
             /**
