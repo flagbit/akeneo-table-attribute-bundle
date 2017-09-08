@@ -7,7 +7,7 @@ define(
         /**
          * @class
          */
-        var JsonGeneratorRendererText = function($editable, $container) {
+        var JsonGeneratorRendererDefault = function($editable, $container) {
 
             /**
              * @public
@@ -20,15 +20,12 @@ define(
              * @param {Object} $data
              */
             this.render = function($data) {
-                console.log("Rendering Text");
-                var $text = document.createElement('span');
-                $text.innerText = 'There is any configuration option for text';
-                $container.appendChild($text);
+                console.log("Rendering Default");
             };
 
             /**
              * @public
-             * @param {Object} $data
+             * @returns {Object}
              */
             this.read = function() {
                 return {};
@@ -36,6 +33,6 @@ define(
 
         };
 
-        return JsonGeneratorRendererText;
+        return JsonGeneratorRendererDefault;
     }
 );

@@ -4,9 +4,10 @@ define(
         'flagbit/JsonGenerator/Renderer/Number',
         'flagbit/JsonGenerator/Renderer/Select',
         'flagbit/JsonGenerator/Renderer/Text',
-        'flagbit/JsonGenerator/Renderer/Constraint'
+        'flagbit/JsonGenerator/Renderer/Constraint',
+        'flagbit/JsonGenerator/Renderer/Default'
     ],
-    function(JsonGeneratorObserver, JsonGeneratorRendererNumber, JsonGeneratorRendererSelect, JsonGeneratorRendererText, JsonGeneratorRendererConstraint) {
+    function(JsonGeneratorObserver, JsonGeneratorRendererNumber, JsonGeneratorRendererSelect, JsonGeneratorRendererText, JsonGeneratorRendererConstraint, JsonGeneratorRendererDefault) {
 
     /**
      * @class
@@ -59,8 +60,11 @@ define(
                 else if($container.querySelector('.json-constraint-generator')) {
                     $renderer = new JsonGeneratorRendererConstraint($editable, $container);
                 }
-                else {
+                else if($container.querySelector('.json-text-generator')) {
                     $renderer = new JsonGeneratorRendererText($editable, $container);
+                }
+                else {
+                    $renderer = new JsonGeneratorRendererDefault($editable, $container);
                 }
             }
 
