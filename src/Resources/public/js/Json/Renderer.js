@@ -3,10 +3,10 @@ define(
         'flagbit/JsonGenerator/Observer',
         'flagbit/JsonGenerator/Renderer/Number',
         'flagbit/JsonGenerator/Renderer/Select',
-        'flagbit/JsonGenerator/Renderer/Text',
-        'flagbit/JsonGenerator/Renderer/Constraint'
+        'flagbit/JsonGenerator/Renderer/Constraint',
+        'flagbit/JsonGenerator/Renderer/Default'
     ],
-    function(JsonGeneratorObserver, JsonGeneratorRendererNumber, JsonGeneratorRendererSelect, JsonGeneratorRendererText, JsonGeneratorRendererConstraint) {
+    function(JsonGeneratorObserver, JsonGeneratorRendererNumber, JsonGeneratorRendererSelect, JsonGeneratorRendererConstraint, JsonGeneratorRendererDefault) {
 
     /**
      * @class
@@ -60,7 +60,7 @@ define(
                     $renderer = new JsonGeneratorRendererConstraint($editable, $container);
                 }
                 else {
-                    $renderer = new JsonGeneratorRendererText($editable, $container);
+                    $renderer = new JsonGeneratorRendererDefault($editable, $container);
                 }
             }
 
