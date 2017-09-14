@@ -13,7 +13,7 @@ define(
      * @param {Boolean} $editable
      * @param {HTMLElement} $container
      */
-    var JsonGeneratorRenderer = function($editable, $container) {
+    var JsonGeneratorRenderer = function($editable, $container, $types) {
 
         /**
          * @public
@@ -49,6 +49,8 @@ define(
          */
         var getRenderer = function() {
 
+            var renderers = {'select':JsonGeneratorRendererSelect, 'text':JsonGeneratorRendererDefault, 'number':JsonGeneratorRendererNumber};
+
             if($renderer === null) {
                 if($container.querySelector('.json-select-generator')) {
                     $renderer = new JsonGeneratorRendererSelect($editable, $container);
@@ -59,8 +61,11 @@ define(
                 else if($container.querySelector('.json-constraint-generator')) {
                     $renderer = new JsonGeneratorRendererConstraint($editable, $container);
                 }
-                else {
+                else if($container.querySelector('.json-text-generator')) {
                     $renderer = new JsonGeneratorRendererDefault($editable, $container);
+                }
+                else {
+                    $renderer = new renderers[$types[0]]($editable, $container);
                 }
             }
 

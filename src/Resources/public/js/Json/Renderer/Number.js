@@ -25,33 +25,30 @@ define(
                     $data['is_decimal'] = 'false';
                 }
 
-                for(var $key in $data) {
-                    if($data.hasOwnProperty($key)) {
-                        var $value = $data[$key];
+                var $value = $data['is_decimal'];
 
-                        var $label = document.createElement('label');
-                        $label.innerText = $key;
-                        $container.appendChild($label);
+                var $label = document.createElement('label');
+                $label.innerText = 'is_decimal';
+                $container.appendChild($label);
 
-                        var $dropdown = createDropdown($key);
+                var $dropdown = createDropdown('is_decimal');
 
-                        var $options = {
-                            'true': 'true',
-                            'false': 'false'
-                        };
+                var $options = {
+                    'true': 'true',
+                    'false': 'false'
+                };
 
-                        for(var $i in $options) {
-                            if($options.hasOwnProperty($i)) {
-                                var $option = document.createElement('option');
-                                $option.value = $i;
-                                $option.innerText = $options[$i];
-                                $dropdown.appendChild($option);
-                            }
-                        }
-
-                        $dropdown.value = $value;
+                for(var $i in $options) {
+                    if($options.hasOwnProperty($i)) {
+                        var $option = document.createElement('option');
+                        $option.value = $i;
+                        $option.innerText = $options[$i];
+                        $dropdown.appendChild($option);
                     }
                 }
+
+                $dropdown.value = $value;
+
             };
 
 

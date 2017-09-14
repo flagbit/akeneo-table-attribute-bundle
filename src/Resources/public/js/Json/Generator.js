@@ -10,11 +10,11 @@ define(
          * @class
          * @param {(HTMLElement|HTMLTextAreaElement)} $element
          */
-        var JsonGenerator = function($element) {
+        var JsonGenerator = function($element, $types) {
 
             var $source = new JsonGeneratorStorage();
             var $input = new JsonGeneratorInput($element);
-            var $renderer = new JsonGeneratorRenderer($input.isEditable(), $element.parentNode);
+            var $renderer = new JsonGeneratorRenderer($input.isEditable(), $element.parentNode, $types);
 
             $input.observer.watch('load', function() {
                 $source.write($input.read());
