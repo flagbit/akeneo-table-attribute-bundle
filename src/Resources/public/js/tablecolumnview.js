@@ -534,7 +534,7 @@ define(
                 this.inLoading(true);
                 var sorting = [];
 
-                var rows = this.$el.find('tbody tr');
+                var rows = this.$el.find('tbody tr.editable-item-row');
                 for (var i = rows.length - 1; i >= 0; i--) {
                     sorting[i] = rows[i].dataset.itemId;
                 }
