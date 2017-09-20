@@ -87,9 +87,9 @@ define(
                 '<% }); %>' +
                 '<td>' +
                     '<select class="attribute_option_type exclude" >' +
-                        '<option value="select" <% if (item.type == "select") { %> selected="selected"<% } %>>Select</option>' +
-                        '<option value="text" <% if (item.type == "text") { %> selected="selected"<% } %>>Text</option>' +
-                        '<option value="number" <% if (item.type == "number") { %> selected="selected"<% } %>>Number</option>' +
+                        '<% _.each(types, function (type) { %>' +
+                            '<option value="<%= type %>" <% if (item.type == type) { %> selected="selected"<% } %>><%= type %></option>' +
+                        '<% }); %>' +
                     '</select>' +
                 '</td>' +
                 '<td>' +
@@ -109,7 +109,8 @@ define(
                 'click .delete-row': 'deleteItem',
                 'click .update-row': 'updateItem',
                 'keyup input':       'soil',
-                'keydown':           'cancelSubmit'
+                'keydown':           'cancelSubmit',
+                'change .attribute_option_type': 'changeType'
             },
             editable: false,
             parent: null,
@@ -119,11 +120,13 @@ define(
                 this.locales       = options.locales;
                 this.parent        = options.parent;
                 this.model.urlRoot = this.parent.updateUrl;
+                this.types = ['select', 'text', 'number'];
 
                 this.render();
             },
             render: function () {
                 var template = null;
+                var types = this.types;
 
                 if (this.editable) {
                     this.clean();
@@ -137,16 +140,25 @@ define(
                 this.model.attributesToJson();
                 this.$el.html(template({
                     item: this.model.toJSON(),
-                    locales: this.locales
+                    locales: this.locales,
+                    types: types
                 }));
 
                 this.$el.find('.json-generator').each(function() {
-                    new JsonGenerator(this);
-                });
+                    new JsonGenerator(this, types);
+                }).bind(types);
 
                 this.$el.attr('data-item-id', this.model.id);
 
                 return this;
+            },
+            changeType: function () {
+                this.inLoading(true);
+                var editedModel = this.loadModelFromView();
+                this.model.set(editedModel.attributes);
+                this.render();
+                this.inLoading(false);
+                this.clean();
             },
             showReadableItem: function () {
                 this.editable = false;
