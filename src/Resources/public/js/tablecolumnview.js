@@ -383,13 +383,16 @@ define(
                     this.rendered = true;
                 }
 
-                this.$el.sortable({
-                    items: 'tbody tr',
+                this.tbodyElement = this.$el.find('tbody');
+
+                this.tbodyElement.sortable({
                     axis: 'y',
-                    connectWith: this.$el,
-                    containment: this.$el,
                     distance: 5,
                     cursor: 'move',
+                    scroll: true,
+                    start: function(e, ui){
+                        ui.placeholder.height($(ui.item[0]).height());
+                    },
                     helper: function (e, ui) {
                         ui.children().each(function () {
                             $(this).width($(this).width());
@@ -525,9 +528,9 @@ define(
                 this.sortable = sortable;
 
                 if (sortable) {
-                    this.$el.sortable('enable');
+                    this.tbodyElement.sortable('enable');
                 } else {
-                    this.$el.sortable('disable');
+                    this.tbodyElement.sortable('disable');
                 }
             },
             updateSorting: function () {
