@@ -6,6 +6,10 @@ define(
             init: function ($target, columns) {
 
                 var $headerRow = $target.find('thead tr');
+                if($headerRow[0].innerHTML && $headerRow[0].innerHTML.length != 0){
+                    return;
+                }
+
                 var $footerRow = $target.find('tfoot tr');
                 var $tbody = $target.find('tbody');
                 var values = $target.find('input.table-data').val();
