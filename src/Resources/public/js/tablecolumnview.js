@@ -40,14 +40,14 @@ define(
 
         var EditableItemView = Backbone.View.extend({
             tagName: 'tr',
-            className: 'editable-item-row',
+            className: 'editable-item-row AknGrid-bodyRow',
             showTemplate: _.template(
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<span class="handle"><i class="icon-reorder"></i></span>' +
                     '<span class="option-code"><%= item.code %></span>' +
                 '</td>' +
                 '<% _.each(locales, function (locale) { %>' +
-                '<td >' +
+                '<td class="AknGrid-bodyCell">' +
                     '<% if (item.optionValues[locale]) { %>' +
                         '<span title="<%= item.optionValues[locale].value %>">' +
                             '<%= item.optionValues[locale].value %>' +
@@ -55,52 +55,56 @@ define(
                     '<% } %>' +
                 '</td>' +
                 '<% }); %>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<span class="option-constraint"><%= item.type %></span>' +
                 '</td>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<span class="option-constraint  json-generator json-constraint-generator"><%= item.constraints %></span>' +
                 '</td>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<span class="option-config json-generator json-<%= item.type %>-generator"><%= item.type_config %></span>' +
                 '</td>' +
-                '<td>' +
-                    '<span class="btn btn-small edit-row"><i class="icon-pencil"></i></span>' +
-                    '<span class="btn btn-small delete-row"><i class="icon-trash"></i></span>' +
+                '<td class="AknGrid-bodyCell">' +
+                    '<div class="AknButtonList AknButtonList--right">' +
+                        '<span class="btn btn-small AknButtonList-item AknIconButton AknIconButton--small AknIconButton--apply edit-row"><i class="icon-pencil"></i></span>' +
+                        '<span class="btn btn-small AknButtonList-item AknIconButton AknIconButton--small AknIconButton--important delete-row"><i class="icon-trash"></i></span>' +
+                    '</div>' +
                 '</td>'
             ),
             editTemplate: _.template(
-                '<td class="field-cell">' +
-                    '<input type="text" class="attribute_option_code exclude" value="<%= item.code %>"/>' +
+                '<td class="AknGrid-bodyCell field-cell">' +
+                    '<input type="text" class="attribute_option_code exclude AknTextField" value="<%= item.code %>"/>' +
                     '<i class="validation-tooltip hidden" data-placement="top" data-toggle="tooltip"></i>' +
                 '</td>' +
                 '<% _.each(locales, function (locale) { %>' +
-                '<td class="field-cell">' +
+                '<td class="AknGrid-bodyCell field-cell">' +
                     '<% if (item.optionValues[locale]) { %>' +
-                        '<input type="text" class="attribute-option-value exclude" data-locale="<%= locale %>" ' +
+                        '<input type="text" class="attribute-option-value exclude AknTextField" data-locale="<%= locale %>" ' +
                             'value="<%= item.optionValues[locale].value %>"/>' +
                     '<% } else { %>' +
-                        '<input type="text" class="attribute-option-value exclude" data-locale="<%= locale %>" ' +
+                        '<input type="text" class="attribute-option-value exclude AknTextField" data-locale="<%= locale %>" ' +
                             'value=""/>' +
                     '<% } %>' +
                 '</td>' +
                 '<% }); %>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<select class="attribute_option_type exclude" >' +
                         '<% _.each(types, function (type) { %>' +
                             '<option value="<%= type %>" <% if (item.type == type) { %> selected="selected"<% } %>><%= type %></option>' +
                         '<% }); %>' +
                     '</select>' +
                 '</td>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<textarea class="attribute_option_constraints exclude json-generator json-constraint-generator" ><%= item.constraints %></textarea>' +
                 '</td>' +
-                '<td>' +
+                '<td class="AknGrid-bodyCell">' +
                     '<textarea class="attribute_option_config exclude json-generator json-<%= item.type %>-generator" ><%= item.type_config %></textarea>' +
                 '</td>' +
-                '<td>' +
-                    '<span class="btn btn-small update-row"><i class="icon-ok"></i></span>' +
-                    '<span class="btn btn-small show-row"><i class="icon-remove"></i></span>' +
+                '<td class="AknGrid-bodyCell">' +
+                    '<div class="AknButtonList AknButtonList--right">' +
+                        '<span class="btn btn-small AknButtonList-item AknIconButton AknIconButton--small AknIconButton--apply update-row"><i class="icon-ok"></i></span>' +
+                        '<span class="btn btn-small AknButtonList-item AknIconButton AknIconButton--small AknIconButton--important show-row"><i class="icon-remove"></i></span>' +
+                    '</div>' +
                 '</td>'
             ),
             events: {
@@ -310,7 +314,7 @@ define(
 
         var ItemCollectionView = Backbone.View.extend({
             tagName: 'table',
-            className: 'table table-bordered table-stripped attribute-option-view',
+            className: 'table table-bordered table-stripped attribute-option-view AknGrid AknGrid--unclickable',
             template: _.template(
                 '<!-- Pim/Bundle/EnrichBundle/Resources/public/js/pim-attributeoptionview.js -->' +
                 '<colgroup>' +
@@ -323,23 +327,23 @@ define(
                 '</colgroup>' +
                 '<thead>' +
                     '<tr>' +
-                        '<th><%= code_label %></th>' +
+                        '<th class="AknGrid-headerCell"><%= code_label %></th>' +
                         '<% _.each(locales, function (locale) { %>' +
-                        '<th>' +
+                        '<th class="AknGrid-headerCell">' +
                             '<%= locale %>' +
                         '</th>' +
                         '<% }); %>' +
-                        '<th><%= type_label %></th>' +
-                        '<th><%= constraint_label %></th>' +
-                        '<th><%= config_label %></th>' +
-                        '<th>Action</th>' +
+                        '<th class="AknGrid-headerCell"><%= type_label %></th>' +
+                        '<th class="AknGrid-headerCell"><%= constraint_label %></th>' +
+                        '<th class="AknGrid-headerCell"><%= config_label %></th>' +
+                        '<th class="AknGrid-headerCell">Action</th>' +
                     '</tr>' +
                 '</thead>' +
                 '<tbody></tbody>' +
                 '<tfoot>' +
                     '<tr>' +
                         '<td colspan="<%= 5 + locales.length %>">' +
-                            '<span class="btn option-add pull-right"><%= add_column_label %></span>' +
+                            '<span class="btn AknButton AknButton--apply AknButton--small option-add pull-right"><%= add_column_label %></span>' +
                         '</td>' +
                     '</tr>' +
                 '</tfoot>'

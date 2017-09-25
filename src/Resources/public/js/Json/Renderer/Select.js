@@ -32,6 +32,7 @@ define(
                 $label.innerText = 'Option Url';
                 var $input = document.createElement('input');
                 $input.type = 'text';
+                $input.className = 'AknTextField';
                 $input.name = 'options_url';
                 $input.value = $data['options_url'] ? $data['options_url'] : '';
                 if(!$editable) {
@@ -184,7 +185,7 @@ define(
              */
             var createDeleteButton = function($row) {
                 var $col = createTableColumn();
-                $col.innerHTML = '<span class="btn btn-small"><i class="icon-remove"></i></span>';
+                $col.innerHTML = '<span class="btn btn-small AknButton AknButton--small"><i class="icon-remove"></i></span>';
                 $col.querySelector('span').addEventListener('click', function() {
                     $row.parentNode.removeChild($row);
                     notify();
