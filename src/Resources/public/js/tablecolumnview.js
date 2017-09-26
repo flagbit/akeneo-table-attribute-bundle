@@ -73,8 +73,10 @@ define(
             ),
             editTemplate: _.template(
                 '<td class="AknGrid-bodyCell field-cell">' +
-                    '<input type="text" class="attribute_option_code exclude AknTextField" value="<%= item.code %>"/>' +
-                    '<i class="validation-tooltip hidden" data-placement="top" data-toggle="tooltip"></i>' +
+                    '<div class="AknFieldContainer-inputContainer">' +
+                        '<input type="text" class="attribute_option_code exclude AknTextField" value="<%= item.code %>"/>' +
+                        '<i class="validation-tooltip hidden AknIconButton AknIconButton--hide AknIconButton--important icon-warning-sign" data-placement="top" data-toggle="tooltip"></i>' +
+                    '</div>' +
                 '</td>' +
                 '<% _.each(locales, function (locale) { %>' +
                 '<td class="AknGrid-bodyCell field-cell">' +
@@ -235,18 +237,29 @@ define(
                             this.inLoading(false);
 
                             var response = xhr.responseJSON;
-
-                            if (response.children &&
-                                response.children.code &&
-                                response.children.code.errors &&
-                                response.children.code.errors.length > 0
-                            ) {
-                                var message = response.children.code.errors.join('<br/>');
+                            var _response = response;
+                            if(_response.children) {
+                                _response = _response.children;
+                            }
+                            if (_response && _response.code) {
+                                var error = _response.code;
+                                var message = '';
+                                if(_response.code) {
+                                    if(_response.code.errors) {
+                                        message = _response.code.errors.join('<br/>');
+                                    }
+                                    else {
+                                        message = _response.code;
+                                    }
+                                }
                                 this.$el.find('.validation-tooltip')
                                     .addClass('visible')
                                     .tooltip('destroy')
                                     .tooltip({title: message})
                                     .tooltip('show');
+
+                                this.$el.find('.AknIconButton--hide')
+                                    .removeClass('AknIconButton--hide');
                             } else {
                                 Dialog.alert(
                                     __('alert.attribute_option.error_occured_during_submission'),
