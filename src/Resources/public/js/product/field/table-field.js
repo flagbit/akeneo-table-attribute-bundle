@@ -128,10 +128,10 @@ define([
 
                 switch (item.type) {
                     case "text":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
                         break;
                     case "number":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
                             parser = function (td) {
                                 return parseFloat($('input', td).val());
