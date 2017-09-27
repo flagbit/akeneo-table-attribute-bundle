@@ -75,7 +75,7 @@ define(
                 '<td class="AknGrid-bodyCell field-cell">' +
                     '<div class="AknFieldContainer-inputContainer">' +
                         '<input type="text" class="attribute_option_code exclude AknTextField" value="<%= item.code %>"/>' +
-                        '<i class="validation-tooltip hidden AknIconButton AknIconButton--hide AknIconButton--important icon-warning-sign" data-placement="top" data-toggle="tooltip"></i>' +
+                        '<i class="validation-tooltip hidden AknIconButton AknIconButton--hide AknIconButton--important" data-placement="top" data-toggle="tooltip"></i>' +
                     '</div>' +
                 '</td>' +
                 '<% _.each(locales, function (locale) { %>' +
@@ -259,7 +259,9 @@ define(
                                     .tooltip('show');
 
                                 this.$el.find('.AknIconButton--hide')
-                                    .removeClass('AknIconButton--hide');
+                                    .removeClass('AknIconButton--hide')
+                                    .addClass('icon-warning-sign');
+
                             } else {
                                 Dialog.alert(
                                     __('alert.attribute_option.error_occured_during_submission'),
