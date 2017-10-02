@@ -32,6 +32,7 @@ define(
                 $label.innerText = 'Option Url';
                 var $input = document.createElement('input');
                 $input.type = 'text';
+                $input.className = 'AknTextField';
                 $input.name = 'options_url';
                 $input.value = $data['options_url'] ? $data['options_url'] : '';
                 if(!$editable) {
@@ -44,6 +45,7 @@ define(
 
                 var $label2 = document.createElement('label');
                 $label2.innerText = 'Options';
+                $label2.className = 'select-options-config-label';
                 $container.appendChild($label2);
 
                 // needed!
@@ -98,12 +100,16 @@ define(
 
                 if($table === null) {
                     $table = document.createElement('table');
+                    $table.className = 'AknGrid AknGrid--unclickable select-options-table';
 
                     var $thead = document.createElement('thead');
                     var $thRow = document.createElement('tr');
+                    $thRow.className = 'AknGrid-bodyRow';
                     var $thCl1 = document.createElement('th');
+                    $thCl1.className = 'AknGrid-headerCell';
                     $thCl1.innerText = 'Key';
                     var $thCl2 = document.createElement('th');
+                    $thCl2.className = 'AknGrid-headerCell';
                     $thCl2.innerText = 'Value';
 
                     $thRow.appendChild($thCl1);
@@ -118,6 +124,7 @@ define(
                         var $tfoot = document.createElement('tfoot');
                         var $tfRow = document.createElement('tr');
                         var $tfCol = document.createElement('td');
+                        $tfCol.className = 'AknGrid-bodyCell field-cell';
                         var $tfBut = document.createElement('button');
 
                         $tfBut.innerText = 'Add Row';
@@ -167,6 +174,7 @@ define(
                     var $input = document.createElement('input');
                     $input.type = 'text';
                     $input.value = $text;
+                    $input.className = 'AknTextField';
                     observeChanges($input);
                     $column.appendChild($input);
                 }
@@ -184,7 +192,7 @@ define(
              */
             var createDeleteButton = function($row) {
                 var $col = createTableColumn();
-                $col.innerHTML = '<span class="btn btn-small"><i class="icon-remove"></i></span>';
+                $col.innerHTML = '<span class="btn btn-small AknButton AknButton--small"><i class="icon-remove"></i></span>';
                 $col.querySelector('span').addEventListener('click', function() {
                     $row.parentNode.removeChild($row);
                     notify();

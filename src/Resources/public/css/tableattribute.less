@@ -2,7 +2,19 @@
   textarea {
     width: 100%;
   }
+
+  .select-options-config-label {
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .select-options-table {
+    .AknGrid-headerCell {
+      background: none;
+    }
+  }
 }
+
 .flagbit-table-field {
   max-width: 100%;
 
@@ -22,7 +34,16 @@
   .select2-focusser {
     display: none;
   }
+
+  &.AknComparableFields-item {
+    flex-basis: 100%;
+
+    .flagbit-table-attribute {
+      width: 100%;
+    }
+  }
 }
+
 .json-constraint-generator ~ .select2-container {
   width: 100% !important;
 }

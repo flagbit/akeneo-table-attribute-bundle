@@ -16,12 +16,12 @@ define(
 
                 values = $.parseJSON(values?values:'{}');
 
-                var emptyTitle = '<th style="width: 47px"></th>';
+                var emptyTitle = '<th class="AknGrid-headerCell" style="width: 47px"></th>';
                 // Title for reorder column
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
                 _.each(columns, function (column) {
-                    var th = "<th class='"+column.id+"'>"+column.text+"</th>";
+                    var th = "<th class='AknGrid-headerCell "+column.id+"'>"+column.text+"</th>";
                     $headerRow.append(th);
                     $footerRow.append(th);
                 }.bind(this));
@@ -43,18 +43,18 @@ define(
                 }.bind(this));
             },
             createColumn: function (column, value) {
-                var td =  $("<td class='"+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>");
+                var td =  $("<td class='AknGrid-bodyCell "+column.id+"' data-code='"+column.id+"'>"+column.func.renderField({column: column, value: value})+"</td>");
                 column.func.init(td, column, value);
 
                 return td;
             },
             createRow: function (htmlColumns) {
-                var row = $('<tr class="flagbit-table-row editable-item-row"></tr>');
-                row.append($('<td><span class="handle"><i class="icon-reorder"></i></span></td>'));
+                var row = $('<tr class="flagbit-table-row AknGrid-bodyRow editable-item-row"></tr>');
+                row.append($('<td class="AknGrid-bodyCell"><span class="handle"><i class="icon-reorder"></i></span></td>'));
                 _.each(htmlColumns, function (htmlColumn) {
                     row.append(htmlColumn);
                 });
-                row.append($('<td><span class="btn btn-small delete-row"><i class="icon-trash"></i></span></td>'));
+                row.append($('<td class="AknGrid-bodyCell"><span class="btn btn-small AknButton AknButton--small AknIconButton--important delete-row"><i class="icon-trash"></i></span></td>'));
 
                 return row;
             },
