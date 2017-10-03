@@ -20,6 +20,6 @@ class TableFieldProvider implements FieldProviderInterface
      */
     public function supports($element)
     {
-        return $element instanceof AttributeInterface && 'flagbit_catalog_table' === $element->getAttributeType();
+        return $element instanceof AttributeInterface && 'flagbit_catalog_table' === $element->getType();
     }
 }
