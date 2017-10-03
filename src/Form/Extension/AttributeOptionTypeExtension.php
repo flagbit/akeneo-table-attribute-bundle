@@ -4,6 +4,7 @@ namespace Flagbit\Bundle\TableAttributeBundle\Form\Extension;
 
 use Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Choice;
 
@@ -14,20 +15,19 @@ use Symfony\Component\Validator\Constraints\Choice;
  */
 class AttributeOptionTypeExtension extends AbstractTypeExtension
 {
-
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type', 'text', [
+        $builder->add('type', TextType::class, [
             'required' => true,
             'constraints' => [
                 new Choice(['select', 'select_from_url', 'text', 'number']),
             ],
         ]);
-        $builder->add('constraints', 'text', ['required' => true]);
-        $builder->add('type_config', 'text', ['required' => true]);
+        $builder->add('constraints', TextType::class, ['required' => true]);
+        $builder->add('type_config', TextType::class, ['required' => true]);
     }
 
     /**
@@ -37,6 +37,6 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return 'pim_enrich_attribute_option';
+        return AttributeOptionType::class;
     }
 }
