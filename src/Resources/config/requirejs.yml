@@ -14,3 +14,8 @@ config:
         flagbit/JsonGenerator/Storage:                  flagbittableattribute/js/Json/Storage
         flagbit/tablecolumnview:                        flagbittableattribute/js/tablecolumnview
         flagbit/inittable:                              flagbittableattribute/js/inittable
+
+    config:
+        pim/form/common/attributes/create-button:
+            attribute_icons:
+                flagbit_catalog_table: id
