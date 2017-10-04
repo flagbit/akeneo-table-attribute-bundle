@@ -66,6 +66,11 @@
                 <source>pim_enrich.entity.attribute.type.flagbit_catalog_table</source>
                 <target>Table</target>
             </trans-unit>
+
+            <trans-unit id="flagbit_catalog_table_form_attribute_tab_title">
+                <source>flagbit_catalog_table.form.attribute.tab.title</source>
+                <target>Columns</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
