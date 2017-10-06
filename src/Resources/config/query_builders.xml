@@ -5,22 +5,21 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!--
-            This is necessary for Akeneo 1.7, pim_catalog.doctrine.query.filter.option service is extended to add as argument flagbit_catalog_table,
-            to filter correctly.
-        -->
-        <service id="flagbit_catalog_table.doctrine.query.filter.columns" class="%pim_catalog.query.elasticsearch.filter.option.class%">
-            <tag name="pim_catalog.doctrine.query.filter" priority="30"/>
+
+        <service id="flagbit_catalog_table.doctrine.query.filter.columns" class="%pim_catalog.query.elasticsearch.filter.text.class%">
+            <tag name="pim_catalog.elasticsearch.query.filter" priority="30"/>
             <argument type="service" id="pim_catalog.validator.helper.attribute"/>
-            <argument type="service" id="pim_catalog.doctrine.query.filter.object_id_resolver"/>
             <argument type="collection">
                 <argument>flagbit_catalog_table</argument>
             </argument>
             <argument type="collection">
-                <argument>IN</argument>
+                <argument>STARTS WITH</argument>
+                <argument>CONTAINS</argument>
+                <argument>DOES NOT CONTAIN</argument>
+                <argument>=</argument>
                 <argument>EMPTY</argument>
                 <argument>NOT EMPTY</argument>
-                <argument>NOT IN</argument>
+                <argument>!=</argument>
             </argument>
         </service>
     </services>
