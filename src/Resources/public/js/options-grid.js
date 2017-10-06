@@ -44,6 +44,7 @@ function (
             }));
 
             AttributeOptionGrid(this.$('.attribute-option-grid'));
+            $('.AknFormContainer').addClass('flagbit-table-attribute');
 
             this.renderExtensions();
         }
