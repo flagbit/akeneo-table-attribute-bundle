@@ -3,7 +3,7 @@ define([
         'pim/field',
         'underscore',
         'jquery',
-        'text!flagbit/template/product/field/table',
+        'flagbit/template/product/field/table',
         'routing',
         'flagbit/inittable',
         'pim/user-context',
