@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="label_attribute_table_add_column">
                 <source>label.attribute_table.add_column</source>
-                <target>Add Column</target>
+                <target>Add a column</target>
             </trans-unit>
 
             <trans-unit id="flagbit_attribute_table_alert_json_error_text">
@@ -15,6 +15,46 @@
             <trans-unit id="flagbit_attribute_table_alert_json_error_title">
                 <source>flagbit.attribute_table.alert.json_error_title</source>
                 <target>JSON format error</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_simpleselect_options_label">
+                <source>flagbit_attribute_table_simpleselect_options_label</source>
+                <target>Options</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_simpleselect_options_url_label">
+                <source>flagbit_attribute_table_simpleselect_options_url_label</source>
+                <target>Options URL</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_config_label">
+                <source>flagbit_attribute_table_config_label</source>
+                <target>Configuration</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_type_label">
+                <source>flagbit_attribute_table_type_label</source>
+                <target>Type</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_validation_label">
+                <source>flagbit_attribute_table_validation_label</source>
+                <target>Validation</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_no_configuration_text">
+                <source>flagbit_attribute_table_no_configuration_text</source>
+                <target>There is no configuration options.</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_add_new_row_label">
+                <source>flagbit_attribute_table_add_new_row_label</source>
+                <target>Add a row</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_attribute_table_number_is_decimal_label">
+                <source>flagbit_attribute_table_number_is_decimal_label</source>
+                <target>Decimal</target>
             </trans-unit>
         </body>
     </file>

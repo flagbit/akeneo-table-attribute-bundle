@@ -126,7 +126,7 @@ define(
                 this.locales       = options.locales;
                 this.parent        = options.parent;
                 this.model.urlRoot = this.parent.updateUrl;
-                this.types = ['select', 'text', 'number'];
+                this.types = ['text', 'number', 'select'];
 
                 this.render();
             },
@@ -395,9 +395,9 @@ define(
                     locales: this.locales,
                     add_column_label: __('label.attribute_table.add_column'),
                     code_label: __('Code'),
-                    type_label: __('Type'),
-                    constraint_label: __('Constraint'),
-                    config_label: __('Config')
+                    type_label: __('flagbit_attribute_table_type_label'),
+                    constraint_label: __('flagbit_attribute_table_validation_label'),
+                    config_label: __('flagbit_attribute_table_config_label')
                 }));
 
                 _.each(this.collection.models, function (attributeOptionItem) {

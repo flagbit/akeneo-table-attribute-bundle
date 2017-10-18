@@ -1,8 +1,9 @@
 define(
     [
-        'flagbit/JsonGenerator/Observer'
+        'flagbit/JsonGenerator/Observer',
+        'oro/translator',
     ],
-    function(JsonGeneratorObserver) {
+    function(JsonGeneratorObserver, __) {
 
         /**
          * @class
@@ -21,7 +22,7 @@ define(
              */
             this.render = function($data) {
                 var $text = document.createElement('span');
-                $text.innerText = 'There is no configuration option.';
+                $text.innerText = __('flagbit_attribute_table_no_configuration_text');
                 $container.appendChild($text);
             };
 
