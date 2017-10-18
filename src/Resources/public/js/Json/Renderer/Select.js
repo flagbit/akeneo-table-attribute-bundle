@@ -131,6 +131,7 @@ define(
 
                         $tfBut.innerText = __('label.attribute_option.add_option');
                         $tfBut.type = 'button';
+                        $tfBut.className = 'btn AknButton AknButton--small pull-right';
                         $tfBut.addEventListener('click', addRow);
                         $tfCol.colSpan = 3;
                         $tfCol.appendChild($tfBut);
