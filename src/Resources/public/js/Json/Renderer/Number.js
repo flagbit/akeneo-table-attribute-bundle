@@ -1,8 +1,9 @@
 define(
     [
-        'flagbit/JsonGenerator/Observer'
+        'flagbit/JsonGenerator/Observer',
+        'oro/translator',
     ],
-    function(JsonGeneratorObserver) {
+    function(JsonGeneratorObserver, __) {
 
         /**
          * @class
@@ -28,14 +29,14 @@ define(
                 var $value = $data['is_decimal'];
 
                 var $label = document.createElement('label');
-                $label.innerText = 'is_decimal';
+                $label.innerText = __('flagbit_attribute_table_number_is_decimal_label');
                 $container.appendChild($label);
 
                 var $dropdown = createDropdown('is_decimal');
 
                 var $options = {
-                    'true': 'true',
-                    'false': 'false'
+                    'true': __('Yes'),
+                    'false': __('No')
                 };
 
                 for(var $i in $options) {
