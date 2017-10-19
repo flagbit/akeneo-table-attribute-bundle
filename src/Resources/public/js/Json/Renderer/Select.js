@@ -1,8 +1,9 @@
 define(
     [
-        'flagbit/JsonGenerator/Observer'
+        'flagbit/JsonGenerator/Observer',
+        'oro/translator',
     ],
-    function(JsonGeneratorObserver) {
+    function(JsonGeneratorObserver, __) {
 
         /**
          * @class
@@ -29,7 +30,7 @@ define(
             this.render = function($data) {
 
                 var $label = document.createElement('label');
-                $label.innerText = 'Option Url';
+                $label.innerText = __('flagbit_attribute_table_simpleselect_options_url_label');
                 var $input = document.createElement('input');
                 $input.type = 'text';
                 $input.className = 'AknTextField';
@@ -39,12 +40,13 @@ define(
                     $input.disabled = true;
                 }
                 observeChanges($input);
+                observeChanges($input);
 
                 $container.appendChild($label);
                 $container.appendChild($input);
 
                 var $label2 = document.createElement('label');
-                $label2.innerText = 'Options';
+                $label2.innerText = __('flagbit_attribute_table_simpleselect_options_label');
                 $label2.className = 'select-options-config-label';
                 $container.appendChild($label2);
 
@@ -107,10 +109,10 @@ define(
                     $thRow.className = 'AknGrid-bodyRow';
                     var $thCl1 = document.createElement('th');
                     $thCl1.className = 'AknGrid-headerCell';
-                    $thCl1.innerText = 'Key';
+                    $thCl1.innerText = __('Key');
                     var $thCl2 = document.createElement('th');
                     $thCl2.className = 'AknGrid-headerCell';
-                    $thCl2.innerText = 'Value';
+                    $thCl2.innerText = __('Value');
 
                     $thRow.appendChild($thCl1);
                     $thRow.appendChild($thCl2);
@@ -127,8 +129,9 @@ define(
                         $tfCol.className = 'AknGrid-bodyCell field-cell';
                         var $tfBut = document.createElement('button');
 
-                        $tfBut.innerText = 'Add Row';
+                        $tfBut.innerText = __('label.attribute_option.add_option');
                         $tfBut.type = 'button';
+                        $tfBut.className = 'btn AknButton AknButton--small pull-right';
                         $tfBut.addEventListener('click', addRow);
                         $tfCol.colSpan = 3;
                         $tfCol.appendChild($tfBut);
