@@ -71,6 +71,16 @@
                 <source>flagbit_catalog_table.form.attribute.tab.title</source>
                 <target>Spalten</target>
             </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_key_label">
+                <source>flagbit.table_attribute.simpleselect.key.label</source>
+                <target>Key</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_value_label">
+                <source>flagbit.table_attribute.simpleselect.value.label</source>
+                <target>Wert</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

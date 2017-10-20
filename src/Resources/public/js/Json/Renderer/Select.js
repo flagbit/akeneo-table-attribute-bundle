@@ -90,10 +90,10 @@ define(
                     $thRow.className = 'AknGrid-bodyRow';
                     var $thCl1 = document.createElement('th');
                     $thCl1.className = 'AknGrid-headerCell';
-                    $thCl1.innerText = __('Key');
+                    $thCl1.innerText = __('flagbit.table_attribute.simpleselect.key.label');
                     var $thCl2 = document.createElement('th');
                     $thCl2.className = 'AknGrid-headerCell';
-                    $thCl2.innerText = __('Value');
+                    $thCl2.innerText = __('flagbit.table_attribute.simpleselect.value.label');
 
                     $thRow.appendChild($thCl1);
                     $thRow.appendChild($thCl2);
