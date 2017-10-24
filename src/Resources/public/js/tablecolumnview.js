@@ -503,7 +503,10 @@ define(
                     }
                 }
 
-                this.currentlyEditedItemView = attributeOptionRow;
+                if (attributeOptionRow.model.id) {
+                    this.currentlyEditedItemView = attributeOptionRow;
+                }
+
                 this.updateEditionStatus();
 
                 return true;
