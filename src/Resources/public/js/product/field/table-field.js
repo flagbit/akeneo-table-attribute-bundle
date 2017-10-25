@@ -160,7 +160,27 @@ define([
                                     options.push({ id: key, text: option });
                                 });
                                 select2Config.data = options;
-                            } else if ('options_url' in column.config) {
+                            }
+
+                            var select2 = $('input', td).select2(select2Config);
+                            select2.on('select2-close', function () {
+                                this.updateJson();
+                            }.bind(this));
+                        }.bind(this);
+                        break;
+                    case "select_from_url":
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
+
+                        parser = function (td) {
+                            var option = $('input', td).select2('data');
+                            return option.id;
+                        };
+
+                        init = function (td, column, value) {
+                            var select2Config = {
+                                placeholder: ' '
+                            };
+                            if ('options_url' in column.config) {
                                 select2Config.ajax = {
                                     url: column.config.options_url,
                                     cache: true,
