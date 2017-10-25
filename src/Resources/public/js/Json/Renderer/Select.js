@@ -30,25 +30,9 @@ define(
             this.render = function($data) {
 
                 var $label = document.createElement('label');
-                $label.innerText = __('flagbit_attribute_table_simpleselect_options_url_label');
-                var $input = document.createElement('input');
-                $input.type = 'text';
-                $input.className = 'AknTextField';
-                $input.name = 'options_url';
-                $input.value = $data['options_url'] ? $data['options_url'] : '';
-                if(!$editable) {
-                    $input.disabled = true;
-                }
-                observeChanges($input);
-                observeChanges($input);
-
+                $label.innerText = __('flagbit_attribute_table_simpleselect_options_label');
+                $label.className = 'select-options-config-label';
                 $container.appendChild($label);
-                $container.appendChild($input);
-
-                var $label2 = document.createElement('label');
-                $label2.innerText = __('flagbit_attribute_table_simpleselect_options_label');
-                $label2.className = 'select-options-config-label';
-                $container.appendChild($label2);
 
                 // needed!
                 this.getTable();
@@ -80,8 +64,6 @@ define(
 
                 var $data = {options: {}};
 
-                $data['options_url'] = $container.querySelector('input[name="options_url"]').value;
-
                 var $collection = this.getTable().querySelectorAll('tr');
                 for(var $i in $collection) {
                     if($collection.hasOwnProperty($i)) {
@@ -92,7 +74,6 @@ define(
 
                 return $data;
             };
-
 
             /**
              * @public

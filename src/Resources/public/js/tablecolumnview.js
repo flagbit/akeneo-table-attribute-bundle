@@ -56,10 +56,16 @@ define(
                 '</td>' +
                 '<% }); %>' +
                 '<td class="AknGrid-bodyCell">' +
-                    '<span class="option-constraint"><%= item.type %></span>' +
+                    '<% _.each(types, function (type) { %>' +
+                        '<% if (item.type == type.type) { %>' +
+                            '<span class="option-type">' +
+                                '<%= type.label %>' +
+                            '</span>' +
+                        '<% } %>' +
+                    '<% }); %>' +
                 '</td>' +
                 '<td class="AknGrid-bodyCell">' +
-                    '<span class="option-constraint  json-generator json-constraint-generator"><%= item.constraints %></span>' +
+                    '<span class="option-constraint json-generator json-constraint-generator"><%= item.constraints %></span>' +
                 '</td>' +
                 '<td class="AknGrid-bodyCell">' +
                     '<span class="option-config json-generator json-<%= item.type %>-generator"><%= item.type_config %></span>' +
@@ -92,7 +98,7 @@ define(
                 '<td class="AknGrid-bodyCell">' +
                     '<select class="attribute_option_type exclude" >' +
                         '<% _.each(types, function (type) { %>' +
-                            '<option value="<%= type %>" <% if (item.type == type) { %> selected="selected"<% } %>><%= type %></option>' +
+                            '<option value="<%= type.type %>" <% if (item.type == type.type) { %> selected="selected" <% } %>><%= type.label %></option>' +
                         '<% }); %>' +
                     '</select>' +
                 '</td>' +
@@ -126,7 +132,19 @@ define(
                 this.locales       = options.locales;
                 this.parent        = options.parent;
                 this.model.urlRoot = this.parent.updateUrl;
-                this.types = ['text', 'number', 'select'];
+                this.types = [{
+                    'type': 'text',
+                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_text')
+                }, {
+                    'type': 'number',
+                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_number')
+                }, {
+                    'type':  'select',
+                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect')
+                }, {
+                    'type':  'select_from_url',
+                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url')
+                }];
 
                 this.render();
             },

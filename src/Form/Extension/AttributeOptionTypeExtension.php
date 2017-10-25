@@ -23,7 +23,7 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
         $builder->add('type', 'text', [
             'required' => true,
             'constraints' => [
-                new Choice(['select', 'text', 'number']),
+                new Choice(['select', 'select_from_url', 'text', 'number']),
             ],
         ]);
         $builder->add('constraints', 'text', ['required' => true]);
