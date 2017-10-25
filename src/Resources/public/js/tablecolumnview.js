@@ -141,6 +141,9 @@ define(
                 }, {
                     'type':  'select',
                     'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect')
+                }, {
+                    'type':  'select_from_url',
+                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url')
                 }];
 
                 this.render();

@@ -3,10 +3,18 @@ define(
         'flagbit/JsonGenerator/Observer',
         'flagbit/JsonGenerator/Renderer/Number',
         'flagbit/JsonGenerator/Renderer/Select',
+        'flagbit/JsonGenerator/Renderer/SelectFromUrl',
         'flagbit/JsonGenerator/Renderer/Constraint',
         'flagbit/JsonGenerator/Renderer/Default'
     ],
-    function(JsonGeneratorObserver, JsonGeneratorRendererNumber, JsonGeneratorRendererSelect, JsonGeneratorRendererConstraint, JsonGeneratorRendererDefault) {
+    function(
+        JsonGeneratorObserver,
+        JsonGeneratorRendererNumber,
+        JsonGeneratorRendererSelect,
+        JsonGeneratorRendererSelectFromUrl,
+        JsonGeneratorRendererConstraint,
+        JsonGeneratorRendererDefault
+    ) {
 
     /**
      * @class
@@ -49,11 +57,19 @@ define(
          */
         var getRenderer = function() {
 
-            var renderers = {'select':JsonGeneratorRendererSelect, 'text':JsonGeneratorRendererDefault, 'number':JsonGeneratorRendererNumber};
+            var renderers = {
+                'select': JsonGeneratorRendererSelect,
+                'select_from_url': JsonGeneratorRendererSelectFromUrl,
+                'text': JsonGeneratorRendererDefault,
+                'number': JsonGeneratorRendererNumber
+            };
 
             if($renderer === null) {
                 if($container.querySelector('.json-select-generator')) {
                     $renderer = new JsonGeneratorRendererSelect($editable, $container);
+                }
+                else if($container.querySelector('.json-select_from_url-generator')) {
+                    $renderer = new JsonGeneratorRendererSelectFromUrl($editable, $container);
                 }
                 else if($container.querySelector('.json-number-generator')) {
                     $renderer = new JsonGeneratorRendererNumber($editable, $container);

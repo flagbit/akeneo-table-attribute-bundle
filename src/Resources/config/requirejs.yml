@@ -1,15 +1,16 @@
 config:
     paths:
-        flagbit/table-field:                  flagbittableattribute/js/product/field/table-field
-        flagbit/template/product/field/table: flagbittableattribute/templates/product/field/table.html
-        flagbit/JsonGenerator:                flagbittableattribute/js/Json/Generator
-        flagbit/JsonGenerator/Input:          flagbittableattribute/js/Json/Input
-        flagbit/JsonGenerator/Observer:       flagbittableattribute/js/Json/Observer
-        flagbit/JsonGenerator/Renderer:       flagbittableattribute/js/Json/Renderer
-        flagbit/JsonGenerator/Renderer/Number: flagbittableattribute/js/Json/Renderer/Number
-        flagbit/JsonGenerator/Renderer/Select: flagbittableattribute/js/Json/Renderer/Select
-        flagbit/JsonGenerator/Renderer/Default:   flagbittableattribute/js/Json/Renderer/Default
-        flagbit/JsonGenerator/Renderer/Constraint:   flagbittableattribute/js/Json/Renderer/Constraint
-        flagbit/JsonGenerator/Storage:        flagbittableattribute/js/Json/Storage
-        flagbit/tablecolumnview:              flagbittableattribute/js/tablecolumnview
-        flagbit/inittable:                    flagbittableattribute/js/inittable
+        flagbit/table-field:                            flagbittableattribute/js/product/field/table-field
+        flagbit/template/product/field/table:           flagbittableattribute/templates/product/field/table.html
+        flagbit/JsonGenerator:                          flagbittableattribute/js/Json/Generator
+        flagbit/JsonGenerator/Input:                    flagbittableattribute/js/Json/Input
+        flagbit/JsonGenerator/Observer:                 flagbittableattribute/js/Json/Observer
+        flagbit/JsonGenerator/Renderer:                 flagbittableattribute/js/Json/Renderer
+        flagbit/JsonGenerator/Renderer/Number:          flagbittableattribute/js/Json/Renderer/Number
+        flagbit/JsonGenerator/Renderer/Select:          flagbittableattribute/js/Json/Renderer/Select
+        flagbit/JsonGenerator/Renderer/SelectFromUrl:   flagbittableattribute/js/Json/Renderer/SelectFromUrl
+        flagbit/JsonGenerator/Renderer/Default:         flagbittableattribute/js/Json/Renderer/Default
+        flagbit/JsonGenerator/Renderer/Constraint:      flagbittableattribute/js/Json/Renderer/Constraint
+        flagbit/JsonGenerator/Storage:                  flagbittableattribute/js/Json/Storage
+        flagbit/tablecolumnview:                        flagbittableattribute/js/tablecolumnview
+        flagbit/inittable:                              flagbittableattribute/js/inittable

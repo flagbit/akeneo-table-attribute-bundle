@@ -71,6 +71,11 @@
                 <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect</source>
                 <target>Simple select</target>
             </trans-unit>
+
+            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_simpleselect_from_url">
+                <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url</source>
+                <target>Simple select from URL</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
