@@ -65,7 +65,7 @@ define(
                     $renderer = new JsonGeneratorRendererDefault($editable, $container);
                 }
                 else {
-                    $renderer = new renderers[$types[0]]($editable, $container);
+                    $renderer = new renderers[$types[0].type]($editable, $container);
                 }
             }
 

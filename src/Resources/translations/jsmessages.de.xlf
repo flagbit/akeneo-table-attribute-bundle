@@ -56,6 +56,21 @@
                 <source>flagbit_attribute_table_number_is_decimal_label</source>
                 <target>Dezimal</target>
             </trans-unit>
+
+            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_text">
+                <source>pim_enrich.entity.attribute.type.pim_catalog_text</source>
+                <target>Text</target>
+            </trans-unit>
+
+            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_number">
+                <source>pim_enrich.entity.attribute.type.pim_catalog_number</source>
+                <target>Nummer</target>
+            </trans-unit>
+
+            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_simpleselect">
+                <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect</source>
+                <target>Einfachauswahl</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
