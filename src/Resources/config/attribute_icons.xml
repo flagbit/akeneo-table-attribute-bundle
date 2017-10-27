@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-    <parameters>
-        <parameter key="flagbit_table_attribute.attribute_icons" type="collection">
-            <!-- Attribute icons (should be valid FontAwesome icons) -->
-            <parameter key="flagbit_catalog_table">table</parameter>
-        </parameter>
-    </parameters>
-</container>

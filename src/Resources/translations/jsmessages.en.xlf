@@ -57,24 +57,29 @@
                 <target>Decimal</target>
             </trans-unit>
 
-            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_text">
-                <source>pim_enrich.entity.attribute.type.pim_catalog_text</source>
-                <target>Text</target>
-            </trans-unit>
-
-            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_number">
-                <source>pim_enrich.entity.attribute.type.pim_catalog_number</source>
-                <target>Number</target>
-            </trans-unit>
-
-            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_simpleselect">
-                <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect</source>
-                <target>Simple select</target>
-            </trans-unit>
-
             <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_simpleselect_from_url">
                 <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url</source>
                 <target>Simple select from URL</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_catalog_table">
+                <source>pim_enrich.entity.attribute.type.flagbit_catalog_table</source>
+                <target>Table</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_catalog_table_form_attribute_tab_title">
+                <source>flagbit_catalog_table.form.attribute.tab.title</source>
+                <target>Columns</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_key_label">
+                <source>flagbit.table_attribute.simpleselect.key.label</source>
+                <target>Key</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_value_label">
+                <source>flagbit.table_attribute.simpleselect.value.label</source>
+                <target>Value</target>
             </trans-unit>
         </body>
     </file>

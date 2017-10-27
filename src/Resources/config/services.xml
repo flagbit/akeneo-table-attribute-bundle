@@ -16,7 +16,8 @@
 
     <services>
         <service id="flagbit_table_attribute.form.extension.attribute_option" class="%flagbit_table_attribute.form.extension.attribute_option.class%">
-            <tag name="form.type_extension" alias="pim_enrich_attribute_option" />
+            <tag name="form.type_extension" extended_type="Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType"
+                 alias="pim_enrich_attribute_option" />
         </service>
 
         <service id="flagbit_table_attribute.provider.field.table" class="%flagbit_table_attribute.provider.field.table.class%">
