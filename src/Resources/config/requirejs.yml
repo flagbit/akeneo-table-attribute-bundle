@@ -16,10 +16,6 @@ config:
         flagbit/inittable:                              flagbittableattribute/js/inittable
         flagbit/options-grid:                           flagbittableattribute/js/options-grid
 
-        # Overrides core template since the path to the icons is hardcoded in Akeneo but this should be as soon as they
-        # fix this problem
-        pim/template/form/tab/attribute/create-modal-content:     flagbittableattribute/templates/form/tab/attributes/create-modal-content.html
-
     config:
         pim/form/common/attributes/create-button:
             attribute_icons:
