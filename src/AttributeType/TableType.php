@@ -21,7 +21,7 @@ class TableType extends AbstractAttributeType
                 ],
                 'columns' => [
                     'name'      => 'columns',
-                    'fieldType' => 'pim_enrich_options',
+                    'fieldType' => 'collection',
                     'options'   => [
                         'property_path' => 'properties[options]',
                     ]
