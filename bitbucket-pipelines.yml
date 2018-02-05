@@ -14,6 +14,7 @@ pipelines:
           - apt-get update && apt-get install -y git zlib1g-dev
           - docker-php-ext-install zip
           - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+          - composer config -g github-oauth.github.com $GITHUB_SECRET
           - php -d memory_limit=-1 /usr/local/bin/composer install
           - vendor/bin/phplint ./src
           - vendor/bin/phpcs -d memory_limit=-1 --standard=PSR2 --extensions=php ./src
