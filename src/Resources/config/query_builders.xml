@@ -6,21 +6,19 @@
 
     <services>
 
-        <service id="flagbit_catalog_table.doctrine.query.filter.columns" class="%pim_catalog.query.elasticsearch.filter.text.class%">
-            <tag name="pim_catalog.elasticsearch.query.filter" priority="30"/>
+        <service id="flagbit_catalog_table.doctrine.query.filter.columns" class="%pim_catalog.query.elasticsearch.filter.option.class%">
             <argument type="service" id="pim_catalog.validator.helper.attribute"/>
+            <argument type="service" id="pim_catalog.repository.attribute_option"/>
             <argument type="collection">
                 <argument>flagbit_catalog_table</argument>
             </argument>
             <argument type="collection">
-                <argument>STARTS WITH</argument>
-                <argument>CONTAINS</argument>
-                <argument>DOES NOT CONTAIN</argument>
-                <argument>=</argument>
+                <argument>IN</argument>
                 <argument>EMPTY</argument>
                 <argument>NOT EMPTY</argument>
-                <argument>!=</argument>
+                <argument>NOT IN</argument>
             </argument>
+            <tag name="pim_catalog.elasticsearch.query.filter" priority="30"/>
         </service>
     </services>
 </container>
