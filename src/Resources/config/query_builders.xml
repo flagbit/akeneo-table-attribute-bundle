@@ -18,7 +18,9 @@
                 <argument>NOT EMPTY</argument>
                 <argument>NOT IN</argument>
             </argument>
-            <tag name="pim_catalog.elasticsearch.query.filter" priority="30"/>
+            <tag name="pim_catalog.elasticsearch.query.product_filter" priority="30"/>
+            <tag name="pim_catalog.elasticsearch.query.product_model_filter" priority="30"/>
+            <tag name="pim_catalog.elasticsearch.query.product_and_product_model_filter" priority="30"/>
         </service>
     </services>
 </container>
