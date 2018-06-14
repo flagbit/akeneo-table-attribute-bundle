@@ -1,12 +1,25 @@
 {
   "name": "flagbit/table-attribute-bundle",
-  "description": "Add the new table attribute type for akeneo",
+  "description": "The Flagbit Table Attribute Bundle for Akeneo PIM gives you the possibility to enrich your product with multi-dimensional data presentation in the form of tables, allowing you maximum flexibility within the PIM.",
+  "keywords": ["akeneo", "table", "attribute", "pim", "multidimensional"],
+  "type": "library",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
     {
       "name": "Claudio Zizza",
-      "email": "claudio.zizza@flagbit.de"
+      "email": "claudio.zizza@flagbit.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Antonio Mansilla",
+      "email": "antonio.mansilla@flagbit.de",
+      "role": "Developer"
+    },
+    {
+      "name": "Angel Vazquez",
+      "email": "angel.vazquez@flagbit.de",
+      "role": "Developer"
     }
   ],
   "autoload": {
