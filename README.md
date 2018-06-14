@@ -1,28 +1,18 @@
-# TableAttributeBundle #
+# Flagbit TableAttributeBundle for Akeneo PIM #
 
-Adds the new AttributeType *Table* for Akeneo products.
+[![Build Status](https://travis-ci.org/Flagbit/akeneo-table-attribute-bundle.svg?branch=master)](https://travis-ci.org/Flagbit/akeneo-table-attribute-bundle)
 
-### Installation ###
+Adds the new attribute type *Table* for Akeneo products.
 
-Since there is still no stable version and no releases in packagist.org, you must first manually add the repository 
-to your `composer.json`.
-
-``` json
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://bitbucket.org/flagbit/tableattributebundle.git"
-        }
-    ],
-```
+## Installation ##
 
 Now you can simply install the package with the following command. 
 
 ``` bash
-composer require flagbit/table-attribute-bundle:@alpha
+composer require flagbit/table-attribute-bundle
 ```
 
-#### Enable the bundle ####
+### Enable the bundle ###
 
 Enable the bundle in the kernel:
 
@@ -70,8 +60,6 @@ and migrate the schema updates:
 php app/console doctrine:migrations:migrate
 ```
 
-#### TODO ####
+## License ##
 
-Release package on packagist and add documentation for installation and configuration of this bundle for a Akeneo project.
-
-
+The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
