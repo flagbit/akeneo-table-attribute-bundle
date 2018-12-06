@@ -39,8 +39,9 @@
     "akeneo/pim-community-dev": "^2.0.5"
   },
   "require-dev": {
-    "phpspec/phpspec": "^3.2",
+    "phpspec/phpspec": "^4.2",
     "squizlabs/php_codesniffer": "*",
-    "overtrue/phplint": "*"
+    "overtrue/phplint": "*",
+    "leanphp/phpspec-code-coverage": "^4.2"
   }
 }
