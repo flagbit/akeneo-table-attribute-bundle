@@ -40,7 +40,7 @@ class TableValidatorSpec extends ObjectBehavior
     /**
      * @return array
      */
-    public function getMatchers()
+    public function getMatchers(): array
     {
         return [
             'haveViolations' => function ($subject, $context, $count) {
