@@ -1,8 +1,8 @@
 # Flagbit TableAttributeBundle for Akeneo PIM #
 
-[![Build Status](https://img.shields.io/travis/Flagbit/akeneo-table-attribute-bundle.svg?style=flat-square)](https://github.com/Flagbit/akeneo-table-attribute-bundle)
-[![Quality Score](https://img.shields.io/scrutinizer/g/Flagbit/akeneo-table-attribute-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/Flagbit/akeneo-table-attribute-bundle)
-[![Packagist Version](https://img.shields.io/packagist/v/Flagbit/table-attribute-bundle.svg?style=flat-square)](https://packagist.org/packages/flagbit/table-attribute-bundle)
+[![Build Status](https://img.shields.io/travis/flagbit/akeneo-table-attribute-bundle.svg?style=flat-square)](https://github.com/flagbit/akeneo-table-attribute-bundle)
+[![Quality Score](https://img.shields.io/scrutinizer/g/flagbit/akeneo-table-attribute-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/Flagbit/akeneo-table-attribute-bundle)
+[![Packagist Version](https://img.shields.io/packagist/v/flagbit/table-attribute-bundle.svg?style=flat-square)](https://packagist.org/packages/flagbit/table-attribute-bundle)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Adds the new attribute type *Table* for Akeneo products.
