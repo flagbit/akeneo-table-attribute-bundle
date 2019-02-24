@@ -76,6 +76,29 @@ and migrate the schema updates:
 php bin/console doctrine:migrations:migrate
 ```
 
+## Features ##
+
+Provides a the table as attribute type where you can define a set of columns of different types and validation rules.
+
+#### Column Types ####
+* Text
+* Number (Integer or Decimal)
+* Simple select
+* Simple select from URL
+
+#### Import/Export ####
+The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export
+profile for table information.
+
+All product information related to attributes of type _table_ will be imported/exported as JSON. 
+
+## Akeneo Compatibility ##
+
+This extension supports the latest Akeneo PIM CE/EE stable versions:
+
+* 2.3 (LTS)
+* 2.1 and 2.2 (STS)
+
 ## License ##
 
 The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
