@@ -5,8 +5,8 @@ namespace Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser;
 use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
 use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory;
-use Pim\Component\Catalog\Model\AttributeInterface;
-use Pim\Component\Catalog\Validator\ConstraintGuesserInterface;
+use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Validator\ConstraintGuesserInterface;
 
 class TableGuesser implements ConstraintGuesserInterface
 {
@@ -37,7 +37,7 @@ class TableGuesser implements ConstraintGuesserInterface
     public function guessConstraints(AttributeInterface $attribute)
     {
         $constraints = [];
-        
+
         $fieldConstraints = [];
         /** @var AttributeOption $option */
         // DocBlock of getOptions() claims to be only ArrayAccess, but Options are a Doctrine Collection

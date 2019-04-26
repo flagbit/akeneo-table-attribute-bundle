@@ -6,7 +6,6 @@
 
     <parameters>
         <parameter key="flagbit_table_attribute.provider.field.Table.class">Flagbit\Bundle\TableAttributeBundle\Provider\Field\TableFieldProvider</parameter>
-        <parameter key="flagbit_table_attribute.event_listener.type_suffix.class">Flagbit\Bundle\TableAttributeBundle\EventListener\TypeSuffixListener</parameter>
         <parameter key="pim_catalog.validator.constraint.attribute_type_for_option.class">Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\AttributeTypeForOptionValidator</parameter>
         <parameter key="pim_enrich.normalizer.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer</parameter>
         <parameter key="pim_enrich.normalizer.structured.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Normalizer\StructuredAttributeOptionNormalizer</parameter>
@@ -16,17 +15,12 @@
 
     <services>
         <service id="flagbit_table_attribute.form.extension.attribute_option" class="%flagbit_table_attribute.form.extension.attribute_option.class%">
-            <tag name="form.type_extension" extended_type="Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType"
+            <tag name="form.type_extension" extended_type="Akeneo\Pim\Structure\Bundle\Form\Type\AttributeOptionType"
                  alias="pim_enrich_attribute_option" />
         </service>
 
         <service id="flagbit_table_attribute.provider.field.table" class="%flagbit_table_attribute.provider.field.table.class%">
             <tag name="pim_enrich.provider.field" priority="90"/>
-        </service>
-
-        <service id="flagbit_table_attribute.event_listener.type_suffix" class="%flagbit_table_attribute.event_listener.type_suffix.class%">
-            <tag name="kernel.event_listener" event="kernel.request" method="addTypeSuffix" />
-            <tag name="kernel.event_listener" event="console.command" method="addTypeSuffix" />
         </service>
     </services>
 </container>

@@ -2,7 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Form\Extension;
 
-use Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType;
+use Akeneo\Pim\Structure\Bundle\Form\Type\AttributeOptionType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;

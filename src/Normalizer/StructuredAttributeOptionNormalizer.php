@@ -2,7 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Normalizer;
 
-use Pim\Bundle\EnrichBundle\Normalizer\StructuredAttributeOptionNormalizer as BaseNormalizer;
+use Akeneo\Pim\Structure\Component\Normalizer\InternalApi\StructuredAttributeOptionNormalizer as BaseNormalizer;
 
 class StructuredAttributeOptionNormalizer extends BaseNormalizer
 {

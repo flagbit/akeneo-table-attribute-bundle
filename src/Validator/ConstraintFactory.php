@@ -46,15 +46,11 @@ class ConstraintFactory
      */
     public function createTableConstraint(array $constraints)
     {
-        return new Table(['constraints' => [
-            new Collection([
-                'fields' => $constraints,
-            ])
-        ]]);
+        return new Table(['constraints' => [new Collection(['fields' => $constraints])]]);
     }
 
     /**
-     * @param string $class
+     * @param string           $class
      * @param array|string|int $params
      *
      * @return Constraint
