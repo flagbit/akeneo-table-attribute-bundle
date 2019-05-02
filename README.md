@@ -73,7 +73,7 @@ php bin/console --env=prod doctrine:migration:diff
 and migrate the schema updates:
 
 ``` bash
-php bin/console doctrine:migrations:migrate
+php bin/console --env=prod doctrine:migrations:migrate
 ```
 
 ## Features ##
