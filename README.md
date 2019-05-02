@@ -48,13 +48,13 @@ akeneo_storage_utils:
 Clear your cache:
 
 ``` bash
-php bin/console -e=prod cache:clear
+php bin/console --env=prod cache:clear
 ```
 
 Update the database schema:
 
 ``` bash
-php bin/console -e=prod doctrine:schema:update --force
+php bin/console --env=prod doctrine:schema:update --force
 ```
 
 Build and install the new front-end dependencies (new icon, etc.)
@@ -67,7 +67,7 @@ yarn run webpack
 In case you're using Doctrine migrations, you have to create a new migration class
 
 ``` bash
-php bin/console -e=prod doctrine:migration:diff
+php bin/console --env=prod doctrine:migration:diff
 ```
 
 and migrate the schema updates:
