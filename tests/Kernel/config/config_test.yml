@@ -1,0 +1,50 @@
+imports:
+    - { resource: config.yml }
+    - { resource: parameters.yml }
+    - { resource: ../../../vendor/akeneo/pim-community-dev/app/config/security_test.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    csrf_protection: true
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+assetic:
+    use_controller: false
+
+monolog:
+    handlers:
+        main:
+            type:     stream
+            path:     "%kernel.logs_dir%/%kernel.environment%.log"
+            level:    debug
+            channels: ['!event']
+        firephp:
+            type:     firephp
+            level:    info
+        console:
+            type:     console
+            channels: ['!event', '!doctrine']
+
+oro_assetic:
+    css_debug:      ~
+    css_debug_all:  false
+
+parameters:
+    max_products_category_removal: 20
+    installer_data:       PimInstallerBundle:minimal
+    upload_dir:           '%kernel.root_dir%/../var/cache/uploads/product'
+    archive_dir:          '%kernel.root_dir%/../var/cache/archive'
+    logs_dir:             '%kernel.logs_dir%'
+    catalog_storage_dir:  '%kernel.root_dir%/../var/cache/file_storage/catalog'
+    tmp_storage_dir:      '%kernel.root_dir%/../var/cache/tmp/pim/file_storage'
+    upload_tmp_dir:       '%kernel.root_dir%/../var/cache/tmp/pim/upload_tmp_dir'
