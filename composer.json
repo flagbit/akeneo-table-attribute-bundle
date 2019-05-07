@@ -27,6 +27,11 @@
       "Flagbit\\Bundle\\TableAttributeBundle\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Flagbit\\Bundle\\TableAttributeBundle\\Test\\": "tests/"
+    }
+  },
   "repositories": [
     {
       "type": "vcs",
