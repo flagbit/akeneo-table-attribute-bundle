@@ -28,3 +28,4 @@ script:
   - vendor/bin/phplint ./src
   - vendor/bin/phpcs -d memory_limit=-1 --standard=PSR2 --extensions=php ./src
   - vendor/bin/phpspec run
+  - vendor/bin/phpunit
