@@ -2,7 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Tests\Validator\ConstraintGuesser;
 
-use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser\TableGuesser;
+use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use Pim\Bundle\CatalogBundle\Entity\Attribute;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
@@ -21,6 +21,6 @@ class TableGuesserTest extends KernelTestCase
         $constraintGuesser = $chainedAttributeConstraintGuesser->guessConstraints($attribute);
 
         self::assertCount(1, $constraintGuesser);
-        self::assertInstanceOf(TableGuesser::class, $constraintGuesser[0]);
+        self::assertInstanceOf(Table::class, $constraintGuesser[0]);
     }
 }
