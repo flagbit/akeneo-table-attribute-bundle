@@ -54,7 +54,7 @@ class TestKernel extends \AppKernel
 
     protected function build(ContainerBuilder $container)
     {
-        $serviceIds = ['pim_catalog.validator.constraint_guesser.chained_attribute'];
+        $serviceIds = ['pim_catalog.validator.constraint_guesser.chained_attribute', 'flagbit_catalog_table.factory.value.table'];
         $container->addCompilerPass(new PublicServiceCompilerPass($serviceIds));
     }
 
