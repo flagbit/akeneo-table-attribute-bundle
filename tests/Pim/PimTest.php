@@ -2,7 +2,6 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Pim;
 
-use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 use Pim\Bundle\CatalogBundle\Entity\Attribute;
 use Pim\Component\Catalog\Comparator\Attribute\ScalarComparator;
 use Pim\Component\Catalog\Value\ScalarValue;
@@ -40,26 +39,14 @@ class PimTest extends KernelTestCase
         self::assertInstanceOf(StandardToFlatTextConverter::class, $converter);
     }
 
-    public function testAttributeTypeIsRegisteredCorrect()
-    {
-        self::bootKernel();
-        $container = self::$kernel->getContainer();
-
-        $attributeTypeRegistry = $container->get('pim_catalog.registry.attribute_type');
-
-        $attributeType = $attributeTypeRegistry->get('flagbit_catalog_table');
-
-        self::assertInstanceOf(TableType::class, $attributeType);
-    }
-
     public function testAttributeComparedSuccessfully()
     {
         self::bootKernel();
         $container = self::$kernel->getContainer();
 
-        $comparatorRegistry = $container->get('pim_catalog.comparator.registry');
+        $registryComparator = $container->get('pim_catalog.comparator.registry');
 
-        $comparator = $comparatorRegistry->getAttributeComparator('flagbit_catalog_table');
+        $comparator = $registryComparator->getAttributeComparator('flagbit_catalog_table');
 
         self::assertInstanceOf(ScalarComparator::class, $comparator);
     }
@@ -69,15 +56,21 @@ class PimTest extends KernelTestCase
         self::bootKernel();
         $container = self::$kernel->getContainer();
 
+        $valueFactory = $container->get('pim_catalog.factory.value');
+
         $attribute = new Attribute();
         $attribute->setAttributeType('flagbit_catalog_table');
         $attribute->setLocalizable(false);
         $attribute->setScopable(false);
 
-        $valueFactory = $container->get('pim_catalog.factory.value');
-
         $value = $valueFactory->create($attribute, null, null, '{}');
 
         self::assertInstanceOf(ScalarValue::class, $value);
     }
+    // pim_catalog.query.elasticsearch.filter.option.class
+    //query_builders
+    //pim_catalog.query.filter.product_registry
+    //pim_catalog.query.filter.product_mode_registry
+    //no match found
+
 }
