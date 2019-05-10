@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Flagbit\Bundle\TableAttributeBundle\Test\AttributeType;
-
 
 use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
