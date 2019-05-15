@@ -2,8 +2,10 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Pim;
 
+use Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
 use Pim\Bundle\CatalogBundle\Entity\Attribute;
 use Pim\Component\Catalog\Comparator\Attribute\ScalarComparator;
+use Pim\Component\Catalog\Updater\Setter\AttributeSetter;
 use Pim\Component\Catalog\Value\ScalarValue;
 use Pim\Component\Connector\ArrayConverter\FlatToStandard\Product\ValueConverter\TextConverter as FlatToStandardTextConverter;
 use Pim\Component\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\TextConverter as StandardToFlatTextConverter;
@@ -67,10 +69,23 @@ class PimTest extends KernelTestCase
 
         self::assertInstanceOf(ScalarValue::class, $value);
     }
-    // pim_catalog.query.elasticsearch.filter.option.class
-    //query_builders
-    //pim_catalog.query.filter.product_registry
-    //pim_catalog.query.filter.product_mode_registry
-    //no match found
 
+    public function testProductUpdatedSuccessfully()
+    {
+        self::bootKernel();
+        $container = self::$kernel->getContainer();
+
+        $repository = $this->createMock(IdentifiableObjectRepositoryInterface::class);
+
+        $container->set('pim_catalog.repository.cached_attribute', $repository);
+
+        $registryUpdater = $container->get('pim_catalog.updater.setter.registry');
+
+        $attribute = new Attribute();
+        $attribute->setAttributeType('flagbit_catalog_table');
+
+        $updater = $registryUpdater->getAttributeSetter($attribute);
+
+        self::assertInstanceOf(AttributeSetter::class, $updater);
+    }
 }
