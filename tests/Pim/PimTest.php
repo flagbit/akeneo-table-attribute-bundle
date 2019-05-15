@@ -3,6 +3,7 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Pim;
 
 use Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
+use Pim\Bundle\CatalogBundle\Elasticsearch\Filter\Attribute\OptionFilter;
 use Pim\Bundle\CatalogBundle\Entity\Attribute;
 use Pim\Component\Catalog\Comparator\Attribute\ScalarComparator;
 use Pim\Component\Catalog\Updater\Setter\AttributeSetter;
@@ -87,5 +88,38 @@ class PimTest extends KernelTestCase
         $updater = $registryUpdater->getAttributeSetter($attribute);
 
         self::assertInstanceOf(AttributeSetter::class, $updater);
+    }
+
+    /**
+     * @dataProvider provider
+     */
+    public function testQueryBuilder($code, $service)
+    {
+        self::bootKernel();
+        $container = self::$kernel->getContainer();
+
+        $filterRegistry = $container->get($service);
+
+        $filter = $filterRegistry->getFilter($code, 'flagbit_catalog_table');
+
+        self::assertInstanceOf(OptionFilter::class, $filter);
+    }
+
+    public function provider()
+    {
+        return [
+            ['IN', 'pim_catalog.query.filter.product_registry'],
+            ['EMPTY', 'pim_catalog.query.filter.product_registry'],
+            ['NOT EMPTY', 'pim_catalog.query.filter.product_registry'],
+            ['NOT IN', 'pim_catalog.query.filter.product_registry'],
+            ['IN', 'pim_catalog.query.filter.product_model_registry'],
+            ['EMPTY', 'pim_catalog.query.filter.product_model_registry'],
+            ['NOT EMPTY', 'pim_catalog.query.filter.product_model_registry'],
+            ['NOT IN', 'pim_catalog.query.filter.product_model_registry'],
+            ['IN', 'pim_catalog.query.filter.product_and_product_model_registry'],
+            ['EMPTY', 'pim_catalog.query.filter.product_and_product_model_registry'],
+            ['NOT EMPTY', 'pim_catalog.query.filter.product_and_product_model_registry'],
+            ['NOT IN', 'pim_catalog.query.filter.product_and_product_model_registry'],
+        ];
     }
 }
