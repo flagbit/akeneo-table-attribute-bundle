@@ -37,6 +37,12 @@ services:
             - '@doctrine.dbal.default.wrapped_connection'
             -
                 db_table: pim_session
+    gedmo.listener.tree:
+        class: Gedmo\Tree\TreeListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ '@annotation_reader' ] ]
 
 pim_enrich:
     max_products_category_removal: '%max_products_category_removal%'
