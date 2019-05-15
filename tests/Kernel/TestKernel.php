@@ -5,7 +5,6 @@ namespace Flagbit\Bundle\TableAttributeBundle\Test\Kernel;
 require_once __DIR__.'/../../vendor/akeneo/pim-community-dev/app/AppKernel.php';
 
 use Flagbit\Bundle\TableAttributeBundle\FlagbitTableAttributeBundle;
-use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class TestKernel extends \AppKernel
@@ -54,7 +53,7 @@ class TestKernel extends \AppKernel
 
     protected function build(ContainerBuilder $container)
     {
-        $serviceIds = ['pim_catalog.validator.constraint_guesser.chained_attribute', 'flagbit_catalog_table.factory.value.table'];
+        $serviceIds = ['pim_catalog.validator.constraint_guesser.chained_attribute', 'flagbit_catalog_table.factory.value.table', 'form.extension'];
         $container->addCompilerPass(new PublicServiceCompilerPass($serviceIds));
     }
 
