@@ -6,6 +6,8 @@ use Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterfa
 use Pim\Bundle\CatalogBundle\Elasticsearch\Filter\Attribute\OptionFilter;
 use Pim\Bundle\CatalogBundle\Entity\Attribute;
 use Pim\Component\Catalog\Comparator\Attribute\ScalarComparator;
+use Pim\Component\Catalog\Query\Filter\FilterRegistry;
+use Pim\Component\Catalog\Repository\AttributeRepositoryInterface;
 use Pim\Component\Catalog\Updater\Setter\AttributeSetter;
 use Pim\Component\Catalog\Value\ScalarValue;
 use Pim\Component\Connector\ArrayConverter\FlatToStandard\Product\ValueConverter\TextConverter as FlatToStandardTextConverter;
@@ -91,21 +93,32 @@ class PimTest extends KernelTestCase
     }
 
     /**
-     * @dataProvider provider
+     * @dataProvider queryBuildersProvider
      */
-    public function testQueryBuilder($code, $service)
+    public function testQueryBuilderFiltersCorrectly($operator, $service)
     {
         self::bootKernel();
         $container = self::$kernel->getContainer();
 
+        $attribute = new Attribute();
+        $attribute->setType('flagbit_catalog_table');
+
+        $repository = $this->createMock(AttributeRepositoryInterface::class);
+        $repository->expects(self::once())
+            ->method('findOneBy')
+            ->willReturn($attribute);
+
+        $container->set('pim_catalog.repository.attribute', $repository);
+
+        /** @var FilterRegistry $filterRegistry */
         $filterRegistry = $container->get($service);
 
-        $filter = $filterRegistry->getFilter($code, 'flagbit_catalog_table');
+        $filter = $filterRegistry->getFilter('flagbit_catalog_table', $operator);
 
         self::assertInstanceOf(OptionFilter::class, $filter);
     }
 
-    public function provider()
+    public function queryBuildersProvider()
     {
         return [
             ['IN', 'pim_catalog.query.filter.product_registry'],
