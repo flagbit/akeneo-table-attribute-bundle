@@ -110,7 +110,7 @@ define(
                         $tfCol.className = 'AknGrid-bodyCell field-cell';
                         var $tfBut = document.createElement('button');
 
-                        $tfBut.innerText = __('label.attribute_option.add_option');
+                        $tfBut.innerText = __('pim_enrich.entity.product.module.attribute.add_option');
                         $tfBut.type = 'button';
                         $tfBut.className = 'btn AknButton AknButton--small pull-right';
                         $tfBut.addEventListener('click', addRow);
