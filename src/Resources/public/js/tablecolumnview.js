@@ -319,8 +319,8 @@ define(
                 editedModel.set('optionValues', attributeOptions);
                 editedModel.set('type', this.$el.find('.attribute_option_type').val());
                 try {
-                    editedModel.set('constraints', JSON.parse(this.$el.find('.attribute_option_constraints').val()));
-                    editedModel.set('type_config', JSON.parse(this.$el.find('.attribute_option_config').val()));
+                    editedModel.set('constraints', this.$el.find('.attribute_option_constraints').val());
+                    editedModel.set('type_config', this.$el.find('.attribute_option_config').val());
                 } catch (e) {
                     Dialog.alert(
                         __('flagbit.attribute_table.alert.json_error_text'),
