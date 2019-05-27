@@ -22,7 +22,7 @@ define(
              */
             this.render = function($data) {
                 var $text = document.createElement('span');
-                $text.innerText = __('flagbit_attribute_table_no_configuration_text');
+                $text.innerText = __('flagbit.table_attribute.no_configuration.text');
                 $container.appendChild($text);
             };
 
