@@ -29,7 +29,7 @@ define(
                 var $value = $data['is_decimal'];
 
                 var $label = document.createElement('label');
-                $label.innerText = __('flagbit_attribute_table_number_is_decimal_label');
+                $label.innerText = __('flagbit.table_attribute.number_is_decimal.label');
                 $container.appendChild($label);
 
                 var $dropdown = createDropdown('is_decimal');
