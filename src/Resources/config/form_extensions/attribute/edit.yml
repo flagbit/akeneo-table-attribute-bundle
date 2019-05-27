@@ -5,7 +5,7 @@ extensions:
         targetZone: container
         position: 110
         config:
-            label: flagbit_catalog_table.form.attribute.tab.title
+            label: flagbit.table_attribute.form.attribute.tab.title
             activeForTypes: [flagbit_catalog_table]
 
     flagbit-catalog-table-attribute-edit-form-options-grid:

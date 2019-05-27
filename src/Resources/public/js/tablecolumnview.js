@@ -143,7 +143,7 @@ define(
                     'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect')
                 }, {
                     'type':  'select_from_url',
-                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url')
+                    'label': __('flagbit.table_attribute.simpleselect_from_url.label')
                 }];
 
                 this.render();
@@ -323,8 +323,8 @@ define(
                     editedModel.set('type_config', JSON.parse(this.$el.find('.attribute_option_config').val()));
                 } catch (e) {
                     Dialog.alert(
-                        __('flagbit.attribute_table.alert.json_error_text'),
-                        __('flagbit.attribute_table.alert.json_error_title')
+                        __('flagbit.table_attribute.alert.json_error_text'),
+                        __('flagbit.table_attribute.alert.json_error_title')
                     );
                 }
 
@@ -411,11 +411,11 @@ define(
 
                 this.$el.html(this.template({
                     locales: this.locales,
-                    add_column_label: __('label.attribute_table.add_column'),
-                    code_label: __('flagbit.attribute_table.code.label'),
-                    type_label: __('flagbit_attribute_table_type_label'),
-                    constraint_label: __('flagbit_attribute_table_validation_label'),
-                    config_label: __('flagbit_attribute_table_config_label')
+                    add_column_label: __('flagbit.table_attribute.add_column.label'),
+                    code_label: __('flagbit.table_attribute.code.label'),
+                    type_label: __('flagbit.table_attribute.type.label'),
+                    constraint_label: __('flagbit.table_attribute.validation.label'),
+                    config_label: __('flagbit.table_attribute.config.label')
                 }));
 
                 _.each(this.collection.models, function (attributeOptionItem) {
