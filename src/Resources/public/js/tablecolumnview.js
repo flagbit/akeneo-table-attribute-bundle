@@ -412,7 +412,7 @@ define(
                 this.$el.html(this.template({
                     locales: this.locales,
                     add_column_label: __('label.attribute_table.add_column'),
-                    code_label: __('Code'),
+                    code_label: __('flagbit.attribute_table.code.label'),
                     type_label: __('flagbit_attribute_table_type_label'),
                     constraint_label: __('flagbit_attribute_table_validation_label'),
                     config_label: __('flagbit_attribute_table_config_label')
