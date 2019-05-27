@@ -17,6 +17,11 @@
                 <target>JSON Formatfehler</target>
             </trans-unit>
 
+            <trans-unit id="flagbit_attribute_table_code_label">
+                <source>flagbit.attribute_table.code.label</source>
+                <target>Kode</target>
+            </trans-unit>
+
             <trans-unit id="flagbit_attribute_table_simpleselect_options_label">
                 <source>flagbit_attribute_table_simpleselect_options_label</source>
                 <target>Optionen</target>
