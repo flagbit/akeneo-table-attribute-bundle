@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service
+                id="akeneo_storage_utils.event_subscriber.configure_orm_mappings"
+                class="%akeneo_storage_utils.event_subscriber.configure_orm_mappings.class%">
+            <argument type="service" id="akeneo_storage_utils.doctrine.orm_mappings_override_configurator" />
+            <argument>%akeneo_storage_utils.mapping_overrides%</argument>
+            <tag name="doctrine.event_subscriber" priority="200" />
+        </service>
+    </services>
+</container>
