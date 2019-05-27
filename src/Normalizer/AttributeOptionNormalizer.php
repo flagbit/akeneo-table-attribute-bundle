@@ -42,5 +42,4 @@ class AttributeOptionNormalizer implements NormalizerInterface
     {
         return $this->baseNormalizer->supportsNormalization($data, $format);
     }
-
 }
