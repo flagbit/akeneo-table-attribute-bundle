@@ -14,6 +14,7 @@ cache:
 matrix:
     include:
       - php: 7.2
+      - php: 7.3
 
 before_install:
     # disable default memory limit
