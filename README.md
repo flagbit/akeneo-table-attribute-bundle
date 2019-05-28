@@ -60,7 +60,7 @@ php bin/console --env=prod doctrine:schema:update --force
 Build and install the new front-end dependencies (new icon, etc.)
 
 ``` bash
-php bin/console pim:installer:assets --symlink --clean --env=prod
+php bin/console --env=prod pim:installer:assets --symlink --clean --env=prod
 yarn run webpack
 ```
 
@@ -97,7 +97,6 @@ All product information related to attributes of type _table_ will be imported/e
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
 * 3.0 and 2.3 (LTS)
-* 2.1 and 2.2 (STS)
 
 ## Running Test-Suits ##
 
