@@ -11,8 +11,6 @@ use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Extension for option attribute form
- *
- * @author    Ruben Beglaryan <ruben.beglaryan@flagbit.de>
  */
 class AttributeOptionTypeExtension extends AbstractTypeExtension
 {

@@ -12,8 +12,6 @@ use Symfony\Component\Validator\Constraint;
  * Class AttributeTypeForOptionValidator
  *
  * Validator for attribute used for an option
- *
- * @author Ruben Beglaryan <ruben.beglaryan@flagbit.de>
  */
 class AttributeTypeForOptionValidator extends BaseValidator
 {
