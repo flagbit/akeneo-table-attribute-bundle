@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 class TableValidator extends AllValidator
 {
     /**
-     * @param mixed      $value
+     * @param string     $value
      * @param Constraint $constraint
      */
     public function validate($value, Constraint $constraint)
