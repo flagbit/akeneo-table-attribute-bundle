@@ -19,6 +19,7 @@
             <argument type="service" id="pim_enrich.normalizer.structured.attribute_option_base"/>
             <tag name="pim_internal_api_serializer.normalizer"/>
         </service>
+
         <service
             id="flagbit_table_attribute.normalizer.attribute_option"
             class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer">

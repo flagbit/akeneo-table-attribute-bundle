@@ -5,6 +5,10 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <!--
+            The setting of the priority for the evenet subscriber is a workaround to fix an Akeneo bug.
+            More information: https://github.com/akeneo/pim-community-dev/pull/10047
+        -->
         <service
                 id="akeneo_storage_utils.event_subscriber.configure_orm_mappings"
                 class="%akeneo_storage_utils.event_subscriber.configure_orm_mappings.class%">
