@@ -27,6 +27,11 @@
       "Flagbit\\Bundle\\TableAttributeBundle\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Flagbit\\Bundle\\TableAttributeBundle\\Test\\": "tests/"
+    }
+  },
   "repositories": [
     {
       "type": "vcs",
@@ -36,11 +41,13 @@
     }
   ],
   "require": {
-    "akeneo/pim-community-dev": ">=2.0.0 <2.0.5"
+    "akeneo/pim-community-dev": "^2.0.5"
   },
   "require-dev": {
-    "phpspec/phpspec": "^3.2",
+    "phpspec/phpspec": "^4.2",
+    "phpunit/phpunit": "^7.1",
     "squizlabs/php_codesniffer": "*",
-    "overtrue/phplint": "*"
+    "overtrue/phplint": "*",
+    "leanphp/phpspec-code-coverage": "^4.2"
   }
 }
