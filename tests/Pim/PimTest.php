@@ -2,16 +2,16 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Pim;
 
-use Akeneo\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
-use Pim\Bundle\CatalogBundle\Elasticsearch\Filter\Attribute\OptionFilter;
-use Pim\Bundle\CatalogBundle\Entity\Attribute;
-use Pim\Component\Catalog\Comparator\Attribute\ScalarComparator;
-use Pim\Component\Catalog\Query\Filter\FilterRegistry;
-use Pim\Component\Catalog\Repository\AttributeRepositoryInterface;
-use Pim\Component\Catalog\Updater\Setter\AttributeSetter;
-use Pim\Component\Catalog\Value\ScalarValue;
-use Pim\Component\Connector\ArrayConverter\FlatToStandard\Product\ValueConverter\TextConverter as FlatToStandardTextConverter;
-use Pim\Component\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\TextConverter as StandardToFlatTextConverter;
+use Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
+use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Attribute\OptionFilter;
+use Akeneo\Pim\Structure\Component\Model\Attribute;
+use Akeneo\Pim\Enrichment\Component\Product\Comparator\Attribute\ScalarComparator;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FilterRegistry;
+use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
+use Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\AttributeSetter;
+use Akeneo\Pim\Enrichment\Component\Product\Value\ScalarValue;
+use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStandard\ValueConverter\TextConverter as FlatToStandardTextConverter;
+use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\TextConverter as StandardToFlatTextConverter;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class PimTest extends KernelTestCase
@@ -67,6 +67,7 @@ class PimTest extends KernelTestCase
         $attribute->setAttributeType('flagbit_catalog_table');
         $attribute->setLocalizable(false);
         $attribute->setScopable(false);
+        $attribute->setCode('foo');
 
         $value = $valueFactory->create($attribute, null, null, '{}');
 
