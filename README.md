@@ -99,6 +99,28 @@ This extension supports the latest Akeneo PIM CE/EE stable versions:
 * 2.3 (LTS)
 * 2.1 and 2.2 (STS)
 
+## Running Test-Suits ##
+
+The TableAttributeBundle is covered with tests and every change and addition has also to be covered with
+unit or/and integration tests. It uses two testing suits: [PHPSpec](https://www.phpspec.net) and
+[PHPUnit](https://phpunit.de/).
+
+To run the tests you have to change to this project's root directory and run the following commands in your console:
+
+``` bash
+vendor/bin/phpunit
+vendor/bin/phpspec run
+```
+
+## Coding style ##
+
+TableAttributeBundle uses the [PSR-2](https://www.php-fig.org/psr/psr-2/) coding style and can be checked with
+[Codesniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+
+``` bash
+vendor/bin/phpcs --standard=PSR2 --extensions=php ./src
+```
+
 ## License ##
 
 The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
