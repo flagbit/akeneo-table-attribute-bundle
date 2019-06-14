@@ -30,7 +30,7 @@ define(
             this.render = function($data) {
 
                 var $label = document.createElement('label');
-                $label.innerText = __('flagbit_attribute_table_simpleselect_options_label');
+                $label.innerText = __('flagbit.table_attribute.simpleselect_options.label');
                 $label.className = 'select-options-config-label';
                 $container.appendChild($label);
 

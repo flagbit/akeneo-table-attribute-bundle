@@ -25,7 +25,7 @@ define(
             this.render = function($data) {
 
                 var $label = document.createElement('label');
-                $label.innerText = __('flagbit_attribute_table_simpleselect_options_url_label');
+                $label.innerText = __('flagbit.table_attribute.simpleselect_options_url.label');
                 var $input = document.createElement('input');
                 $input.type = 'text';
                 $input.className = 'AknTextField';

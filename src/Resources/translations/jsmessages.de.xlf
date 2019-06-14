@@ -2,68 +2,68 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="label_attribute_table_add_column">
-                <source>label.attribute_table.add_column</source>
+            <trans-unit id="flagbit_table_attribute_add_column_label">
+                <source>flagbit.table_attribute.add_column.label</source>
                 <target>Spalte hinzufügen</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_alert_json_error_text">
-                <source>flagbit.attribute_table.alert.json_error_text</source>
+            <trans-unit id="flagbit_table_attribute_alert_json_error_text">
+                <source>flagbit.table_attribute.alert.json_error.text</source>
                 <target>Ein Fehler wurde bei einem der JSON Felder festgestellt.</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_alert_json_error_title">
-                <source>flagbit.attribute_table.alert.json_error_title</source>
+            <trans-unit id="flagbit_table_attribute_alert_json_error_title">
+                <source>flagbit.table_attribute.alert.json_error.title</source>
                 <target>JSON Formatfehler</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_code_label">
-                <source>flagbit.attribute_table.code.label</source>
+            <trans-unit id="flagbit_table_attribute_code_label">
+                <source>flagbit.table_attribute.code.label</source>
                 <target>Kode</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_simpleselect_options_label">
-                <source>flagbit_attribute_table_simpleselect_options_label</source>
+            <trans-unit id="flagbit_table_attribute_simpleselect_options_label">
+                <source>flagbit.table_attribute.simpleselect_options.label</source>
                 <target>Optionen</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_simpleselect_options_url_label">
-                <source>flagbit_attribute_table_simpleselect_options_url_label</source>
+            <trans-unit id="flagbit_table_attribute_simpleselect_options_url_label">
+                <source>flagbit.table_attribute.simpleselect_options_url.label</source>
                 <target>Optionen URL</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_config_label">
-                <source>flagbit_attribute_table_config_label</source>
+            <trans-unit id="flagbit_table_attribute_config_label">
+                <source>flagbit.table_attribute.config.label</source>
                 <target>Konfiguration</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_type_label">
-                <source>flagbit_attribute_table_type_label</source>
+            <trans-unit id="flagbit_table_attribute_type_label">
+                <source>flagbit.table_attribute.type.label</source>
                 <target>Typ</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_validation_label">
-                <source>flagbit_attribute_table_validation_label</source>
+            <trans-unit id="flagbit_table_attribute_validation_label">
+                <source>flagbit.table_attribute.validation.label</source>
                 <target>Validierung</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_no_configuration_text">
-                <source>flagbit_attribute_table_no_configuration_text</source>
+            <trans-unit id="flagbit_table_attribute_no_configuration_text">
+                <source>flagbit.table_attribute.no_configuration.text</source>
                 <target>Es gibt keine Konfigurationsmöglichkeiten.</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_add_new_row_label">
-                <source>flagbit_attribute_table_add_new_row_label</source>
+            <trans-unit id="flagbit_table_attribute_add_new_row_label">
+                <source>flagbit.table_attribute.add_new_row.label</source>
                 <target>Zeile hinzufügen</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_attribute_table_number_is_decimal_label">
-                <source>flagbit_attribute_table_number_is_decimal_label</source>
+            <trans-unit id="flagbit_table_attribute_number_is_decimal_label">
+                <source>flagbit.table_attribute.number_is_decimal.label</source>
                 <target>Dezimal</target>
             </trans-unit>
 
-            <trans-unit id="pim_enrich_entity_attribute_type_pim_catalog_simpleselect_from_url">
-                <source>pim_enrich.entity.attribute.type.pim_catalog_simpleselect_from_url</source>
+            <trans-unit id="flagbit_table_attribute_simpleselect_from_url_label">
+                <source>flagbit.table_attribute.simpleselect_from_url.label</source>
                 <target>Einfachauswahl aus URL</target>
             </trans-unit>
 
@@ -72,8 +72,8 @@
                 <target>Tabelle</target>
             </trans-unit>
 
-            <trans-unit id="flagbit_catalog_table_form_attribute_tab_title">
-                <source>flagbit_catalog_table.form.attribute.tab.title</source>
+            <trans-unit id="flagbit_table_attribute_form_attribute_tab_title">
+                <source>flagbit.table_attribute.form.attribute.tab.title</source>
                 <target>Spalten</target>
             </trans-unit>
 
