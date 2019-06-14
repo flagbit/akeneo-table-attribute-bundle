@@ -152,7 +152,8 @@ define([
 
                         init = function (td, column, value) {
                             var select2Config = {
-                                placeholder: ' '
+                                placeholder: ' ',
+                                dropdownAutoWidth: true
                             };
                             if ('options' in column.config) {
                                 var options = [];
@@ -178,7 +179,8 @@ define([
 
                         init = function (td, column, value) {
                             var select2Config = {
-                                placeholder: ' '
+                                placeholder: ' ',
+                                dropdownAutoWidth: true
                             };
                             if ('options_url' in column.config) {
                                 select2Config.ajax = {
