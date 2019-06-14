@@ -5,7 +5,7 @@ imports:
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/fos_auth_server.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/fos_js_routing.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/fos_rest.yml' }
-#    - { resource: 'bundles/gedmo_doctrine_extensions.yml' }
+#    - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/gedmo_doctrine_extensions.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/liip_imagine.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/oneup_flysystem.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/bundles/oro_filter.yml' }
@@ -48,6 +48,12 @@ services:
             - '@doctrine.dbal.default.wrapped_connection'
             -
                 db_table: pim_session
+    gedmo.listener.tree:
+        class: Gedmo\Tree\TreeListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ '@annotation_reader' ] ]
 
 akeneo_pim_enrichment:
     localization:
