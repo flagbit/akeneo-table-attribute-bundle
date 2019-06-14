@@ -153,3 +153,9 @@ Contributions are always welcome! Please have a look at the [contribution guidel
 ## License
 
 The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+#
+
+<p align="center">
+Supported with ❤ by <a href="https://www.flagbit.de">Flagbit GmbH & Co. KG</a>
+</p>
