@@ -1,21 +1,60 @@
-# Flagbit TableAttributeBundle for Akeneo PIM #
+<h1 align="center">
+  Flagbit Table Attribute for Akeneo PIM
+  <br>
+</h1>
 
-[![Build Status](https://img.shields.io/travis/flagbit/akeneo-table-attribute-bundle/master.svg?style=flat-square)](https://travis-ci.org/flagbit/akeneo-table-attribute-bundle)
-[![Quality Score](https://img.shields.io/scrutinizer/g/flagbit/akeneo-table-attribute-bundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/Flagbit/akeneo-table-attribute-bundle)
-[![Packagist Version](https://img.shields.io/packagist/v/flagbit/table-attribute-bundle.svg?style=flat-square)](https://packagist.org/packages/flagbit/table-attribute-bundle)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+<h4 align="center">Adds the new attribute type Table for Akeneo products.</h4>
 
-Adds the new attribute type *Table* for Akeneo products.
+<p align="center">
+    <a href="https://travis-ci.org/flagbit/akeneo-table-attribute-bundle">
+        <img src="https://img.shields.io/travis/flagbit/akeneo-table-attribute-bundle/master.svg?style=flat-square"/>
+    </a>
+    <img src="https://poser.pugx.org/flagbit/table-attribute-bundle/downloads?format=flat-square">
+    <a href="https://scrutinizer-ci.com/g/Flagbit/akeneo-table-attribute-bundle">
+        <img src="https://img.shields.io/scrutinizer/g/flagbit/akeneo-table-attribute-bundle.svg?style=flat-square">
+    </a>
+    <a href="https://packagist.org/packages/flagbit/table-attribute-bundle">
+        <img src="https://img.shields.io/packagist/v/flagbit/table-attribute-bundle.svg?style=flat-square">
+    </a>
+    <a href="LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square">
+    </a>
+</p>
 
-## Installation ##
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#compatibility">Compatibility</a> •
+  <a href="#development">Development</a> •
+  <a href="#contributing">Contributing</a>
+</p>
 
-Now you can simply install the package with the following command. 
+## Key Features
+
+Provides a _table_ as attribute type where you can define a set of columns of different types and validation rules.
+
+#### Column Types
+
+* Text
+* Number (Integer or Decimal)
+* Simple select
+* Simple select from URL
+
+#### Import/Export
+
+The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export profile for table information.
+
+All product information related to attributes of type _table_ will be imported/exported as JSON. 
+
+## Installation
+
+Simply install the package with the following command: 
 
 ``` bash
 composer require flagbit/table-attribute-bundle
 ```
 
-### Enable the bundle ###
+### Enable the bundle
 
 Enable the bundle in the kernel:
 
@@ -33,9 +72,9 @@ protected function registerProjectBundles()
 }
 ```
 
-### Configuration ###
+### Configuration
 
-Add to config yml to `mapping_overrides` in `app/config/config.yml`:
+Add `mapping_overrides` in `app/config/config.yml`:
 
 ``` yml
 akeneo_storage_utils:
@@ -45,7 +84,7 @@ akeneo_storage_utils:
             override: Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption
 ```
 
-Clear your cache:
+Clear the cache:
 
 ``` bash
 php bin/console --env=prod cache:clear
@@ -76,29 +115,15 @@ and migrate the schema updates:
 php bin/console --env=prod doctrine:migrations:migrate
 ```
 
-## Features ##
-
-Provides a the table as attribute type where you can define a set of columns of different types and validation rules.
-
-#### Column Types ####
-* Text
-* Number (Integer or Decimal)
-* Simple select
-* Simple select from URL
-
-#### Import/Export ####
-The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export
-profile for table information.
-
-All product information related to attributes of type _table_ will be imported/exported as JSON. 
-
-## Akeneo Compatibility ##
+## Compatibility
 
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
 * 3.0 and 2.3 (LTS)
 
-## Running Test-Suits ##
+## Development
+
+### Running Test-Suits
 
 The TableAttributeBundle is covered with tests and every change and addition has also to be covered with
 unit or/and integration tests. It uses two testing suits: [PHPSpec](https://www.phpspec.net) and
@@ -111,7 +136,7 @@ vendor/bin/phpunit
 vendor/bin/phpspec run
 ```
 
-## Coding style ##
+### Coding style
 
 TableAttributeBundle uses the [PSR-2](https://www.php-fig.org/psr/psr-2/) coding style and can be checked with
 [Codesniffer](https://github.com/squizlabs/PHP_CodeSniffer).
@@ -120,6 +145,16 @@ TableAttributeBundle uses the [PSR-2](https://www.php-fig.org/psr/psr-2/) coding
 vendor/bin/phpcs --standard=PSR2 --extensions=php ./src
 ```
 
-## License ##
+## Contributing
 
-The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+Contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first.
+
+## License
+
+The TableAttributeBundle is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+#
+
+<p align="center">
+Supported with ❤ by <a href="https://www.flagbit.de">Flagbit GmbH & Co. KG</a>
+</p>
