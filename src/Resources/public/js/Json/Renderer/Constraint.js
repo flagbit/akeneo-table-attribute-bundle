@@ -39,7 +39,7 @@ define(
                     $dropdown.appendChild($option);
                 });
 
-                var $select2 = jQuery($dropdown).select2();
+                var $select2 = jQuery($dropdown).select2({dropdownAutoWidth: true});
 
                 observeChanges($select2);
             };
