@@ -37,7 +37,7 @@ class AttributeOptionNormalizerSpec extends ObjectBehavior
         $baseNormalizer->normalize($attributeOption, 'array', $activatedLocales)->shouldBeCalled();
         $attributeOption->getType()->willReturn('text');
         $attributeOption->getTypeConfig()->willReturn([]);
-        $attributeOption->getConstraints()->willReturn(($constraints));
+        $attributeOption->getConstraints()->willReturn($constraints);
 
         $normalizedValues = $this->normalize($attributeOption, 'array', $activatedLocales);
 
