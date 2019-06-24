@@ -28,7 +28,7 @@ class TableGuesser implements ConstraintGuesserInterface
      */
     public function supportAttribute(AttributeInterface $attribute)
     {
-        return TableType::FLAGBIT_CATALOG_TABLE === $attribute->getAttributeType();
+        return TableType::FLAGBIT_CATALOG_TABLE === $attribute->getType();
     }
 
     /**

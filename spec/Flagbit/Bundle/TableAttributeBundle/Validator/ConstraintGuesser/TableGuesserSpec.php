@@ -26,7 +26,7 @@ class TableGuesserSpec extends ObjectBehavior
 
     public function it_support_table_attribute(AttributeInterface $attribute)
     {
-        $attribute->getAttributeType()->willReturn(TableType::FLAGBIT_CATALOG_TABLE);
+        $attribute->getType()->willReturn(TableType::FLAGBIT_CATALOG_TABLE);
         $this->supportAttribute($attribute)->shouldReturn(true);
     }
 

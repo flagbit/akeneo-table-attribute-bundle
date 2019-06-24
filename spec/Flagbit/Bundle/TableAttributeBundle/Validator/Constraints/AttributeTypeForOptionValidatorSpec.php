@@ -71,7 +71,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $executionContext->setConstraint($this->createAttributeTypeForOptionConstraint());
 
         $this->initialize($executionContext);
-        $attributeModel->getAttributeType()->willReturn($type);
+        $attributeModel->getType()->willReturn($type);
         $attributeModel->getCode()->willReturn('22');
         $attributeOption->getAttribute()->willReturn($attributeModel);
 
