@@ -9,11 +9,6 @@ class AttributeOptionNormalizer implements NormalizerInterface
     /** @var NormalizerInterface */
     private $baseNormalizer;
 
-    /**
-     * StructuredAttributeOptionNormalizer constructor.
-     *
-     * @param NormalizerInterface $baseNormalizer
-     */
     public function __construct(NormalizerInterface $baseNormalizer)
     {
         $this->baseNormalizer = $baseNormalizer;
