@@ -7,23 +7,22 @@ use PhpSpec\ObjectBehavior;
 
 class TableTypeSpec extends ObjectBehavior
 {
-
     public function let()
     {
         $this->beConstructedWith('text');
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(TableType::class);
     }
 
-    public function it_should_return_flagbit_catalog_table()
+    public function it_returns_flagbit_catalog_table()
     {
         $this->getName()->shouldReturn('flagbit_catalog_table');
     }
 
-    public function it_should_return_text_forbackend_type(){
+    public function it_returns_text_forbackend_type(){
         $this->getBackendType()->shouldReturn('text');
     }
 }

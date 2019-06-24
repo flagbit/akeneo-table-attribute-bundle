@@ -9,18 +9,18 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AttributeOptionNormalizerSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(AttributeOptionNormalizer::class);
     }
 
-    function let(NormalizerInterface $baseNormalizer)
+    public function let(NormalizerInterface $baseNormalizer)
     {
         $this->beConstructedWith($baseNormalizer);
 
     }
 
-    function it_check_return_type_array_and_right_values
+    public function it_checks_return_type_array_and_right_values
     (
         AttributeOption $attributeOption,
         $baseNormalizer

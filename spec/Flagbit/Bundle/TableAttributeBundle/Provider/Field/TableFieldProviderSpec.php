@@ -7,12 +7,12 @@ use PhpSpec\ObjectBehavior;
 
 class TableFieldProviderSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(TableFieldProvider::class);
     }
 
-    public function it_should_return_flagbit_table_field()
+    public function it_returns_flagbit_table_field()
     {
         $element = [
             'foo' => 'bar',

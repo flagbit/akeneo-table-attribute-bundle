@@ -14,24 +14,23 @@ use Symfony\Component\Validator\Constraint;
 
 class TableGuesserSpec extends ObjectBehavior
 {
-
-    function let(ConstraintFactory $constraintFactory)
+    public function let(ConstraintFactory $constraintFactory)
     {
         $this->beConstructedWith($constraintFactory);
     }
 
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(TableGuesser::class);
     }
 
-    function it_support_table_attribute(AttributeInterface $attribute)
+    public function it_support_table_attribute(AttributeInterface $attribute)
     {
         $attribute->getAttributeType()->willReturn(TableType::FLAGBIT_CATALOG_TABLE);
         $this->supportAttribute($attribute)->shouldReturn(true);
     }
 
-    function it_should_be_able_to_create_constraint_array(
+    public function it_creates_constraint_array(
         AttributeInterface $attribute,
         AttributeOption $attributeOption,
         ConstraintFactory $constraintFactory,
@@ -57,7 +56,7 @@ class TableGuesserSpec extends ObjectBehavior
         $this->guessConstraints($attribute)->shouldReturn([$tableConstraint]);
     }
 
-    function it_should_be_able_to_create_constraint_array_without_options(
+    public function it_creates_constraint_array_without_options(
         AttributeInterface $attribute,
         ConstraintFactory $constraintFactory,
         Table $tableConstraint

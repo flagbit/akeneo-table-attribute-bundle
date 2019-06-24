@@ -16,12 +16,12 @@ use Symfony\Component\Validator\ValidatorBuilder;
 
 class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(AttributeTypeForOptionValidator::class);
     }
 
-    function it_attribute_type_is_option_simple_select(
+    public function it_attribute_type_is_option_simple_select(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -30,7 +30,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(AttributeTypes::OPTION_SIMPLE_SELECT, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    function it_attribute_type_is_option_multi_select(
+    public function it_attribute_type_is_option_multi_select(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -39,7 +39,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(AttributeTypes::OPTION_MULTI_SELECT, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    function it_attribute_type_is_flagbit_table(
+    public function it_attribute_type_is_flagbit_table(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -48,7 +48,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(TableType::FLAGBIT_CATALOG_TABLE, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    function it_attribute_type_is_not_authorized(
+    public function it_attribute_type_is_not_authorized(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
