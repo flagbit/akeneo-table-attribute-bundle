@@ -99,7 +99,7 @@ php bin/console --env=prod doctrine:schema:update --force
 Build and install the new front-end dependencies (new icon, etc.)
 
 ``` bash
-php bin/console --env=prod pim:installer:assets --symlink --clean --env=prod
+php bin/console --env=prod pim:installer:assets --symlink --clean
 yarn run webpack
 ```
 
