@@ -17,7 +17,6 @@ class AttributeOptionNormalizerSpec extends ObjectBehavior
     public function let(NormalizerInterface $baseNormalizer)
     {
         $this->beConstructedWith($baseNormalizer);
-
     }
 
     public function it_checks_return_type_array_and_right_values

@@ -63,7 +63,6 @@ class TableGuesserSpec extends ObjectBehavior
     )
     {
         $attribute->getOptions()->willReturn([]);
-        $constraints = [];
         $fieldConstraints  = [];
         $constraintFactory->createTableConstraint($fieldConstraints)->willReturn($tableConstraint);
         $this->guessConstraints($attribute)->shouldBeArray();
