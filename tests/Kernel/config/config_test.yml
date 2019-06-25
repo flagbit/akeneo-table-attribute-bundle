@@ -3,7 +3,6 @@ imports:
     - { resource: '../../../vendor/akeneo/pim-community-dev/app/config/security.yml' }
     - { resource: 'parameters.yml' }
     - { resource: '../../../vendor/akeneo/pim-community-dev/app/config/security_test.yml' }
-#    - { resource: '../../../vendor/akeneo/pim-community-dev/src/Akeneo/Platform/config/pim.yml' }
     - { resource: 'pim.yml' }
 
 framework:
@@ -67,10 +66,6 @@ swiftmailer:
     spool:                    { type: memory }
     disable_delivery: true
 
-
-#assetic:
-#    use_controller: false
-
 monolog:
     handlers:
         main:
@@ -84,10 +79,6 @@ monolog:
         console:
             type:     console
             channels: ['!event', '!doctrine']
-
-#oro_assetic:
-#    css_debug:      ~
-#    css_debug_all:  false
 
 parameters:
     max_products_category_removal: 20
