@@ -22,7 +22,8 @@ class TableTypeSpec extends ObjectBehavior
         $this->getName()->shouldReturn('flagbit_catalog_table');
     }
 
-    public function it_returns_text_forbackend_type(){
+    public function it_returns_text_forbackend_type()
+    {
         $this->getBackendType()->shouldReturn('text');
     }
 }

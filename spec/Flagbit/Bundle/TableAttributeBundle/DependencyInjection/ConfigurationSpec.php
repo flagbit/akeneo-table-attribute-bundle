@@ -13,7 +13,8 @@ class ConfigurationSpec extends ObjectBehavior
         $this->shouldHaveType(Configuration::class);
     }
 
-    public function it_returns_Treebuilder_object(){
+    public function it_returns_Treebuilder_object()
+    {
         $this->getConfigTreeBuilder()->shouldBeAnInstanceOf(TreeBuilder::Class);
     }
 }

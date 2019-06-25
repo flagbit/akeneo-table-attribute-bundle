@@ -12,16 +12,15 @@ class TableJsonTransformerSpec extends ObjectBehavior
         $this->shouldHaveType(TableJsonTransformer::class);
     }
 
-    public function it_transform_do_anything()
+    public function it_keeps_transform_value()
     {
         $originalValue = '{"Blank":{},"NotNull":{}}';
         $expectedvalue = '{"Blank":{},"NotNull":{}}';
 
         $this->transform($originalValue)->shouldBe($expectedvalue);
-        $this->reverseTransform($originalValue)->shouldBeArray();
     }
 
-    public function it_reverse_transform_returns_right_constraints_array()
+    public function it_reverse_transforms_to_constraints_array_format()
     {
         $originalValue = '{"Blank":{},"NotNull":{}}';
         $expectedvalue = [
@@ -30,10 +29,9 @@ class TableJsonTransformerSpec extends ObjectBehavior
         ];
 
         $this->reverseTransform($originalValue)->shouldBe($expectedvalue);
-        $this->reverseTransform($originalValue)->shouldBeArray();
     }
 
-    public function it_reverse_transform_returns_null()
+    public function it_reverse_transform_null()
     {
         $originalValue = null;
 
