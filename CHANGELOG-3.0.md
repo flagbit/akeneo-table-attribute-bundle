@@ -4,4 +4,4 @@
 
 ## BC breaks
 
-- `Flagbit\Bundle\TableAttributeBundle\Normalizer\StructuredAttributeOptionNormalizer` was deleted and that `Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer` is taking its job in its service.
+- `Flagbit\Bundle\TableAttributeBundle\Normalizer\StructuredAttributeOptionNormalizer` was deleted. `Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer` is now used for its service.
