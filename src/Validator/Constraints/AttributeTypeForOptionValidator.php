@@ -30,7 +30,7 @@ class AttributeTypeForOptionValidator extends BaseValidator
                 TableType::FLAGBIT_CATALOG_TABLE,
             ];
 
-            if (!in_array($attribute->getType(), $authorizedTypes)) {
+            if (!in_array($attribute->getType(), $authorizedTypes, true)) {
                 $this->addInvalidAttributeViolation($constraint, $attributeOption, $authorizedTypes);
             }
         }
