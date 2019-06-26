@@ -23,7 +23,8 @@ class AttributeOptionNormalizerSpec extends ObjectBehavior
     (
         AttributeOption $attributeOption,
         $baseNormalizer
-    ){
+    )
+    {
         $constraints = [
             'NotBlank' => [],
             'Email' => [],

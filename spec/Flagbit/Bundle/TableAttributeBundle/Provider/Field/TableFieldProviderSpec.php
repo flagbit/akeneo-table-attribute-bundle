@@ -25,7 +25,8 @@ class TableFieldProviderSpec extends ObjectBehavior
     public function it_checks_correct_support
     (
         AttributeInterface $attributeInterface
-    ){
+    )
+    {
         $attributeInterface->getType()->willReturn('flagbit_catalog_table');
         $this->supports($attributeInterface)->shouldReturn(true);
     }
@@ -33,7 +34,8 @@ class TableFieldProviderSpec extends ObjectBehavior
     public function it_checks_incorrect_support
     (
         AttributeInterface $attributeInterface
-    ){
+    )
+    {
         $attributeInterface->getType()->willReturn('foo_bar');
         $this->supports($attributeInterface)->shouldReturn(false);
     }
