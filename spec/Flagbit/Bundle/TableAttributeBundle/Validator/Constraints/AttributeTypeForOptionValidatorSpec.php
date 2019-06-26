@@ -21,7 +21,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->shouldHaveType(AttributeTypeForOptionValidator::class);
     }
 
-    public function it_attribute_type_is_option_simple_select(
+    public function it_validates_option_simple_select(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -30,7 +30,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(AttributeTypes::OPTION_SIMPLE_SELECT, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    public function it_attribute_type_is_option_multi_select(
+    public function it_validates_option_multi_select(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -39,7 +39,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(AttributeTypes::OPTION_MULTI_SELECT, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    public function it_attribute_type_is_flagbit_table(
+    public function it_validates_flagbit_table(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )
@@ -48,7 +48,7 @@ class AttributeTypeForOptionValidatorSpec extends ObjectBehavior
         $this->checkViolations(TableType::FLAGBIT_CATALOG_TABLE, $attributeOption, $attributeModel, $expectedViolations);
     }
 
-    public function it_attribute_type_is_not_authorized(
+    public function it_finds_violations_for_wrong_attribute_type(
         AttributeOptionInterface $attributeOption,
         Attribute $attributeModel
     )

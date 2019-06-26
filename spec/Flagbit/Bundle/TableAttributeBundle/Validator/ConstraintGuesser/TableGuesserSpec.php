@@ -24,10 +24,16 @@ class TableGuesserSpec extends ObjectBehavior
         $this->shouldHaveType(TableGuesser::class);
     }
 
-    public function it_support_table_attribute(AttributeInterface $attribute)
+    public function it_supports_table_attribute(AttributeInterface $attribute)
     {
         $attribute->getType()->willReturn(TableType::FLAGBIT_CATALOG_TABLE);
         $this->supportAttribute($attribute)->shouldReturn(true);
+    }
+
+    public function it_not_supports_wrong_type(AttributeInterface $attribute)
+    {
+        $attribute->getType()->willReturn('not_existing_type');
+        $this->supportAttribute($attribute)->shouldReturn(false);
     }
 
     public function it_creates_constraint_array(
