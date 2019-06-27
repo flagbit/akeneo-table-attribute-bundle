@@ -3,7 +3,7 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Tests\Validator\ConstraintGuesser;
 
 use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
-use Pim\Bundle\CatalogBundle\Entity\Attribute;
+use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TableGuesserTest extends KernelTestCase

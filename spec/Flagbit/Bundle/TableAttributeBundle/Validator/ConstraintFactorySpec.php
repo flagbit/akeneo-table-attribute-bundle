@@ -6,7 +6,6 @@ use Flagbit\Bundle\TableAttributeBundle\Entity\ConstraintConfigInterface;
 use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory;
 use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use PhpSpec\ObjectBehavior;
-use Symfony\Component\Form\Exception\ExceptionInterface;
 use Symfony\Component\Validator\Constraints as C;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 

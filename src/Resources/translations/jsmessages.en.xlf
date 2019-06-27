@@ -68,7 +68,7 @@
             </trans-unit>
 
             <trans-unit id="flagbit_catalog_table">
-                <source>pim_enrich.entity.attribute.type.flagbit_catalog_table</source>
+                <source>pim_enrich.entity.attribute.property.type.flagbit_catalog_table</source>
                 <target>Table</target>
             </trans-unit>
 

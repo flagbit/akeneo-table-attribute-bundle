@@ -134,13 +134,13 @@ define(
                 this.model.urlRoot = this.parent.updateUrl;
                 this.types = [{
                     'type': 'text',
-                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_text')
+                    'label': __('pim_enrich.entity.attribute.property.type.pim_catalog_text')
                 }, {
                     'type': 'number',
-                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_number')
+                    'label': __('pim_enrich.entity.attribute.property.type.pim_catalog_number')
                 }, {
                     'type':  'select',
-                    'label': __('pim_enrich.entity.attribute.type.pim_catalog_simpleselect')
+                    'label': __('pim_enrich.entity.attribute.property.type.pim_catalog_simpleselect')
                 }, {
                     'type':  'select_from_url',
                     'label': __('flagbit.table_attribute.simpleselect_from_url.label')
@@ -206,8 +206,8 @@ define(
                 if (!this.model.id || this.dirty) {
                     if (this.dirty) {
                         Dialog.confirm(
-                            __('confirm.attribute_option.cancel_edition_on_new_option_text'),
-                            __('confirm.attribute_option.cancel_edition_on_new_option_title'),
+                            __('pim_enrich.entity.attribute_option.module.edit.cancel_description'),
+                            __('pim_enrich.entity.attribute_option.module.edit.cancel_title'),
                             function () {
                                 this.showReadableItem(this);
                                 if (!this.model.id) {
@@ -229,8 +229,8 @@ define(
                 var itemCode = this.el.firstChild.innerText;
 
                 Dialog.confirm(
-                    __('pim_enrich.item.delete.confirm.content', {'itemName': itemCode}),
-                    __('pim_enrich.item.delete.confirm.title', {'itemName': itemCode}),
+                    __('pim_enrich.entity.fallback.module.delete.item_placeholder', {'itemName': itemCode}),
+                    __('pim_enrich.entity.fallback.module.delete.title', {'itemName': itemCode}),
                     function () {
                         this.parent.deleteItem(this);
                     }.bind(this)
@@ -283,7 +283,7 @@ define(
                             } else {
                                 Dialog.alert(
                                     __('alert.attribute_option.error_occured_during_submission'),
-                                    __('error.saving.attribute_option')
+                                    __('pim_enrich.entity.attribute_option.flash.update.fail')
                                 );
                             }
                         }.bind(this)
@@ -319,8 +319,8 @@ define(
                 editedModel.set('optionValues', attributeOptions);
                 editedModel.set('type', this.$el.find('.attribute_option_type').val());
                 try {
-                    editedModel.set('constraints', JSON.parse(this.$el.find('.attribute_option_constraints').val()));
-                    editedModel.set('type_config', JSON.parse(this.$el.find('.attribute_option_config').val()));
+                    editedModel.set('constraints', this.$el.find('.attribute_option_constraints').val());
+                    editedModel.set('type_config', this.$el.find('.attribute_option_config').val());
                 } catch (e) {
                     Dialog.alert(
                         __('flagbit.table_attribute.alert.json_error_text'),
@@ -565,7 +565,7 @@ define(
                             message = response.responseText;
                         }
 
-                        Dialog.alert(message, __('error.removing.attribute_option'));
+                        Dialog.alert(message, __('pim_enrich.entity.attribute_option.flash.delete.fail'));
                     }.bind(this)
                 });
             },

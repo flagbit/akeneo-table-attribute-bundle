@@ -2,29 +2,39 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Normalizer;
 
-use Pim\Bundle\EnrichBundle\Normalizer\AttributeOptionNormalizer as BaseNormalizer;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * Attribute option normalizer for internal api
- *
- * @package Flagbit\Bundle\TableAttributeBundle\Normalizer
- * @author Ruben Beglaryan <ruben.beglaryan@flagbit.de>
- */
-class AttributeOptionNormalizer extends BaseNormalizer
+class AttributeOptionNormalizer implements NormalizerInterface
 {
+    /** @var NormalizerInterface */
+    private $baseNormalizer;
+
+    public function __construct(NormalizerInterface $baseNormalizer)
+    {
+        $this->baseNormalizer = $baseNormalizer;
+    }
 
     /**
      * {@inheritdoc}
      */
     public function normalize($object, $format = null, array $context = [])
     {
+        $normalizedValues = $this->baseNormalizer->normalize($object, $format, $context);
 
-        $normalizedValues = parent::normalize($object, $format, $context);
         $normalizedValues['type'] = $object->getType();
         $normalizedValues['type_config'] = $object->getTypeConfig();
         $normalizedValues['constraints'] = $object->getConstraints();
 
-
         return $normalizedValues;
+    }
+
+    /**
+     * @param mixed $data
+     * @param null $format
+     * @return bool
+     */
+    public function supportsNormalization($data, $format = null)
+    {
+        return $this->baseNormalizer->supportsNormalization($data, $format);
     }
 }

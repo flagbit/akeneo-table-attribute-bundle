@@ -80,7 +80,7 @@ Add `mapping_overrides` in `app/config/config.yml`:
 akeneo_storage_utils:
     mapping_overrides:
         -
-            original: Pim\Bundle\CatalogBundle\Entity\AttributeOption
+            original: Akeneo\Pim\Structure\Component\Model\AttributeOption
             override: Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption
 ```
 
@@ -119,8 +119,8 @@ php bin/console --env=prod doctrine:migrations:migrate
 
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
+* 3.0 (LTS)
 * 2.3 (LTS)
-* 2.1 and 2.2 (STS)
 
 ## Development
 

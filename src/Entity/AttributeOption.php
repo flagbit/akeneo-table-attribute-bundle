@@ -2,7 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Entity;
 
-use Pim\Bundle\CatalogBundle\Entity\AttributeOption as BaseAttributeOption;
+use Akeneo\Pim\Structure\Component\Model\AttributeOption as BaseAttributeOption;
 
 /**
  * @todo move Table specific columns into an own entity

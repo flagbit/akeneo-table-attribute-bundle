@@ -4,7 +4,6 @@ namespace spec\Flagbit\Bundle\TableAttributeBundle\Http;
 
 use Flagbit\Bundle\TableAttributeBundle\Http\Select2JsonResponse;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class Select2JsonResponseSpec extends ObjectBehavior
 {

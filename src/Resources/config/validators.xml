@@ -10,6 +10,11 @@
     </parameters>
 
     <services>
+        <service class="Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\AttributeTypeForOptionValidator"
+                 id="pim_catalog.validator.constraint.attribute_type_for_option">
+            <tag name="validator.constraint_validator" alias="pim_attribute_type_for_option_validator" />
+        </service>
+
         <service id="flagbit_table_attribute.validator.constraint_guesser.table"
                  class="%flagbit_table_attribute.validator.constraint_guesser.table.class%" public="false">
             <argument id="flagbit_table_attribute.validator.constraint_factory" type="service" />

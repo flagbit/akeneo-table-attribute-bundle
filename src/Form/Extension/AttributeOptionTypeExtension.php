@@ -2,7 +2,8 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Form\Extension;
 
-use Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType;
+use Akeneo\Pim\Structure\Bundle\Form\Type\AttributeOptionType;
+use Flagbit\Bundle\TableAttributeBundle\Form\TableJsonTransformer;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -10,8 +11,6 @@ use Symfony\Component\Validator\Constraints\Choice;
 
 /**
  * Extension for option attribute form
- *
- * @author    Ruben Beglaryan <ruben.beglaryan@flagbit.de>
  */
 class AttributeOptionTypeExtension extends AbstractTypeExtension
 {
@@ -28,6 +27,11 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
         ]);
         $builder->add('constraints', TextType::class, ['required' => true]);
         $builder->add('type_config', TextType::class, ['required' => true]);
+
+        $transformer = new TableJsonTransformer();
+
+        $builder->get('constraints')->addModelTransformer($transformer);
+        $builder->get('type_config')->addModelTransformer($transformer);
     }
 
     /**

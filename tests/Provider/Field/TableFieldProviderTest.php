@@ -2,7 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Provider\Field;
 
-use Pim\Bundle\CatalogBundle\Entity\Attribute;
+use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TableFieldProviderTest extends KernelTestCase
