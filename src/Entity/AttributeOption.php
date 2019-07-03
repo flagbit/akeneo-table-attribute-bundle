@@ -3,6 +3,7 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Entity;
 
 use Akeneo\Pim\Structure\Component\Model\AttributeOption as BaseAttributeOption;
+use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 
 /**
  * @todo move Table specific columns into an own entity
@@ -70,5 +71,10 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     public function setTypeConfig($typeConfig)
     {
         $this->typeConfig = $typeConfig;
+    }
+
+    public function isTableAttribute() : bool
+    {
+        return null !== $this->attribute && TableType::FLAGBIT_CATALOG_TABLE === $this->attribute->getType();
     }
 }

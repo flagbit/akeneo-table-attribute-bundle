@@ -34,10 +34,13 @@ class AttributeOptionNormalizerSpec extends ObjectBehavior
             'onlyActivatedLocales' => true,
         ];
 
-        $baseNormalizer->normalize($attributeOption, 'array', $activatedLocales)->shouldBeCalled();
+        $baseNormalizer->normalize($attributeOption, 'array', $activatedLocales)
+            ->willReturn([])
+            ->shouldBeCalled();
         $attributeOption->getType()->willReturn('text');
         $attributeOption->getTypeConfig()->willReturn([]);
         $attributeOption->getConstraints()->willReturn($constraints);
+        $attributeOption->isTableAttribute()->willReturn(true);
 
         $normalizedValues = $this->normalize($attributeOption, 'array', $activatedLocales);
 
@@ -50,5 +53,28 @@ class AttributeOptionNormalizerSpec extends ObjectBehavior
         $normalizedValues->shouldHaveKeyWithValue('type', 'text');
         $normalizedValues->shouldHaveKeyWithValue('type_config', []);
         $normalizedValues->shouldHaveKeyWithValue('constraints', $constraints);
+    }
+
+    public function it_checks_return_type_for_default_akeneo_attribute_options
+    (
+        AttributeOption $attributeOption,
+        $baseNormalizer
+    )
+    {
+        $baseNormalizer->normalize($attributeOption, 'array', [])
+            ->willReturn([])
+            ->shouldBeCalled();
+        $attributeOption->getType()->willReturn(null);
+        $attributeOption->getTypeConfig()->willReturn([]);
+        $attributeOption->getConstraints()->willReturn([]);
+        $attributeOption->isTableAttribute()->willReturn(false);
+
+        $normalizedValues = $this->normalize($attributeOption, 'array');
+
+        $normalizedValues->shouldBeArray();
+
+        $normalizedValues->shouldNotHaveKey('type');
+        $normalizedValues->shouldNotHaveKey('type_config');
+        $normalizedValues->shouldNotHaveKey('constraints');
     }
 }
