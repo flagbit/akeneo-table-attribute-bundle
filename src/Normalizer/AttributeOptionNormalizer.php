@@ -2,6 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Normalizer;
 
+use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
 use Pim\Bundle\EnrichBundle\Normalizer\AttributeOptionNormalizer as BaseNormalizer;
 
 /**
@@ -12,18 +13,19 @@ use Pim\Bundle\EnrichBundle\Normalizer\AttributeOptionNormalizer as BaseNormaliz
  */
 class AttributeOptionNormalizer extends BaseNormalizer
 {
-
     /**
      * {@inheritdoc}
      */
     public function normalize($object, $format = null, array $context = [])
     {
-
         $normalizedValues = parent::normalize($object, $format, $context);
-        $normalizedValues['type'] = $object->getType();
-        $normalizedValues['type_config'] = $object->getTypeConfig();
-        $normalizedValues['constraints'] = $object->getConstraints();
 
+        /** @var AttributeOption $object */
+        if ($object->isTableAttribute()) {
+            $normalizedValues['type'] = $object->getType();
+            $normalizedValues['type_config'] = $object->getTypeConfig();
+            $normalizedValues['constraints'] = $object->getConstraints();
+        }
 
         return $normalizedValues;
     }

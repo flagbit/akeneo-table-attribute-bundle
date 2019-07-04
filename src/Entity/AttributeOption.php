@@ -2,6 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Entity;
 
+use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 use Pim\Bundle\CatalogBundle\Entity\AttributeOption as BaseAttributeOption;
 
 /**
@@ -70,5 +71,10 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     public function setTypeConfig($typeConfig)
     {
         $this->typeConfig = $typeConfig;
+    }
+
+    public function isTableAttribute() : bool
+    {
+        return null !== $this->attribute && TableType::FLAGBIT_CATALOG_TABLE === $this->attribute->getType();
     }
 }
