@@ -2,6 +2,7 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Normalizer;
 
+use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AttributeOptionNormalizer implements NormalizerInterface
@@ -21,9 +22,12 @@ class AttributeOptionNormalizer implements NormalizerInterface
     {
         $normalizedValues = $this->baseNormalizer->normalize($object, $format, $context);
 
-        $normalizedValues['type'] = $object->getType();
-        $normalizedValues['type_config'] = $object->getTypeConfig();
-        $normalizedValues['constraints'] = $object->getConstraints();
+        /** @var AttributeOption $object */
+        if ($object->isTableAttribute()) {
+            $normalizedValues['type'] = $object->getType();
+            $normalizedValues['type_config'] = $object->getTypeConfig();
+            $normalizedValues['constraints'] = $object->getConstraints();
+        }
 
         return $normalizedValues;
     }
