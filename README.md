@@ -119,6 +119,7 @@ php bin/console --env=prod doctrine:migrations:migrate
 
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
+* 3.2 (LTS)
 * 3.0 (LTS)
 * 2.3 (LTS)
 
