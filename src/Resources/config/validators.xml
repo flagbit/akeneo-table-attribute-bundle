@@ -10,8 +10,13 @@
     </parameters>
 
     <services>
-        <service class="Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\AttributeTypeForOptionValidator"
+        <service class="Akeneo\Pim\Structure\Component\Validator\Constraints\AttributeTypeForOptionValidator"
                  id="pim_catalog.validator.constraint.attribute_type_for_option">
+            <argument type="collection">
+                <argument>pim_catalog_simpleselect</argument>
+                <argument>pim_catalog_multiselect</argument>
+                <argument>flagbit_catalog_table</argument>
+            </argument>
             <tag name="validator.constraint_validator" alias="pim_attribute_type_for_option_validator" />
         </service>
 
