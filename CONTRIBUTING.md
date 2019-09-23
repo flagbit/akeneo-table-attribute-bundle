@@ -4,9 +4,13 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ## Branch Compatibility
 
-| Branch | Akeneo Compatibility |
-| ------------- |:-------------:|
-| `master` | `>= 3.0.0` |
-| `2.X` | `>= 2.0.5 & < 3.0.0` |
-| `2.0` | `>= 2.0.0 & < 2.0.5` |
-| `1.X` | `>= 1.6.0 & < 2.0.0` |
+Only Akeneo long term support (LTS) versions are supported:
+
+
+| Branch   | Akeneo Compatibility  |
+| -------- |:---------------------:|
+| `master` | `>= 3.2.0`            |
+| `3.0`    | `>= 3.0.21 & < 3.1.0` |
+| `2.X`    | `>= 2.0.5 & < 3.0.0`  |
+| `2.0`    | `>= 2.0.0 & < 2.0.5`  |
+| `1.X`    | `>= 1.6.0 & < 2.0.0`  |

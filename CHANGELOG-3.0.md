@@ -1,3 +1,9 @@
+# 3.0.2
+
+## Bug fixes
+
+- Fix BC break introduced by Akeneo core when saving AttributeOptions. [#33][pr33]
+
 # 3.0.1
 
 ## Bug fixes
@@ -13,3 +19,4 @@
 - `Flagbit\Bundle\TableAttributeBundle\Normalizer\StructuredAttributeOptionNormalizer` was deleted. `Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer` is now used for its service.
 
 [pr29]: https://github.com/flagbit/akeneo-table-attribute-bundle/pull/29
+[pr33]: https://github.com/flagbit/akeneo-table-attribute-bundle/pull/33
