@@ -3,6 +3,7 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Form\Extension;
 
 use Pim\Bundle\EnrichBundle\Form\Type\AttributeOptionType;
+use Pim\Bundle\FilterBundle\Form\Type\UnstructuredType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,8 +27,8 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
                 new Choice(['select', 'select_from_url', 'text', 'number']),
             ],
         ]);
-        $builder->add('constraints', TextType::class, ['required' => true]);
-        $builder->add('type_config', TextType::class, ['required' => true]);
+        $builder->add('constraints', UnstructuredType::class, ['required' => true]);
+        $builder->add('type_config', UnstructuredType::class, ['required' => true]);
     }
 
     /**

@@ -1,3 +1,9 @@
+# 2.1.5
+
+## Bug fixes
+
+ - Fixes issue saving Akeneo AttributeOptions. #28
+
 # 2.1.2
 
 ## Bug fixes

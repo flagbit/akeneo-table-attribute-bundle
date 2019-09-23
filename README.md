@@ -51,7 +51,7 @@ All product information related to attributes of type _table_ will be imported/e
 Simply install the package with the following command: 
 
 ``` bash
-composer require flagbit/table-attribute-bundle
+composer require flagbit/table-attribute-bundle:^2.1@stable
 ```
 
 ### Enable the bundle
