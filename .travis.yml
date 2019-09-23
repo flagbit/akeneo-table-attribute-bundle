@@ -15,6 +15,8 @@ matrix:
     include:
       - php: 7.1
       - php: 7.2
+    allow_failures:
+      - php: 7.2
 
 before_install:
     # disable default memory limit
