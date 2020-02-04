@@ -11,5 +11,11 @@
             </argument>
             <tag name="pim_catalog.updater.setter"/>
         </service>
+
+        <service id="flagbit_table.updater.attribute_option"
+                 class="Flagbit\Bundle\TableAttributeBundle\Updater\AttributeOptionUpdater"
+                 decorates="pim_catalog.updater.attribute_option">
+            <argument type="service" id="pim_catalog.repository.attribute"/>
+        </service>
     </services>
 </container>
