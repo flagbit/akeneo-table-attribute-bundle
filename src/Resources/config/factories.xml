@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="flagbit_catalog_table.factory.value.table" class="%pim_catalog.factory.value.scalar.class%"
+    <service id="flagbit_table_attribute.factory.value.table" class="Flagbit\Bundle\TableAttributeBundle\Component\Product\Factory\Value\TableValueFactory"
              public="false">
-      <tag name="pim_catalog.factory.value"/>
-      <argument>%pim_catalog.entity.value.scalar.class%</argument>
-      <argument>flagbit_catalog_table</argument>
+      <tag name="akeneo.pim.enrichment.factory.product_value"/>
     </service>
   </services>
 </container>

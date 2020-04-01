@@ -5,7 +5,7 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="flagbit_table_attribute.provider.field.Table.class">Flagbit\Bundle\TableAttributeBundle\Provider\Field\TableFieldProvider</parameter>
+        <parameter key="flagbit_table_attribute.provider.field.table.class">Flagbit\Bundle\TableAttributeBundle\Provider\Field\TableFieldProvider</parameter>
         <parameter key="pim_catalog.validator.constraint.attribute_type_for_option.class">Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\AttributeTypeForOptionValidator</parameter>
         <parameter key="flagbit_table_attribute.form.extension.attribute_option.class">Flagbit\Bundle\TableAttributeBundle\Form\Extension\AttributeOptionTypeExtension</parameter>
         <parameter key="pim_enrich.view_element.attribute.tab.value.template">FlagbitTableAttributeBundle:Attribute:Tab/value.html.twig</parameter>
@@ -13,16 +13,16 @@
 
     <services>
         <service
-            id="flagbit_table_attribute.normalizer.structured.attribute_option"
-            class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer"
-            decorates="pim_enrich.normalizer.structured.attribute_option" decoration-inner-name="pim_enrich.normalizer.structured.attribute_option_base">
+                id="flagbit_table_attribute.normalizer.structured.attribute_option"
+                class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer"
+                decorates="pim_enrich.normalizer.structured.attribute_option" decoration-inner-name="pim_enrich.normalizer.structured.attribute_option_base">
             <argument type="service" id="pim_enrich.normalizer.structured.attribute_option_base"/>
             <tag name="pim_internal_api_serializer.normalizer"/>
         </service>
 
         <service
-            id="flagbit_table_attribute.normalizer.attribute_option"
-            class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer">
+                id="flagbit_table_attribute.normalizer.attribute_option"
+                class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer">
             <argument type="service" id="pim_enrich.normalizer.attribute_option"/>
             <tag name="pim_internal_api_serializer.normalizer" priority="200"/>
         </service>
@@ -34,6 +34,10 @@
 
         <service id="flagbit_table_attribute.provider.field.table" class="%flagbit_table_attribute.provider.field.table.class%">
             <tag name="pim_enrich.provider.field" priority="90"/>
+        </service>
+
+        <service id="flagbit_table_attribute.mask_item.table" class="Flagbit\Bundle\TableAttributeBundle\Component\Product\Completeness\MaskItemGenerator\TableMaskItem">
+            <tag name="akeneo.pim.enrichment.completeness.mask_item_generator"/>
         </service>
     </services>
 </container>
