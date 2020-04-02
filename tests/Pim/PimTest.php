@@ -20,7 +20,7 @@ class PimTest extends KernelTestCase
     public function testFlatToStandardConverterRegisters()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $registryValueConverter = $container->get('pim_connector.array_converter.flat_to_standard.product.value_converter.registry');
 
@@ -32,7 +32,7 @@ class PimTest extends KernelTestCase
     public function testStandardToFlatConverterRegisters()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $registryValueConverter = $container->get('pim_connector.array_converter.standard_to_flat.product.value_converter.registry');
 
@@ -47,7 +47,7 @@ class PimTest extends KernelTestCase
     public function testAttributeComparedSuccessfully()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $registryComparator = $container->get('pim_catalog.comparator.registry');
 
@@ -59,7 +59,7 @@ class PimTest extends KernelTestCase
     public function testScalarValueCreated()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $valueFactory = $container->get('pim_catalog.factory.value');
 
@@ -77,7 +77,7 @@ class PimTest extends KernelTestCase
     public function testProductUpdatedSuccessfully()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $repository = $this->createMock(IdentifiableObjectRepositoryInterface::class);
 
@@ -99,7 +99,7 @@ class PimTest extends KernelTestCase
     public function testQueryBuilderFiltersCorrectly($operator, $service)
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');

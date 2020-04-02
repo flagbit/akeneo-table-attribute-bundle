@@ -17,6 +17,7 @@
 
     <php>
         <env name="KERNEL_CLASS" value="Flagbit\Bundle\TableAttributeBundle\Test\Kernel\TestKernel"/>
+        <env name="APP_ENV" value="test"/>
     </php>
 
     <filter>
