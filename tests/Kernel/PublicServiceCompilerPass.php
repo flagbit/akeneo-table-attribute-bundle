@@ -3,13 +3,11 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Kernel;
 
-
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class PublicServiceCompilerPass implements CompilerPassInterface
 {
-
     /**
      * @var array
      */
@@ -17,7 +15,6 @@ class PublicServiceCompilerPass implements CompilerPassInterface
 
     public function __construct(array $serviceIds)
     {
-
         $this->serviceIds = $serviceIds;
     }
 

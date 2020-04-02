@@ -1,0 +1,9 @@
+akeneo_storage_utils:
+    mapping_overrides:
+        -
+            original: Akeneo\Pim\Structure\Component\Model\AttributeOption
+            override: Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption
+
+
+parameters:
+    doctrine.default_entity_manager: default
