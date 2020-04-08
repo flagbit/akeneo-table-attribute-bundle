@@ -2,16 +2,17 @@
 
 namespace Flagbit\Bundle\TableAttributeBundle\Test\Pim;
 
-use Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
 use Akeneo\Pim\Enrichment\Bundle\Elasticsearch\Filter\Attribute\OptionFilter;
-use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Akeneo\Pim\Enrichment\Component\Product\Comparator\Attribute\ScalarComparator;
-use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FilterRegistry;
-use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
-use Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\AttributeSetter;
-use Akeneo\Pim\Enrichment\Component\Product\Value\ScalarValue;
 use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\FlatToStandard\ValueConverter\TextConverter as FlatToStandardTextConverter;
 use Akeneo\Pim\Enrichment\Component\Product\Connector\ArrayConverter\StandardToFlat\Product\ValueConverter\TextConverter as StandardToFlatTextConverter;
+use Akeneo\Pim\Enrichment\Component\Product\Query\Filter\FilterRegistry;
+use Akeneo\Pim\Enrichment\Component\Product\Updater\Setter\AttributeSetter;
+use Akeneo\Pim\Enrichment\Component\Product\Value\ScalarValue;
+use Akeneo\Pim\Structure\Component\Model\Attribute;
+use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute as PublicApiAttribute;
+use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
+use Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class PimTest extends KernelTestCase
@@ -61,17 +62,23 @@ class PimTest extends KernelTestCase
         self::bootKernel();
         $container = self::$container;
 
-        $valueFactory = $container->get('pim_catalog.factory.value');
+        $valueFactory = $container->get('akeneo.pim.enrichment.factory.value');
 
-        $attribute = new Attribute();
-        $attribute->setAttributeType('flagbit_catalog_table');
-        $attribute->setLocalizable(false);
-        $attribute->setScopable(false);
-        $attribute->setCode('foo');
+        $attribute = new PublicApiAttribute(
+            'foo',
+            'flagbit_catalog_table',
+            [],
+            false,
+            false,
+            null,
+            null,
+            'flagbit_catalog_table',
+            []
+        );
 
-        $value = $valueFactory->create($attribute, null, null, '{}');
+        $value = $valueFactory->createWithoutCheckingData($attribute, null, null, '{}');
 
-        self::assertInstanceOf(ScalarValue::class, $value);
+        self::assertEquals(ScalarValue::value('foo', '{}'), $value);
     }
 
     public function testProductUpdatedSuccessfully()
