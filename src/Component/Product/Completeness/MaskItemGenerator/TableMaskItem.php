@@ -3,6 +3,7 @@
 namespace Flagbit\Bundle\TableAttributeBundle\Component\Product\Completeness\MaskItemGenerator;
 
 use Akeneo\Pim\Enrichment\Component\Product\Completeness\MaskItemGenerator\MaskItemGeneratorForAttributeType;
+use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 
 class TableMaskItem implements MaskItemGeneratorForAttributeType
 {
@@ -21,7 +22,7 @@ class TableMaskItem implements MaskItemGeneratorForAttributeType
     public function supportedAttributeTypes(): array
     {
         return [
-            \Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType::FLAGBIT_CATALOG_TABLE,
+            TableType::FLAGBIT_CATALOG_TABLE,
         ];
     }
 }

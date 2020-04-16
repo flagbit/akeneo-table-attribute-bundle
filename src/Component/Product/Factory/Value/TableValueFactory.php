@@ -6,6 +6,7 @@ use Akeneo\Pim\Enrichment\Component\Product\Factory\Value\ScalarValueFactory;
 use Akeneo\Pim\Enrichment\Component\Product\Model\ValueInterface;
 use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
 use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
 
 final class TableValueFactory extends ScalarValueFactory
 {
@@ -28,6 +29,6 @@ final class TableValueFactory extends ScalarValueFactory
 
     public function supportedAttributeType(): string
     {
-        return \Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType::FLAGBIT_CATALOG_TABLE;
+        return TableType::FLAGBIT_CATALOG_TABLE;
     }
 }
