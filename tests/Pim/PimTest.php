@@ -13,6 +13,8 @@ use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute as PublicApiAttribute;
 use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
 use Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
+use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
+use Flagbit\Bundle\TableAttributeBundle\Component\Product\Factory\Value\TableValueFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class PimTest extends KernelTestCase
@@ -98,6 +100,50 @@ class PimTest extends KernelTestCase
         $updater = $registryUpdater->getAttributeSetter($attribute);
 
         self::assertInstanceOf(AttributeSetter::class, $updater);
+    }
+
+    public function testSupportsTableMaskItem()
+    {
+        self::bootKernel();
+        $container = self::$container;
+
+        $maskItemGenerator = $container->get('akeneo.pim.enrichment.completeness.mask_item_generator.generator');
+
+        $tableMask = $maskItemGenerator->generate('code', TableType::FLAGBIT_CATALOG_TABLE, 'channel', 'locale', 'value');
+
+        self::assertSame(['code-channel-locale'], $tableMask);
+    }
+
+    public function testSupportsTableValueFactory()
+    {
+        self::bootKernel();
+        $container = self::$container;
+
+        $attribute = new PublicApiAttribute(
+            'foo',
+            'flagbit_catalog_table',
+            [],
+            false,
+            false,
+            null,
+            null,
+            'flagbit_catalog_table',
+            []
+        );
+
+        $valueFactory = $container->get('akeneo.pim.enrichment.factory.value');
+
+        $tableValue = $valueFactory->createByCheckingData($attribute, null, null, '{}');
+
+        self::assertInstanceOf(ScalarValue::class, $tableValue);
+        self::assertSame('foo', $tableValue->getAttributeCode());
+        self::assertSame('{}', $tableValue->getData());
+
+        $tableValue = $valueFactory->createWithoutCheckingData($attribute, null, null, '{}');
+
+        self::assertInstanceOf(ScalarValue::class, $tableValue);
+        self::assertSame('foo', $tableValue->getAttributeCode());
+        self::assertSame('{}', $tableValue->getData());
     }
 
     /**
