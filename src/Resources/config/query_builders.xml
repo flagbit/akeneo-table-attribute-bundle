@@ -21,6 +21,8 @@
             <tag name="pim_catalog.elasticsearch.query.product_filter" priority="30"/>
             <tag name="pim_catalog.elasticsearch.query.product_model_filter" priority="30"/>
             <tag name="pim_catalog.elasticsearch.query.product_and_product_model_filter" priority="30"/>
+            <tag name="pimee_workflow.elasticsearch.query.published_product_filter" priority="50"/>
+            <tag name="pimee_workflow.elasticsearch.query.product_proposal_filter" priority="50"/>
         </service>
     </services>
 </container>

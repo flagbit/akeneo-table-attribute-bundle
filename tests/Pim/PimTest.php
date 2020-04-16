@@ -126,6 +126,25 @@ class PimTest extends KernelTestCase
         self::assertInstanceOf(OptionFilter::class, $filter);
     }
 
+    /**
+     * @dataProvider queryBuildersProvider
+     */
+    public function testQueryBuilderAttributeFiltersCorrectly($operator, $service)
+    {
+        self::bootKernel();
+        $container = self::$container;
+
+        $attribute = new Attribute();
+        $attribute->setType('flagbit_catalog_table');
+
+        /** @var FilterRegistry $filterRegistry */
+        $filterRegistry = $container->get($service);
+
+        $filter = $filterRegistry->getAttributeFilter($attribute, $operator);
+
+        self::assertInstanceOf(OptionFilter::class, $filter);
+    }
+
     public function queryBuildersProvider()
     {
         return [
@@ -141,6 +160,16 @@ class PimTest extends KernelTestCase
             ['EMPTY', 'pim_catalog.query.filter.product_and_product_model_registry'],
             ['NOT EMPTY', 'pim_catalog.query.filter.product_and_product_model_registry'],
             ['NOT IN', 'pim_catalog.query.filter.product_and_product_model_registry'],
+            // service doesn't exist in community. See tests/Kernel/config/packages/test/ee-services.yml
+            ['IN', 'pimee_workflow.query.filter.product_proposal_registry'],
+            ['EMPTY', 'pimee_workflow.query.filter.product_proposal_registry'],
+            ['NOT EMPTY', 'pimee_workflow.query.filter.product_proposal_registry'],
+            ['NOT IN', 'pimee_workflow.query.filter.product_proposal_registry'],
+            // service doesn't exist in community. See tests/Kernel/config/packages/test/ee-services.yml
+            ['IN', 'pimee_workflow.query.filter.published_product_registry'],
+            ['EMPTY', 'pimee_workflow.query.filter.published_product_registry'],
+            ['NOT EMPTY', 'pimee_workflow.query.filter.published_product_registry'],
+            ['NOT IN', 'pimee_workflow.query.filter.published_product_registry'],
         ];
     }
 }

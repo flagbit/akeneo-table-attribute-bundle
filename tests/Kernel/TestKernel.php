@@ -40,5 +40,7 @@ class TestKernel extends \Kernel
             'form.extension',
         ];
         $container->addCompilerPass(new PublicServiceCompilerPass($serviceIds));
+        $container->addCompilerPass(new EnterpriseFilterStubPass('product_proposal'));
+        $container->addCompilerPass(new EnterpriseFilterStubPass('published_product'));
     }
 }
