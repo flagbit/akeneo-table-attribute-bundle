@@ -4,6 +4,8 @@ namespace spec\Flagbit\Bundle\TableAttributeBundle\Component\Product\Factory\Val
 
 use Akeneo\Pim\Enrichment\Component\Product\Value\ScalarValue;
 use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute;
+use Akeneo\Tool\Component\StorageUtils\Exception\InvalidPropertyTypeException;
+use EmptyIterator;
 use Flagbit\Bundle\TableAttributeBundle\Component\Product\Factory\Value\TableValueFactory;
 use PhpSpec\ObjectBehavior;
 
@@ -44,6 +46,20 @@ class TableValueFactorySpec extends ObjectBehavior
 
         $this->createByCheckingData($attribute, null, null, 'data')
             ->shouldBeLike(ScalarValue::value('code', 'data'));
+    }
+
+    public function it_throws_exception_on_nonscalar_data()
+    {
+        $attribute = $this->createAttribute(false, false);
+
+        $this->shouldThrow()->during('createByCheckingData', [$attribute, null, null, new EmptyIterator()]);
+    }
+
+    public function it_throws_exception_on_empty_data()
+    {
+        $attribute = $this->createAttribute(false, false);
+
+        $this->shouldThrow(InvalidPropertyTypeException::class)->during('createByCheckingData', [$attribute, null, null, "\0\n "]);
     }
 
     private function createAttribute(bool $isScopable, bool $isLocalizable): Attribute
