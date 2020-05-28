@@ -11,7 +11,7 @@ class AttributeOptionTypeExtensionTest extends KernelTestCase
     public function testAttributeOptionTypeExtended()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $formExtension = $container->get('form.extension');
 

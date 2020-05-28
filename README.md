@@ -60,21 +60,17 @@ Enable the bundle in the kernel:
 
 ``` php
 <?php
-// app/AppKernel.php
+// config/bundles.php
 
-protected function registerProjectBundles()
-{
-    return [
-        // ...
-        new Flagbit\Bundle\TableAttributeBundle\FlagbitTableAttributeBundle(),
-        // ...
-    ];
-}
+return [
+    // ...
+    Flagbit\Bundle\TableAttributeBundle\FlagbitTableAttributeBundle::class => ['all' => true],
+];
 ```
 
 ### Configuration
 
-Add `mapping_overrides` in `app/config/config.yml`:
+Add `mapping_overrides` in a new `config/packages/table.yml` file or an existing one:
 
 ``` yml
 akeneo_storage_utils:
@@ -99,8 +95,7 @@ php bin/console --env=prod doctrine:schema:update --force
 Build and install the new front-end dependencies (new icon, etc.)
 
 ``` bash
-php bin/console --env=prod pim:installer:assets --symlink --clean
-yarn run webpack
+make cache assets css javascript-prod
 ```
 
 In case you're using Doctrine migrations, you have to create a new migration class
@@ -119,6 +114,7 @@ php bin/console --env=prod doctrine:migrations:migrate
 
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
+* 4.0
 * 3.2 (LTS)
 * 3.0 (LTS)
 * 2.3 (LTS)

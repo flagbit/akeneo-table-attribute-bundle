@@ -11,7 +11,7 @@ class TableGuesserTest extends KernelTestCase
     public function testTableGuesserIsTaggedCorrectly()
     {
         self::bootKernel();
-        $container = self::$kernel->getContainer();
+        $container = self::$container;
 
         $chainedAttributeConstraintGuesser = $container->get('pim_catalog.validator.constraint_guesser.chained_attribute');
 
