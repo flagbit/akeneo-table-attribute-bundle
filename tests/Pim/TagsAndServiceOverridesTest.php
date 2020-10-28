@@ -14,10 +14,9 @@ use Akeneo\Pim\Structure\Component\Query\PublicApi\AttributeType\Attribute as Pu
 use Akeneo\Pim\Structure\Component\Repository\AttributeRepositoryInterface;
 use Akeneo\Tool\Component\StorageUtils\Repository\IdentifiableObjectRepositoryInterface;
 use Flagbit\Bundle\TableAttributeBundle\AttributeType\TableType;
-use Flagbit\Bundle\TableAttributeBundle\Component\Product\Factory\Value\TableValueFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class PimTest extends KernelTestCase
+class TagsAndServiceOverridesTest extends KernelTestCase
 {
 
     public function testFlatToStandardConverterRegisters()

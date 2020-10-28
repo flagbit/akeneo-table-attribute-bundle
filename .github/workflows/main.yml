@@ -24,11 +24,9 @@ jobs:
           php-version: "${{ matrix.php-versions }}"
           extensions: "intl, xdebug, imagick, apcu"
 
-      # Install / Prepare
       - name: "Install PHP dependencies"
         run: "composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
 
-      # CI
       - name: "Linting"
         run: "vendor/bin/phplint ./src"
       - name: "Code Sniffer"
@@ -56,10 +54,10 @@ jobs:
       - name: "Install PHP dependencies"
         run: "composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
 
-#      - name: "yarn install"
-#        uses: "borales/actions-yarn@v2.0.0"
-#        with:
-#          cmd: "install"
+      - name: "yarn install"
+        uses: "borales/actions-yarn@v2.0.0"
+        with:
+          cmd: "install"
 
-#      - name: "Check for obsolete ts exports"
-#        run: "yarn run tests"
+      - name: "Run frontend tests"
+        run: "yarn run test"
