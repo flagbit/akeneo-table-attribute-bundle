@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="pcmt.updater.copier.table_attribute"
+                 class="%pim_catalog.updater.copier.value.class%"
+                 parent="pim_catalog.updater.copier.abstract">
+            <tag name="pim_catalog.updater.copier"/>
+            <argument type="service" id="pim_standard_format_serializer" />
+            <argument type="collection">
+                <argument>flagbit_catalog_table</argument>
+            </argument>
+            <argument type="collection">
+                <argument>flagbit_catalog_table</argument>
+            </argument>
+        </service>
+
+    </services>
+</container>
