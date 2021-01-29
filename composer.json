@@ -34,7 +34,7 @@
   },
   "require": {
     "ext-json": "*",
-    "akeneo/pim-community-dev": "^4.0"
+    "akeneo/pim-community-dev": "^5.0"
   },
   "require-dev": {
     "phpspec/phpspec": "^6.1",
