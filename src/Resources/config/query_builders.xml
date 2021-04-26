@@ -7,7 +7,7 @@
     <services>
 
         <service id="flagbit_catalog_table.doctrine.query.filter.columns" class="%pim_catalog.query.elasticsearch.filter.option.class%">
-            <argument type="service" id="pim_catalog.validator.helper.attribute"/>
+            <argument type="service" id="pim_catalog.validator.helper.attribute_filter"/>
             <argument type="service" id="pim_catalog.repository.attribute_option"/>
             <argument type="collection">
                 <argument>flagbit_catalog_table</argument>
