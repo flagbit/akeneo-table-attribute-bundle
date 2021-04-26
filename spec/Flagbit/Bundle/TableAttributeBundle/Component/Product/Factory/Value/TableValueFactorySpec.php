@@ -64,7 +64,7 @@ class TableValueFactorySpec extends ObjectBehavior
 
     private function createAttribute(bool $isScopable, bool $isLocalizable): Attribute
     {
-        return new Attribute('code', 'flagbit_catalog_table', [], $isLocalizable, $isScopable, null, false, 'backend', ['de_DE', 'en_US']);
+        return new Attribute('code', 'flagbit_catalog_table', [], $isLocalizable, $isScopable, null, null, false, 'backend', ['de_DE', 'en_US']);
     }
 
     public function it_supports_attribute_type()

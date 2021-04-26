@@ -16,6 +16,7 @@ imports:
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/test_fake/oneup_flysystem.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/oro_filter.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/oro_translation.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/test/storage.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/security.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/test/security.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/sensio_framework_extra.yml' }
@@ -25,6 +26,7 @@ imports:
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/pim_parameters.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/services.yml' }
     - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/pim.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/monolog.yml' }
 #    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/doctrine.yml' }
 
 doctrine:
