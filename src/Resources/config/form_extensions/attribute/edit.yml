@@ -1,12 +1,9 @@
 extensions:
     flagbit-catalog-table-attribute-edit-form:
-        module: pim/attribute-edit-form/tab/choices
+        module: flagbit/product/field/choices
         parent: pim-attribute-edit-form-form-tabs
         targetZone: container
         position: 110
-        config:
-            label: flagbit.table_attribute.form.attribute.tab.title
-            activeForTypes: [flagbit_catalog_table]
 
     flagbit-catalog-table-attribute-edit-form-options-grid:
         module: flagbit/options-grid

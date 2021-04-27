@@ -15,6 +15,7 @@ config:
         flagbit/tablecolumnview:                        flagbittableattribute/js/tablecolumnview
         flagbit/inittable:                              flagbittableattribute/js/inittable
         flagbit/options-grid:                           flagbittableattribute/js/options-grid
+        flagbit/product/field/choices:                  flagbittableattribute/js/product/field/choices
 
     config:
         pim/form/common/attributes/create-button:
