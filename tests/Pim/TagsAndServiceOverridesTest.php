@@ -73,6 +73,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
             false,
             null,
             null,
+            null,
             'flagbit_catalog_table',
             []
         );
@@ -124,6 +125,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
             [],
             false,
             false,
+            null,
             null,
             null,
             'flagbit_catalog_table',

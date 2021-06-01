@@ -14,6 +14,7 @@ describe('Form Extensions', function() {
                 operators: [ 'IN', 'EMPTY', 'NOT EMPTY' ]
             },
             position: 100,
+            feature: null,
             code: 'akeneo-attribute-select-filter'
         };
 

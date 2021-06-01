@@ -6,7 +6,7 @@ build:
           - libmagickwand-dev
           - libmagickcore-dev
         php:
-          version: 7.3
+          version: 7.4
           pecl_extensions:
             - apcu
             - imagick
