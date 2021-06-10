@@ -27,6 +27,14 @@
             <tag name="pim_internal_api_serializer.normalizer" priority="200"/>
         </service>
 
+        <service id="flagbit_table_attribute.catalog.normalizer.standard.attribute_option"
+                 class="Flagbit\Bundle\TableAttributeBundle\Normalizer\AttributeOptionNormalizer"
+                 decorates="pim_catalog.normalizer.standard.attribute_option"
+                 decoration-inner-name="pim_catalog.normalizer.standard.attribute_option_base">
+            <argument type="service" id="pim_catalog.normalizer.standard.attribute_option_base"/>
+            <tag name="pim_standard_format_serializer.normalizer" priority="90"/>
+        </service>
+
         <service id="flagbit_table_attribute.form.extension.attribute_option" class="%flagbit_table_attribute.form.extension.attribute_option.class%">
             <tag name="form.type_extension" extended_type="Akeneo\Pim\Structure\Bundle\Form\Type\AttributeOptionType"
                  alias="pim_enrich_attribute_option" />
