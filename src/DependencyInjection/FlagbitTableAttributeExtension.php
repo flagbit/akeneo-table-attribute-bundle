@@ -33,5 +33,6 @@ class FlagbitTableAttributeExtension extends Extension
         $loader->load('query_builders.xml');
         $loader->load('factories.xml');
         $loader->load('doctrine.xml');
+        $loader->load('copiers.xml');
     }
 }

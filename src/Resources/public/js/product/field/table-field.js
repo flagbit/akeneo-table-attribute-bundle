@@ -45,7 +45,7 @@ define([
                                         var column = this.convertBackendItem(value);
                                         this.columns[column.id] = column;
                                     }.bind(this));
-                                    initTable.init(this.$('.flagbit-table-attribute'), this.columns);
+                                    initTable.init(this.$('.flagbit-table-attribute'), this.columns, this.getEditMode());
                                     // initialize dran & drop sorting
                                     this.$('.flagbit-table-values tbody').sortable({
                                         handle: ".handle",
@@ -107,7 +107,8 @@ define([
                     text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code),
                     config: item.type_config,
                     type: item.type,
-                    func: this.createColumnFunctions(item)
+                    func: this.createColumnFunctions(item),
+                    editMode: this.getEditMode()
                 };
             },
             createColumnFunctions: function(item) {
@@ -128,10 +129,10 @@ define([
 
                 switch (item.type) {
                     case "text":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' <%= column.editMode === 'view' ? 'disabled' : '' %>/>";
                         break;
                     case "number":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='number' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' step='<%= \'is_decimal\' in column.config && true === column.config.is_decimal ? 0.1 : 1 %>' <%= column.editMode === 'view' ? 'disabled' : '' %>/>";
                         if ('is_decimal' in item.type_config && item.type_config.is_decimal === true) {
                             parser = function (td) {
                                 return parseFloat($('input', td).val());
@@ -143,7 +144,7 @@ define([
                         }
                         break;
                     case "select":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' <%= column.editMode === 'view' ? 'disabled' : '' %>/>";
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
@@ -170,7 +171,7 @@ define([
                         }.bind(this);
                         break;
                     case "select_from_url":
-                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
+                        fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %>' value='<%= _.escape(column.func.formTypeValue(value)) %>' <%= column.editMode === 'view' ? 'disabled' : '' %>/>";
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
