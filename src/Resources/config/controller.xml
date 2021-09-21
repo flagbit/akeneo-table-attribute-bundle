@@ -9,7 +9,7 @@
                  class="Flagbit\Bundle\TableAttributeBundle\Controller\AjaxOptionController"
         >
             <argument type="service" id="pim_ui.controller.ajax_option" />
-            <tag name="controller"/>
+            <tag name="controller.service_arguments"/>
         </service>
     </services>
 </container>
