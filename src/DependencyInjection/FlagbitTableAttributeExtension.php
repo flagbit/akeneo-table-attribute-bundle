@@ -23,6 +23,7 @@ class FlagbitTableAttributeExtension extends Extension
         $this->processConfiguration($configuration, $configs);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('controller.xml');
         $loader->load('services.xml');
         $loader->load('array_converters.xml');
         $loader->load('attribute_types.xml');
