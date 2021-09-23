@@ -10,10 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AjaxOptionController
 {
-    /**
-     * @var BaseAjaxOptionController
-     */
-    private $baseController;
+    private BaseAjaxOptionController $baseController;
 
     public function __construct(BaseAjaxOptionController $baseController)
     {
