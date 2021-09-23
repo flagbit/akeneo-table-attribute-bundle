@@ -27,6 +27,10 @@ function (
          * {@inheritdoc}
          */
         configure: function () {
+            if (!this.isActive()) {
+                return;
+            }
+
             this.trigger('tab:register', {
                 code: this.code,
                 label: __('flagbit.table_attribute.form.attribute.tab.title')
@@ -39,9 +43,17 @@ function (
          * {@inheritdoc}
          */
         render: function () {
+            if (!this.isActive()) {
+                return;
+            }
+
             this.$el.html(this.template());
 
             this.renderExtensions();
+        },
+
+        isActive: function () {
+            return ['flagbit_catalog_table'].includes((this.getRoot()).getType());
         }
     });
 });
