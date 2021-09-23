@@ -112,7 +112,6 @@ define([
                 };
             },
             createColumnFunctions: function(item) {
-                // TODO Move this mapping to Symfony tags for every type to make this extendable
                 var fieldTemplate;
                 var parser = function (td) {
                     return $('input', td).val();
@@ -148,6 +147,11 @@ define([
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
+
+                            if (Array.isArray(option)) {
+                                return null;
+                            }
+
                             return option.id;
                         };
 
@@ -175,6 +179,11 @@ define([
 
                         parser = function (td) {
                             var option = $('input', td).select2('data');
+
+                            if (Array.isArray(option)) {
+                                return null;
+                            }
+
                             return option.id;
                         };
 
