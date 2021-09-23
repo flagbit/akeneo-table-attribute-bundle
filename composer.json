@@ -32,22 +32,17 @@
       "Flagbit\\Bundle\\TableAttributeBundle\\Test\\": "tests/"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/akeneo/pim-community-dev.git",
-      "branch": "master",
-      "no-api": true
-    }
-  ],
   "require": {
     "ext-json": "*",
-    "akeneo/pim-community-dev": "^3.2"
+    "akeneo/pim-community-dev": "^5.0"
   },
   "require-dev": {
-    "phpspec/phpspec": "^5.1",
-    "phpunit/phpunit": "^7.1",
-    "squizlabs/php_codesniffer": "*",
-    "overtrue/phplint": "*"
+    "phpspec/phpspec": "^6.1",
+    "phpunit/phpunit": "^8.0",
+    "squizlabs/php_codesniffer": "^3.5",
+    "overtrue/phplint": "^1.2",
+    "symfony/debug-bundle": "^4.4",
+    "symfony/web-profiler-bundle": "^4.4",
+    "symfony/web-server-bundle": "^4.4"
   }
 }

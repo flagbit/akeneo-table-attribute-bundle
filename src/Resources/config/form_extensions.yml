@@ -2,11 +2,5 @@ attribute_fields:
     flagbit-table-field: flagbit/table-field
 extensions:
     akeneo-attribute-select-filter:
-        module: pim/filter/attribute/select
         config:
-            url: pim_ui_ajaxentity_list
-            entityClass: "%pim_catalog.entity.attribute_option.class%"
-            operators:
-                - IN
-                - EMPTY
-                - NOT EMPTY
+            entityClass: Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption

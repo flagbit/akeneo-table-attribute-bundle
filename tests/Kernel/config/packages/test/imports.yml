@@ -1,0 +1,63 @@
+# Imports every packages and packages/test YAML, except doctrine.yml and test/oneup_flysystem.yml
+imports:
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_api.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_batch.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_elasticsearch.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_pim_enrichment.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_pim_user.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/akeneo_storage_utils.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/fos_auth_server.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/fos_js_routing.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/fos_rest.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/framework.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/test/framework.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/liip_imagine.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/oneup_flysystem.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/test_fake/oneup_flysystem.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/oro_filter.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/oro_translation.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/test/storage.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/security.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/test/security.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/sensio_framework_extra.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/swiftmailer.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/twig.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/gedmo_doctrine_extensions.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/pim_parameters.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/services.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/services/pim.yml' }
+    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/monolog.yml' }
+#    - { resource: '../../../../../vendor/akeneo/pim-community-dev/config/packages/doctrine.yml' }
+
+doctrine:
+    dbal:
+        default_connection:   default
+        connections:
+            default:
+                driver: 'pdo_mysql'
+                dbname: '%env(APP_DATABASE_NAME)%'
+                host: '%env(APP_DATABASE_HOST)%'
+                port: '%env(APP_DATABASE_PORT)%'
+                user: '%env(APP_DATABASE_USER)%'
+                password: '%env(APP_DATABASE_PASSWORD)%'
+                charset: utf8mb4
+                default_table_options:
+                    charset: utf8mb4
+                    collate: utf8mb4_unicode_ci
+                    row_format: DYNAMIC
+                server_version: '8.0'
+                mapping_types:
+                    json: string
+        types:
+            datetime: Akeneo\Tool\Bundle\StorageUtilsBundle\Doctrine\DBAL\Types\UTCDateTimeType
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        auto_mapping: true
+        resolve_target_entities:
+            placeholder: placeholder
+        mappings:
+            tree:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Tree\Entity
+                dir: '%kernel.root_dir%/../../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity'

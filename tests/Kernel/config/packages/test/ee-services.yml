@@ -1,0 +1,14 @@
+# Because an Open Source Akeneo project can't' install Enterprise dependencies
+# this service file is using placeholder to make enterprise features testable.
+services:
+    pimee_workflow.query.filter.product_proposal_registry:
+        class: '%pim_catalog.query.filter.registry.class%'
+        public: true
+        arguments:
+            - '@pim_catalog.repository.attribute'
+
+    pimee_workflow.query.filter.published_product_registry:
+        class: '%pim_catalog.query.filter.registry.class%'
+        public: true
+        arguments:
+            - '@pim_catalog.repository.attribute'

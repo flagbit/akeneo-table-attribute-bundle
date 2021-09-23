@@ -1,0 +1,18 @@
+{
+  "name": "pim-enterprise-standard",
+  "description": "Akeneo PIM Enterprise Standard Edition",
+  "homepage": "http://www.akeneo.com",
+  "private": true,
+  "config": {
+    "source": "vendor/akeneo/pim-community-dev",
+    "styles": "vendor/akeneo/pim-community-dev/frontend/build/compile-less.js"
+  },
+  "scripts": {
+    "update-extensions": "cd tests && node ../vendor/akeneo/pim-community-dev/frontend/build/update-extensions.js",
+    "test": "yarn update-extensions && jest --no-cache --config jest.config.js"
+  },
+  "workspaces": [
+    "vendor/akeneo/pim-community-dev",
+    "vendor/akeneo/pim-community-dev/src/Akeneo/Connectivity/Connection/front"
+  ]
+}

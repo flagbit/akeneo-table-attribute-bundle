@@ -17,6 +17,14 @@
 
     <php>
         <env name="KERNEL_CLASS" value="Flagbit\Bundle\TableAttributeBundle\Test\Kernel\TestKernel"/>
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_INDEX_HOSTS" value="elasticsearch:9200"/>
+        <env name="APP_DATABASE_HOST" value="mysql"/>
+        <env name="APP_DATABASE_PORT" value=""/>
+        <env name="APP_DATABASE_NAME" value="akeneo_pim"/>
+        <env name="APP_DATABASE_USER" value="akeneo_pim"/>
+        <env name="APP_DATABASE_PASSWORD" value="akeneo_pim"/>
+        <env name="APP_DEFAULT_LOCALE" value="en"/>
     </php>
 
     <filter>
