@@ -68,7 +68,7 @@ return [
 ];
 ```
 
-### Configuration
+#### Configuration
 
 Add `mapping_overrides` in a new `config/packages/table.yml` file or an existing one:
 
@@ -78,6 +78,16 @@ akeneo_storage_utils:
         -
             original: Akeneo\Pim\Structure\Component\Model\AttributeOption
             override: Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption
+```
+
+#### Import the routing
+
+Now that you have activated and configured the bundle, you need to import the routing files.
+
+``` yml
+# config/routes/flagbit_table_attribute.yml
+flagbit_table_attribute:
+    resource: "@FlagbitTableAttributeBundle/Resources/config/routing.yml"
 ```
 
 Clear the cache:
