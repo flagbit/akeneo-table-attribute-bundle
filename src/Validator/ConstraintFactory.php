@@ -49,6 +49,8 @@ class ConstraintFactory
         return new Table(['constraints' => [
             new Collection([
                 'fields' => $constraints,
+                // This is due to missing fields created by the older TableAttribute versions, that were allowed before
+                'allowMissingFields' => true,
             ])
         ]]);
     }
