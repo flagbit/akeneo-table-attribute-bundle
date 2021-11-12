@@ -105,7 +105,7 @@ php bin/console --env=prod doctrine:schema:update --force
 Build and install the new front-end dependencies (new icon, etc.)
 
 ``` bash
-make cache assets css javascript-prod
+make cache assets css javascript-prod javascript-extensions
 ```
 
 In case you're using Doctrine migrations, you have to create a new migration class
