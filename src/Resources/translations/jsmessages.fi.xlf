@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fi" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="flagbit_table_attribute_add_column_label">
+                <source>flagbit.table_attribute.add_column.label</source>
+                <target>Lisää kolumni</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_alert_json_error_text">
+                <source>flagbit.table_attribute.alert.json_error.text</source>
+                <target>Taulukon JSON:in muotoilu on virheellinen.</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_alert_json_error_title">
+                <source>flagbit.table_attribute.alert.json_error.title</source>
+                <target>JSON muotoiluvirhe</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_code_label">
+                <source>flagbit.table_attribute.code.label</source>
+                <target>Koodi</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_options_label">
+                <source>flagbit.table_attribute.simpleselect_options.label</source>
+                <target>Vaihtoehdot</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_options_url_label">
+                <source>flagbit.table_attribute.simpleselect_options_url.label</source>
+                <target>Vaihtoehdot URL</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_config_label">
+                <source>flagbit.table_attribute.config.label</source>
+                <target>Konfigurointi</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_type_label">
+                <source>flagbit.table_attribute.type.label</source>
+                <target>Tyyppi</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_validation_label">
+                <source>flagbit.table_attribute.validation.label</source>
+                <target>Validointi</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_no_configuration_text">
+                <source>flagbit.table_attribute.no_configuration.text</source>
+                <target>Konfigurointivaihtoehdot puuttuvat.</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_add_new_row_label">
+                <source>flagbit.table_attribute.add_new_row.label</source>
+                <target>Lisää rivi</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_number_is_decimal_label">
+                <source>flagbit.table_attribute.number_is_decimal.label</source>
+                <target>Desimaali</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_from_url_label">
+                <source>flagbit.table_attribute.simpleselect_from_url.label</source>
+                <target>Yksinkertainen valinta URL:illa</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_catalog_table">
+                <source>pim_enrich.entity.attribute.property.type.flagbit_catalog_table</source>
+                <target>Taulukko</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_form_attribute_tab_title">
+                <source>flagbit.table_attribute.form.attribute.tab.title</source>
+                <target>Kolumnit</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_key_label">
+                <source>flagbit.table_attribute.simpleselect.key.label</source>
+                <target>Avain</target>
+            </trans-unit>
+
+            <trans-unit id="flagbit_table_attribute_simpleselect_value_label">
+                <source>flagbit.table_attribute.simpleselect.value.label</source>
+                <target>Arvo</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
