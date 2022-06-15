@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="flagbit_table_attribute_add_column_label">
                 <source>flagbit.table_attribute.add_column.label</source>
-                <target>Lisää kolumni</target>
+                <target>Lisää sarake</target>
             </trans-unit>
 
             <trans-unit id="flagbit_table_attribute_alert_json_error_text">
@@ -74,7 +74,7 @@
 
             <trans-unit id="flagbit_table_attribute_form_attribute_tab_title">
                 <source>flagbit.table_attribute.form.attribute.tab.title</source>
-                <target>Kolumnit</target>
+                <target>Sarakkeet</target>
             </trans-unit>
 
             <trans-unit id="flagbit_table_attribute_simpleselect_key_label">
