@@ -1,3 +1,8 @@
+# Editor directories and files
+.idea
+.vscode
+
+# Akeneo
 /.phplint-cache
 /vendor/
 /phpunit.xml
@@ -10,3 +15,4 @@
 /tests/public/js/extensions.json
 /.phpunit.result.cache
 /node_modules
+.env

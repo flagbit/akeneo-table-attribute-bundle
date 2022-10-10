@@ -42,13 +42,14 @@ Provides a _table_ as attribute type where you can define a set of columns of di
 
 #### Import/Export
 
-The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export profile for table information.
+The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export
+profile for table information.
 
-All product information related to attributes of type _table_ will be imported/exported as JSON. 
+All product information related to attributes of type _table_ will be imported/exported as JSON.
 
 ## Installation
 
-Simply install the package with the following command: 
+Simply install the package with the following command:
 
 ``` bash
 composer require flagbit/table-attribute-bundle

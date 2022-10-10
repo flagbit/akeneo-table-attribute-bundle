@@ -37,10 +37,12 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
     /**
      * Returns the name of the type being extended.
      *
-     * @return string The name of the type being extended
+     * @return array<string> The names of the types being extended
      */
-    public function getExtendedType()
+    public static function getExtendedTypes(): iterable
     {
-        return AttributeOptionType::class;
+        return [
+            AttributeOptionType::class
+        ];
     }
 }
