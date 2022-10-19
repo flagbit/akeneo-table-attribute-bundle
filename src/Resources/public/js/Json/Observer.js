@@ -1,9 +1,9 @@
-define(function() {
+define(function () {
 
     /**
      * @class
      */
-    var JsonGeneratorObserver = function() {
+    var JsonGeneratorObserver = function () {
 
         /**
          * @protected
@@ -17,9 +17,9 @@ define(function() {
          * @param {String} $action
          * @param {Function} $callable
          */
-        this.watch = function($action, $callable) {
+        this.watch = function ($action, $callable) {
 
-            if(!$watcher[$action]) {
+            if (!$watcher[$action]) {
                 $watcher[$action] = [];
             }
 
@@ -31,10 +31,10 @@ define(function() {
          * @public
          * @param {String} $action
          */
-        this.notify = function($action) {
-            if($watcher[$action]) {
-                for(var $i in $watcher[$action]) {
-                    if($watcher[$action].hasOwnProperty($i)) {
+        this.notify = function ($action) {
+            if ($watcher[$action]) {
+                for (var $i in $watcher[$action]) {
+                    if ($watcher[$action].hasOwnProperty($i)) {
                         var $callable = $watcher[$action][$i];
 
                         $callable();

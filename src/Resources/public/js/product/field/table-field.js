@@ -30,7 +30,7 @@ define([
             renderInput: function (context) {
                 return this.fieldTemplate(context);
             },
-            postRender: function() {
+            postRender: function () {
                 this.getColumnUrl().then(function (columnUrl) {
 
                     $.ajax(
@@ -49,7 +49,7 @@ define([
                                     // initialize dran & drop sorting
                                     this.$('.flagbit-table-values tbody').sortable({
                                         handle: ".handle",
-                                        stop: function() {
+                                        stop: function () {
                                             this.updateJson();
                                         }.bind(this)
                                     });
@@ -79,10 +79,10 @@ define([
 
                 var values = [];
                 var columns = this.columns;
-                _.each(rows, function(row) {
+                _.each(rows, function (row) {
                     var fields = {};
 
-                    _.each($('td[data-code]', row), function(td) {
+                    _.each($('td[data-code]', row), function (td) {
                         var id = $(td).data('code');
                         fields[id] = columns[id].func.parseValue($(td));
                     });
@@ -110,7 +110,7 @@ define([
                     func: this.createColumnFunctions(item)
                 };
             },
-            createColumnFunctions: function(item) {
+            createColumnFunctions: function (item) {
                 var fieldTemplate;
                 var parser = function (td) {
                     return $('input', td).val();
@@ -161,7 +161,7 @@ define([
                             };
                             if ('options' in column.config) {
                                 var options = [];
-                                _.each(column.config.options, function(option, key) {
+                                _.each(column.config.options, function (option, key) {
                                     options.push({ id: key, text: option });
                                 });
                                 select2Config.data = options;
@@ -208,7 +208,7 @@ define([
                                     }
                                 };
                                 // initSelection needs to be cleaned up in the future without forcing a whole API
-                                select2Config.initSelection = function(element, callback) {
+                                select2Config.initSelection = function (element, callback) {
                                     var option = $(element).val();
 
                                     if (option !== '') {
@@ -243,5 +243,4 @@ define([
                 };
             }
         });
-    }
-);
+    });

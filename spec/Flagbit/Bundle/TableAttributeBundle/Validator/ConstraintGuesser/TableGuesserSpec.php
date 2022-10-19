@@ -11,6 +11,7 @@ use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintGuesser\TableGuesser
 use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Exception\ExceptionInterface;
 
 class TableGuesserSpec extends ObjectBehavior
 {
@@ -36,6 +37,9 @@ class TableGuesserSpec extends ObjectBehavior
         $this->supportAttribute($attribute)->shouldReturn(false);
     }
 
+    /**
+     * @throws ExceptionInterface
+     */
     public function it_creates_constraint_array(
         AttributeInterface $attribute,
         AttributeOption $attributeOption,
@@ -43,8 +47,7 @@ class TableGuesserSpec extends ObjectBehavior
         Constraint $notBlank,
         Constraint $email,
         Table $tableConstraint
-    )
-    {
+    ) {
         $attribute->getOptions()->willReturn(new ArrayCollection([
             $attributeOption->getWrappedObject(),
         ]));
@@ -62,12 +65,14 @@ class TableGuesserSpec extends ObjectBehavior
         $this->guessConstraints($attribute)->shouldReturn([$tableConstraint]);
     }
 
+    /**
+     * @throws ExceptionInterface
+     */
     public function it_creates_constraint_array_without_options(
         AttributeInterface $attribute,
         ConstraintFactory $constraintFactory,
         Table $tableConstraint
-    )
-    {
+    ) {
         $attribute->getOptions()->willReturn([]);
         $fieldConstraints  = [];
         $constraintFactory->createTableConstraint($fieldConstraints)->willReturn($tableConstraint);

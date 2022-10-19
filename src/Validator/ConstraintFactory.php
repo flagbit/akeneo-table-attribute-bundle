@@ -56,14 +56,14 @@ class ConstraintFactory
     }
 
     /**
-     * @param string           $class
-     * @param array|string|int $params
+     * @param string $class
+     * @param int|array|string $params
      *
      * @return Constraint
      *
-     * @throws \Symfony\Component\Validator\Exception\RuntimeException
+     * @throws RuntimeException
      */
-    private function createInstance($class, $params)
+    private function createInstance(string $class, int|array|string $params): Constraint
     {
         if (false === class_exists($class)) {
             $class = '\\Symfony\\Component\\Validator\\Constraints\\'.$class;

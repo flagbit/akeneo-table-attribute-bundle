@@ -1,9 +1,9 @@
-define(function() {
+define(function () {
 
     /**
      * @class
      */
-    var JsonGeneratorStorage = function() {
+    var JsonGeneratorStorage = function () {
 
         /**
          * @protected
@@ -15,7 +15,7 @@ define(function() {
          * @public
          * @param {Object} $_data
          */
-        this.write = function($_data) {
+        this.write = function ($_data) {
 
             $data = $_data;
         };
@@ -25,7 +25,7 @@ define(function() {
          * @public
          * @returns {Object}
          */
-        this.read = function() {
+        this.read = function () {
 
             return $data;
         };

@@ -6,7 +6,6 @@ use Flagbit\Bundle\TableAttributeBundle\Provider\Field\TableFieldProvider;
 use PhpSpec\ObjectBehavior;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 
-
 class TableFieldProviderSpec extends ObjectBehavior
 {
     public function it_is_initializable()
@@ -22,20 +21,16 @@ class TableFieldProviderSpec extends ObjectBehavior
         $this->getField($element)->shouldReturn('flagbit-table-field');
     }
 
-    public function it_checks_correct_support
-    (
+    public function it_checks_correct_support(
         AttributeInterface $attributeInterface
-    )
-    {
+    ) {
         $attributeInterface->getType()->willReturn('flagbit_catalog_table');
         $this->supports($attributeInterface)->shouldReturn(true);
     }
 
-    public function it_checks_incorrect_support
-    (
+    public function it_checks_incorrect_support(
         AttributeInterface $attributeInterface
-    )
-    {
+    ) {
         $attributeInterface->getType()->willReturn('foo_bar');
         $this->supports($attributeInterface)->shouldReturn(false);
     }

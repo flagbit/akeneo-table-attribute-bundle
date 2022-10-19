@@ -4,9 +4,10 @@ namespace Flagbit\Bundle\TableAttributeBundle\Test\Kernel;
 
 require_once __DIR__.'/../../vendor/akeneo/pim-community-dev/src/Kernel.php';
 
+use Kernel;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class TestKernel extends \Kernel
+class TestKernel extends Kernel
 {
     public function registerBundles(): iterable
     {

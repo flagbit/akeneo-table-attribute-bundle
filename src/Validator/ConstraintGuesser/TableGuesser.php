@@ -7,6 +7,7 @@ use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
 use Flagbit\Bundle\TableAttributeBundle\Validator\ConstraintFactory;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Akeneo\Pim\Enrichment\Component\Product\Validator\ConstraintGuesserInterface;
+use Symfony\Component\Validator\Exception\ExceptionInterface;
 
 class TableGuesser implements ConstraintGuesserInterface
 {
@@ -33,8 +34,9 @@ class TableGuesser implements ConstraintGuesserInterface
 
     /**
      * {@inheritdoc}
+     * @throws ExceptionInterface
      */
-    public function guessConstraints(AttributeInterface $attribute)
+    public function guessConstraints(AttributeInterface $attribute): array
     {
         $constraints = [];
 

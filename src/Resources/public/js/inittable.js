@@ -6,7 +6,7 @@ define(
             init: function ($target, columns) {
 
                 var $headerRow = $target.find('thead tr');
-                if($headerRow[0].innerHTML && $headerRow[0].innerHTML.length != 0){
+                if ($headerRow[0].innerHTML && $headerRow[0].innerHTML.length != 0) {
                     return;
                 }
 
@@ -29,7 +29,7 @@ define(
                 $headerRow.append(emptyTitle);
                 $footerRow.append(emptyTitle);
 
-                _.each(values, function(row) {
+                _.each(values, function (row) {
                     var htmlColumns = [];
                     _.each(columns, function (column) {
                         var value = "";

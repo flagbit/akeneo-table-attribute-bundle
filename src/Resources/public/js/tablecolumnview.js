@@ -21,7 +21,7 @@ define(
                 constraints: {},
                 type_config: {}
             },
-            attributesToJson: function() {
+            attributesToJson: function () {
                 if (typeof this.get('constraints') === 'object') {
                     this.set('constraints', JSON.stringify(this.get('constraints')));
                 }
@@ -77,8 +77,8 @@ define(
                     '</div>' +
                 '</td>'
             ),
-            editTemplate: _.template(
-                '<td class="AknGrid-bodyCell field-cell">' +
+        editTemplate: _.template(
+            '<td class="AknGrid-bodyCell field-cell">' +
                     '<div class="AknFieldContainer-inputContainer">' +
                         '<input type="text" class="attribute_option_code exclude AknTextField" value="<%= item.code %>"/>' +
                         '<i class="validation-tooltip hidden AknIconButton AknIconButton--hide AknIconButton--important" data-placement="top" data-toggle="tooltip"></i>' +
@@ -114,15 +114,15 @@ define(
                         '<span class="btn btn-small AknButtonList-item AknIconButton AknIconButton--small AknIconButton--important show-row"><i class="icon-remove"></i></span>' +
                     '</div>' +
                 '</td>'
-            ),
-            events: {
-                'click .show-row':   'stopEditItem',
-                'click .edit-row':   'startEditItem',
-                'click .delete-row': 'deleteItem',
-                'click .update-row': 'updateItem',
-                'keyup input':       'soil',
-                'keydown':           'cancelSubmit',
-                'change .attribute_option_type': 'changeType'
+        ),
+        events: {
+            'click .show-row':   'stopEditItem',
+            'click .edit-row':   'startEditItem',
+            'click .delete-row': 'deleteItem',
+            'click .update-row': 'updateItem',
+            'keyup input':       'soil',
+            'keydown':           'cancelSubmit',
+            'change .attribute_option_type': 'changeType'
             },
             editable: false,
             parent: null,
@@ -168,7 +168,7 @@ define(
                     types: types
                 }));
 
-                this.$el.find('.json-generator').each(function() {
+                this.$el.find('.json-generator').each(function () {
                     new JsonGenerator(this, types);
                 }).bind(types);
 
@@ -213,7 +213,8 @@ define(
                                 if (!this.model.id) {
                                     this.deleteItem();
                                 }
-                            }.bind(this));
+                            }.bind(this)
+                        );
                     } else {
                         if (!this.model.id) {
                             this.deleteItem();
@@ -256,17 +257,16 @@ define(
 
                             var response = xhr.responseJSON;
                             var _response = response;
-                            if(_response.children) {
+                            if (_response.children) {
                                 _response = _response.children;
                             }
                             if (_response && _response.code) {
                                 var error = _response.code;
                                 var message = '';
-                                if(_response.code) {
-                                    if(_response.code.errors) {
+                                if (_response.code) {
+                                    if (_response.code.errors) {
                                         message = _response.code.errors.join('<br/>');
-                                    }
-                                    else {
+                                    } else {
                                         message = _response.code;
                                     }
                                 }
@@ -279,7 +279,6 @@ define(
                                 this.$el.find('.AknIconButton--hide')
                                     .removeClass('AknIconButton--hide')
                                     .addClass('icon-warning-sign');
-
                             } else {
                                 Dialog.alert(
                                     __('alert.attribute_option.error_occured_during_submission'),
@@ -381,8 +380,8 @@ define(
                     '</tr>' +
                 '</tfoot>'
             ),
-            events: {
-                'click .option-add': 'addItem'
+        events: {
+            'click .option-add': 'addItem'
             },
             $target: null,
             locales: [],
@@ -439,7 +438,7 @@ define(
                     distance: 5,
                     cursor: 'move',
                     scroll: true,
-                    start: function(e, ui){
+                    start: function (e, ui) {
                         ui.placeholder.height($(ui.item[0]).height());
                     },
                     helper: function (e, ui) {
@@ -615,19 +614,20 @@ define(
 
         return function ($element) {
             var itemCollectionView = new ItemCollectionView(
-            {
-                $target: $element,
-                updateUrl: Routing.generate(
-                    'pim_enrich_attributeoption_index',
-                    {attributeId: $element.data('attribute-id')}
-                ),
+                {
+                    $target: $element,
+                    updateUrl: Routing.generate(
+                        'pim_enrich_attributeoption_index',
+                        {attributeId: $element.data('attribute-id')}
+                    ),
                 sortingUrl: Routing.generate(
                     'pim_enrich_attributeoption_update_sorting',
                     {attributeId: $element.data('attribute-id')}
                 ),
                 locales: $element.data('locales'),
                 sortable: $element.data('sortable')
-            });
+                }
+            );
 
             mediator.on('attribute:auto_option_sorting:changed', function (autoSorting) {
                 itemCollectionView.updateSortableStatus(!autoSorting);

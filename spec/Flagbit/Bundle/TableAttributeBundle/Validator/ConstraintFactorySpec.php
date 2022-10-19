@@ -8,6 +8,7 @@ use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Constraints as C;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
+use Symfony\Component\Validator\Exception\ExceptionInterface;
 
 class ConstraintFactorySpec extends ObjectBehavior
 {
@@ -76,6 +77,9 @@ class ConstraintFactorySpec extends ObjectBehavior
 
     // ConstraintFactory::createCollectionConstraint()
 
+    /**
+     * @throws ExceptionInterface
+     */
     public function it_creates_a_constraint_out_of_a_collection()
     {
         $constraints = [

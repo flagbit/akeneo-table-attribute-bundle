@@ -3,14 +3,14 @@ define(
         'flagbit/JsonGenerator/Observer',
         'oro/translator',
     ],
-    function(JsonGeneratorObserver, __) {
+    function (JsonGeneratorObserver, __) {
 
         /**
          * @class
          * @param {Boolean} $editable
          * @param {HTMLElement} $container
          */
-        var JsonGeneratorRendererSelectFromUrl = function($editable, $container) {
+        var JsonGeneratorRendererSelectFromUrl = function ($editable, $container) {
 
             /**
              * @public
@@ -22,7 +22,7 @@ define(
              * @public
              * @param {Object} $data
              */
-            this.render = function($data) {
+            this.render = function ($data) {
 
                 var $label = document.createElement('label');
                 $label.innerText = __('flagbit.table_attribute.simpleselect_options_url.label');
@@ -31,7 +31,7 @@ define(
                 $input.className = 'AknTextField';
                 $input.name = 'options_url';
                 $input.value = $data['options_url'] ? $data['options_url'] : '';
-                if(!$editable) {
+                if (!$editable) {
                     $input.disabled = true;
                 }
                 observeChanges($input);
@@ -45,7 +45,7 @@ define(
              * @public
              * @returns {Object}
              */
-            this.read = function() {
+            this.read = function () {
 
                 var $data = {};
 
@@ -58,7 +58,7 @@ define(
              * @protected
              * @param {HTMLInputElement} $input
              */
-            var observeChanges = function($input) {
+            var observeChanges = function ($input) {
                 $input.addEventListener('keyup', notify);
                 $input.addEventListener('blur', notify);
             }.bind(this);
@@ -67,7 +67,7 @@ define(
             /**
              * @protected
              */
-            var notify = function() {
+            var notify = function () {
 
                 this.observer.notify('update');
             }.bind(this);

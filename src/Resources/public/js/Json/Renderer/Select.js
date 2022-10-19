@@ -3,14 +3,14 @@ define(
         'flagbit/JsonGenerator/Observer',
         'oro/translator',
     ],
-    function(JsonGeneratorObserver, __) {
+    function (JsonGeneratorObserver, __) {
 
         /**
          * @class
          * @param {Boolean} $editable
          * @param {HTMLElement} $container
          */
-        var JsonGeneratorRendererSelect = function($editable, $container) {
+        var JsonGeneratorRendererSelect = function ($editable, $container) {
 
             /**
              * @protected
@@ -27,7 +27,7 @@ define(
              * @public
              * @param {Object} $data
              */
-            this.render = function($data) {
+            this.render = function ($data) {
 
                 var $label = document.createElement('label');
                 $label.innerText = __('flagbit.table_attribute.simpleselect_options.label');
@@ -37,8 +37,8 @@ define(
                 // needed!
                 this.getTable();
 
-                for(var $key in $data.options) {
-                    if($data.options.hasOwnProperty($key)) {
+                for (var $key in $data.options) {
+                    if ($data.options.hasOwnProperty($key)) {
                         var $value = $data.options[$key];
 
                         var $keyCol = createTableColumn($key);
@@ -47,7 +47,7 @@ define(
 
                         $row.appendChild($keyCol);
                         $row.appendChild($valCol);
-                        if($editable) {
+                        if ($editable) {
                             $row.appendChild(createDeleteButton($row));
                         }
                         this.getTable().appendChild($row);
@@ -60,13 +60,13 @@ define(
              * @public
              * @returns {Object}
              */
-            this.read = function() {
+            this.read = function () {
 
                 var $data = {options: {}};
 
                 var $collection = this.getTable().querySelectorAll('tr');
-                for(var $i in $collection) {
-                    if($collection.hasOwnProperty($i)) {
+                for (var $i in $collection) {
+                    if ($collection.hasOwnProperty($i)) {
                         var $tr = $collection[$i];
                         $data.options[$tr.querySelectorAll('td input')[0].value] = $tr.querySelectorAll('td input')[1].value;
                     }
@@ -79,9 +79,9 @@ define(
              * @public
              * @returns {HTMLTableSectionElement}
              */
-            this.getTable = function() {
+            this.getTable = function () {
 
-                if($table === null) {
+                if ($table === null) {
                     $table = document.createElement('table');
                     $table.className = 'AknGrid AknGrid--unclickable select-options-table';
 
@@ -103,7 +103,7 @@ define(
                     var $tbody = document.createElement('tbody');
                     $table.appendChild($tbody);
 
-                    if($editable) {
+                    if ($editable) {
                         var $tfoot = document.createElement('tfoot');
                         var $tfRow = document.createElement('tr');
                         var $tfCol = document.createElement('td');
@@ -131,12 +131,12 @@ define(
             /**
              * @protected
              */
-            var addRow = function() {
+            var addRow = function () {
 
                 var $row = document.createElement('tr');
                 $row.appendChild(createTableColumn(''));
                 $row.appendChild(createTableColumn(''));
-                if($editable) {
+                if ($editable) {
                     $row.appendChild(createDeleteButton($row));
                 }
 
@@ -150,19 +150,18 @@ define(
              * @protected
              * @param {String} $text
              */
-            var createTableColumn = function($text) {
+            var createTableColumn = function ($text) {
 
                 var $column = document.createElement('td');
 
-                if($editable) {
+                if ($editable) {
                     var $input = document.createElement('input');
                     $input.type = 'text';
                     $input.value = $text;
                     $input.className = 'AknTextField';
                     observeChanges($input);
                     $column.appendChild($input);
-                }
-                else {
+                } else {
                     $column.innerText = $text;
                 }
 
@@ -174,10 +173,10 @@ define(
              * @protected
              * @param {HTMLTableRowElement} $row
              */
-            var createDeleteButton = function($row) {
+            var createDeleteButton = function ($row) {
                 var $col = createTableColumn();
                 $col.innerHTML = '<span class="btn btn-small AknButton AknButton--small"><i class="icon-remove"></i></span>';
-                $col.querySelector('span').addEventListener('click', function() {
+                $col.querySelector('span').addEventListener('click', function () {
                     $row.parentNode.removeChild($row);
                     notify();
                 });
@@ -190,7 +189,7 @@ define(
              * @protected
              * @param {HTMLInputElement} $input
              */
-            var observeChanges = function($input) {
+            var observeChanges = function ($input) {
                 $input.addEventListener('keyup', notify);
                 $input.addEventListener('blur', notify);
             }.bind(this);
@@ -199,7 +198,7 @@ define(
             /**
              * @protected
              */
-            var notify = function() {
+            var notify = function () {
 
                 this.observer.notify('update');
             }.bind(this);

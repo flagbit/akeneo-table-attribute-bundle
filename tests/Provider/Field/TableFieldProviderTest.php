@@ -10,7 +10,7 @@ class TableFieldProviderTest extends KernelTestCase
     public function testFieldProviderIsCompatible()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $chainedFieldProvider = $container->get('pim_enrich.provider.field.chained');
 

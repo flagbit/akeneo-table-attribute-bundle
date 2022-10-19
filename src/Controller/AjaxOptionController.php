@@ -29,7 +29,7 @@ class AjaxOptionController
      *
      * @return JsonResponse
      */
-    public function listAction(Request $request)
+    public function listAction(Request $request): JsonResponse
     {
         $class = $request->query->get('class');
         if ($class === AttributeOption::class) {

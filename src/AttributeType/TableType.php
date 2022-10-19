@@ -11,7 +11,7 @@ class TableType extends AbstractAttributeType
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return self::FLAGBIT_CATALOG_TABLE;
     }
