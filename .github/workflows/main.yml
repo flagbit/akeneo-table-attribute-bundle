@@ -6,7 +6,7 @@ on:
 
 jobs:
   backend-tests:
-    runs-on: "ubuntu-18.04"
+    runs-on: "ubuntu-20.04"
     strategy:
       matrix:
         php-versions: [ '8.0' ]
@@ -42,7 +42,7 @@ jobs:
         run: "vendor/bin/phpunit"
 
   frontend-tests:
-    runs-on: "ubuntu-18.04"
+    runs-on: "ubuntu-20.04"
     strategy:
       matrix:
         php-versions: [ '8.0' ]
@@ -59,8 +59,13 @@ jobs:
       - name: "Install PHP dependencies"
         run: "composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
 
+      - name: "Setup Node with specific version"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+
       - name: "yarn install"
-        uses: "borales/actions-yarn@v2.0.0"
+        uses: "borales/actions-yarn@v3.0.0"
         with:
           cmd: "install"
 

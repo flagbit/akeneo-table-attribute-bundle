@@ -22,7 +22,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testFlatToStandardConverterRegisters()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $registryValueConverter = $container->get('pim_connector.array_converter.flat_to_standard.product.value_converter.registry');
 
@@ -34,7 +34,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testStandardToFlatConverterRegisters()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $registryValueConverter = $container->get('pim_connector.array_converter.standard_to_flat.product.value_converter.registry');
 
@@ -49,7 +49,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testAttributeComparedSuccessfully()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $registryComparator = $container->get('pim_catalog.comparator.registry');
 
@@ -61,7 +61,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testScalarValueCreated()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $valueFactory = $container->get('akeneo.pim.enrichment.factory.value');
 
@@ -86,7 +86,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testProductUpdatedSuccessfully()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $repository = $this->createMock(IdentifiableObjectRepositoryInterface::class);
 
@@ -105,7 +105,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testSupportsTableMaskItem()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $maskItemGenerator = $container->get('akeneo.pim.enrichment.completeness.mask_item_generator.generator');
 
@@ -117,7 +117,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testSupportsTableValueFactory()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $attribute = new PublicApiAttribute(
             'foo',
@@ -153,7 +153,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testQueryBuilderFiltersCorrectly($operator, $service)
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');
@@ -179,7 +179,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
     public function testQueryBuilderAttributeFiltersCorrectly($operator, $service)
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');
@@ -192,7 +192,7 @@ class TagsAndServiceOverridesTest extends KernelTestCase
         self::assertInstanceOf(OptionFilter::class, $filter);
     }
 
-    public function queryBuildersProvider()
+    public function queryBuildersProvider(): array
     {
         return [
             ['IN', 'pim_catalog.query.filter.product_registry'],
