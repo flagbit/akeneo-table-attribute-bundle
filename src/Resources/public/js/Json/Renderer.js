@@ -16,16 +16,16 @@ define(
         JsonGeneratorRendererDefault
     ) {
 
-    /**
-     * @class
-     * @param {Boolean} $editable
-     * @param {HTMLElement} $container
-     */
+        /**
+         * @class
+         * @param {Boolean} $editable
+         * @param {HTMLElement} $container
+         */
         var JsonGeneratorRenderer = function ($editable, $container, $types) {
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
@@ -41,20 +41,20 @@ define(
             };
 
 
-        /**
-         * @public
-         * @returns {Object}
-         */
+            /**
+             * @public
+             * @returns {Object}
+             */
             this.read = function () {
 
                 return getRenderer().read();
             };
 
 
-        /**
-         * @protected
-         * @returns {*}
-         */
+            /**
+             * @protected
+             * @returns   {*}
+             */
             var getRenderer = function () {
 
                 var renderers = {
@@ -84,27 +84,27 @@ define(
             }.bind(this);
 
 
-        /**
-         * @protected
-         */
+            /**
+             * @protected
+             */
             var persist = function () {
 
                 this.observer.notify('persist');
             }.bind(this);
 
 
-        /**
-         * @protected
-         */
+            /**
+             * @protected
+             */
             var save = function () {
 
                 this.observer.notify('save');
             }.bind(this);
 
 
-        /**
-         * @protected
-         */
+            /**
+             * @protected
+             */
             var addObserver = function () {
 
                 getRenderer().observer.watch('update', persist);
@@ -112,10 +112,10 @@ define(
             }.bind(this);
 
 
-        /**
-         * @protected
-         * @param {Function} $callable
-         */
+            /**
+             * @protected
+             * @param     {Function} $callable
+             */
             var callDebounce = function ($callable) {
 
                 var $debounceTimer = null;

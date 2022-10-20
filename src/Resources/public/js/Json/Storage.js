@@ -1,35 +1,37 @@
-define(function () {
-
-    /**
-     * @class
-     */
-    var JsonGeneratorStorage = function () {
+define(
+    function () {
 
         /**
-         * @protected
-         * @type {Object}
+         * @class
          */
-        var $data = {};
+        var JsonGeneratorStorage = function () {
 
-        /**
-         * @public
-         * @param {Object} $_data
-         */
-        this.write = function ($_data) {
+            /**
+             * @protected
+             * @type      {Object}
+             */
+            var $data = {};
 
-            $data = $_data;
+            /**
+             * @public
+             * @param  {Object} $_data
+             */
+            this.write = function ($_data) {
+
+                $data = $_data;
+            };
+
+
+            /**
+             * @public
+             * @returns {Object}
+             */
+            this.read = function () {
+
+                return $data;
+            };
         };
 
-
-        /**
-         * @public
-         * @returns {Object}
-         */
-        this.read = function () {
-
-            return $data;
-        };
-    };
-
-    return JsonGeneratorStorage;
-});
+        return JsonGeneratorStorage;
+    }
+);

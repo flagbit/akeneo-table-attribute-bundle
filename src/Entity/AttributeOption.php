@@ -64,7 +64,7 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     {
         return $this->typeConfig;
     }
-
+    
     /**
      * @param array $typeConfig
      */

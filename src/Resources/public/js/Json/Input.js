@@ -4,22 +4,22 @@ define(
     ],
     function (JsonGeneratorObserver) {
 
-    /**
-     * @class
-     * @param {(HTMLElement|HTMLTextAreaElement)} $element
-     */
+        /**
+         * @class
+         * @param {(HTMLElement|HTMLTextAreaElement)} $element
+         */
         var JsonGeneratorInput = function ($element) {
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.write = function ($data) {
 
@@ -29,10 +29,10 @@ define(
             };
 
 
-        /**
-         * @public
-         * @returns {Object}
-         */
+            /**
+             * @public
+             * @returns {Object}
+             */
             this.read = function () {
                 var $data = {};
 
@@ -46,27 +46,27 @@ define(
             };
 
 
-        /**
-         * @public
-         * @returns {Boolean}
-         */
+            /**
+             * @public
+             * @returns {Boolean}
+             */
             this.isEditable = function () {
 
                 return $element instanceof HTMLTextAreaElement || ($element instanceof HTMLInputElement && $element.type.toLowerCase() === 'text');
             };
 
 
-        /**
-         * @public
-         */
+            /**
+             * @public
+             */
             this.hide = function () {
                 $element.style.display = 'none';
             };
 
 
-        /**
-         * @public
-         */
+            /**
+             * @public
+             */
             this.show = function () {
                 $element.style.display = '';
             };

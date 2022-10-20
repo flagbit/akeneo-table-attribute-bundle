@@ -46,24 +46,26 @@ class ConstraintFactory
      */
     public function createTableConstraint(array $constraints)
     {
-        return new Table(['constraints' => [
-            new Collection([
+        return new Table(
+            ['constraints' => [
+            new Collection(
+                [
                 'fields' => $constraints,
                 // This is due to missing fields created by the older TableAttribute versions, that were allowed before
                 'allowMissingFields' => true,
-            ])
-        ]]);
+                ]
+            )
+            ]]
+        );
     }
 
     /**
-     * @param string $class
-     * @param int|array|string $params
+     * @param string                $class
+     * @param int|array|string|null $params
      *
      * @return Constraint
-     *
-     * @throws RuntimeException
      */
-    private function createInstance(string $class, int|array|string $params): Constraint
+    private function createInstance(string $class, int|array|string|null $params): Constraint
     {
         if (false === class_exists($class)) {
             $class = '\\Symfony\\Component\\Validator\\Constraints\\'.$class;

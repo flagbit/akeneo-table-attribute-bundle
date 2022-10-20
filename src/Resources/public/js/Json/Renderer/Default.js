@@ -12,13 +12,13 @@ define(
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.render = function ($data) {
                 var $text = document.createElement('span');

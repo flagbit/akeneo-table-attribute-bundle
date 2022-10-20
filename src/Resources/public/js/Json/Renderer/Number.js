@@ -12,13 +12,13 @@ define(
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.render = function ($data) {
 
@@ -75,8 +75,8 @@ define(
 
             /**
              * @protected
-             * @param {String} $name
-             * @return {HTMLSelectElement}
+             * @param     {String} $name
+             * @return    {HTMLSelectElement}
              */
             var createDropdown = function ($name) {
 
@@ -97,7 +97,7 @@ define(
 
             /**
              * @protected
-             * @param {HTMLSelectElement} $dropdown
+             * @param     {HTMLSelectElement} $dropdown
              */
             var observeChanges = function ($dropdown) {
                 $dropdown.addEventListener('change', notify);

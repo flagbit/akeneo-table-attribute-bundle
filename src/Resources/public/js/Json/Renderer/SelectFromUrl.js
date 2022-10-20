@@ -14,13 +14,13 @@ define(
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.render = function ($data) {
 
@@ -56,7 +56,7 @@ define(
 
             /**
              * @protected
-             * @param {HTMLInputElement} $input
+             * @param     {HTMLInputElement} $input
              */
             var observeChanges = function ($input) {
                 $input.addEventListener('keyup', notify);

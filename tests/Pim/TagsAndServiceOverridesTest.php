@@ -165,7 +165,9 @@ class TagsAndServiceOverridesTest extends KernelTestCase
 
         $container->set('pim_catalog.repository.attribute', $repository);
 
-        /** @var FilterRegistry $filterRegistry */
+        /**
+ * @var FilterRegistry $filterRegistry 
+*/
         $filterRegistry = $container->get($service);
 
         $filter = $filterRegistry->getFilter('flagbit_catalog_table', $operator);
@@ -184,7 +186,9 @@ class TagsAndServiceOverridesTest extends KernelTestCase
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');
 
-        /** @var FilterRegistry $filterRegistry */
+        /**
+ * @var FilterRegistry $filterRegistry 
+*/
         $filterRegistry = $container->get($service);
 
         $filter = $filterRegistry->getAttributeFilter($attribute, $operator);

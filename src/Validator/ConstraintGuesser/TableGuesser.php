@@ -34,6 +34,7 @@ class TableGuesser implements ConstraintGuesserInterface
 
     /**
      * {@inheritdoc}
+     *
      * @throws ExceptionInterface
      */
     public function guessConstraints(AttributeInterface $attribute): array
@@ -41,7 +42,9 @@ class TableGuesser implements ConstraintGuesserInterface
         $constraints = [];
 
         $fieldConstraints = [];
-        /** @var AttributeOption $option */
+        /**
+ * @var AttributeOption $option
+*/
         // DocBlock of getOptions() claims to be only ArrayAccess, but Options are a Doctrine Collection
         foreach ($attribute->getOptions() as $option) {
             $fieldConstraints[$option->getCode()] = $this->constraintFactory->createByConstraintConfig($option);

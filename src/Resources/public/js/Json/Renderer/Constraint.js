@@ -12,13 +12,13 @@ define(
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.render = function ($data) {
 
@@ -26,18 +26,20 @@ define(
 
                 var $dropdown = createDropdown();
 
-                $options.forEach(function ($value) {
+                $options.forEach(
+                    function ($value) {
 
-                    var $option = document.createElement('option');
-                    $option.value = $value;
-                    $option.innerText = $value;
+                        var $option = document.createElement('option');
+                        $option.value = $value;
+                        $option.innerText = $value;
 
-                    if ($value in $data) {
-                        $option.selected = true;
+                        if ($value in $data) {
+                            $option.selected = true;
+                        }
+
+                        $dropdown.appendChild($option);
                     }
-
-                    $dropdown.appendChild($option);
-                });
+                );
 
                 var $select2 = jQuery($dropdown).select2({dropdownAutoWidth: true});
 
@@ -70,8 +72,8 @@ define(
 
             /**
              * @protected
-             * @param {String} $name
-             * @return {HTMLSelectElement}
+             * @param     {String} $name
+             * @return    {HTMLSelectElement}
              */
             var createDropdown = function () {
 
@@ -90,7 +92,7 @@ define(
 
             /**
              * @protected
-             * @param {HTMLSelectElement} $dropdown
+             * @param     {HTMLSelectElement} $dropdown
              */
             var observeChanges = function ($select) {
                 $select.on('change', notify);

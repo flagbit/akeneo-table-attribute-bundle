@@ -14,18 +14,18 @@ define(
 
             /**
              * @protected
-             * @type {HTMLTableElement}
+             * @type      {HTMLTableElement}
              */
             var $table = null;
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
             this.render = function ($data) {
 
@@ -148,7 +148,7 @@ define(
 
             /**
              * @protected
-             * @param {String} $text
+             * @param     {String} $text
              */
             var createTableColumn = function ($text) {
 
@@ -171,15 +171,17 @@ define(
 
             /**
              * @protected
-             * @param {HTMLTableRowElement} $row
+             * @param     {HTMLTableRowElement} $row
              */
             var createDeleteButton = function ($row) {
                 var $col = createTableColumn();
                 $col.innerHTML = '<span class="btn btn-small AknButton AknButton--small"><i class="icon-remove"></i></span>';
-                $col.querySelector('span').addEventListener('click', function () {
-                    $row.parentNode.removeChild($row);
-                    notify();
-                });
+                $col.querySelector('span').addEventListener(
+                    'click', function () {
+                        $row.parentNode.removeChild($row);
+                        notify();
+                    }
+                );
 
                 return $col;
             }.bind(this);
@@ -187,7 +189,7 @@ define(
 
             /**
              * @protected
-             * @param {HTMLInputElement} $input
+             * @param     {HTMLInputElement} $input
              */
             var observeChanges = function ($input) {
                 $input.addEventListener('keyup', notify);

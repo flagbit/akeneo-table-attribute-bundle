@@ -48,9 +48,13 @@ class TableGuesserSpec extends ObjectBehavior
         Constraint $email,
         Table $tableConstraint
     ) {
-        $attribute->getOptions()->willReturn(new ArrayCollection([
-            $attributeOption->getWrappedObject(),
-        ]));
+        $attribute->getOptions()->willReturn(
+            new ArrayCollection(
+                [
+                $attributeOption->getWrappedObject(),
+                ]
+            )
+        );
         $constraints = [
             $notBlank,
             $email

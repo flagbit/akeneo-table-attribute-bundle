@@ -15,4 +15,3 @@
 /tests/public/js/extensions.json
 /.phpunit.result.cache
 /node_modules
-.env
