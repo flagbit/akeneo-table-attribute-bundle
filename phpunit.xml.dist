@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="./vendor/autoload.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        backupGlobals="false"
+        colors="true"
+        backupStaticAttributes="false"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        processIsolation="false"
+        stopOnFailure="false"
+        bootstrap="./vendor/autoload.php"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
   <coverage>
     <include>
       <directory>src</directory>
@@ -20,7 +31,6 @@
   <php>
     <env name="KERNEL_CLASS" value="Flagbit\Bundle\TableAttributeBundle\Test\Kernel\TestKernel"/>
     <env name="APP_ENV" value="test"/>
-    <env name="APP_DEBUG" value="0"/>
     <env name="APP_INDEX_HOSTS" value="elasticsearch:9200"/>
     <env name="APP_DATABASE_HOST" value="mysql"/>
     <env name="APP_DATABASE_PORT" value=""/>
@@ -29,6 +39,7 @@
     <env name="APP_DATABASE_PASSWORD" value="akeneo_pim"/>
     <env name="APP_DEFAULT_LOCALE" value="en"/>
     <env name="AKENEO_PIM_URL" value="localhost:8080"/>
+    <env name="APP_DEBUG" value="0"/>
   </php>
   <logging>
     <junit outputFile="build/junit.xml"/>

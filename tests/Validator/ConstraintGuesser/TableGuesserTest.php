@@ -16,7 +16,8 @@ class TableGuesserTest extends KernelTestCase
         self::bootKernel();
         $container = self::getContainer();
 
-        $chainedAttributeConstraintGuesser = $container->get('pim_catalog.validator.constraint_guesser.chained_attribute');
+        $chainedAttributeConstraintGuesser =
+            $container->get('pim_catalog.validator.constraint_guesser.chained_attribute');
 
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');

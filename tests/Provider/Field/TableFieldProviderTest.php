@@ -15,7 +15,7 @@ class TableFieldProviderTest extends KernelTestCase
         $chainedFieldProvider = $container->get('pim_enrich.provider.field.chained');
 
         $attribute = new Attribute();
-        $attribute->setAttributeType('flagbit_catalog_table');
+        $attribute->setType('flagbit_catalog_table');
 
         $fieldProvider = $chainedFieldProvider->getField($attribute);
 
