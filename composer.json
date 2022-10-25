@@ -46,7 +46,7 @@
   "require-dev": {
     "phpspec/phpspec": "^7.2",
     "phpunit/phpunit": "^9.0",
-    "squizlabs/php_codesniffer": "^3.5",
+    "squizlabs/php_codesniffer": "^3.7",
     "overtrue/phplint": "^4.3",
     "symfony/debug-bundle": "^5.4.0",
     "symfony/web-profiler-bundle": "^5.4.0"
