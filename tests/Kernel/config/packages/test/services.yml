@@ -1,0 +1,9 @@
+services:
+  # Override original service to fix invalid kernel root dir.
+  # See change in Akeneo: https://github.com/akeneo/pim-community-dev/commit/9da07cb1db98dcbec9258eb7ce9a704f2c763c44
+  pim_user.entity_with_image.subscriber:
+    class: 'Akeneo\UserManagement\Bundle\EventListener\UploadedImageSubscriber'
+    arguments:
+      - '%kernel.project_dir%'
+    tags:
+      - { name: doctrine.event_subscriber }
