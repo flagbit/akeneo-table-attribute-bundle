@@ -10,7 +10,7 @@ class TableTypeTest extends KernelTestCase
     public function testAttributeTypeIsRegisteredCorrect()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $attributeTypeRegistry = $container->get('pim_catalog.registry.attribute_type');
 

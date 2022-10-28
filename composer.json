@@ -1,7 +1,13 @@
 {
   "name": "flagbit/table-attribute-bundle",
   "description": "The Flagbit Table Attribute Bundle for Akeneo PIM gives you the possibility to enrich your product with multi-dimensional data presentation in the form of tables, allowing you maximum flexibility within the PIM.",
-  "keywords": ["akeneo", "table", "attribute", "pim", "multidimensional"],
+  "keywords": [
+    "akeneo",
+    "table",
+    "attribute",
+    "pim",
+    "multidimensional"
+  ],
   "type": "library",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -33,16 +39,22 @@
     }
   },
   "require": {
+    "php": "8.0.*",
     "ext-json": "*",
-    "akeneo/pim-community-dev": "^5.0"
+    "akeneo/pim-community-dev": "^6.0"
   },
   "require-dev": {
-    "phpspec/phpspec": "^6.1",
-    "phpunit/phpunit": "^8.0",
-    "squizlabs/php_codesniffer": "^3.5",
-    "overtrue/phplint": "^1.2",
-    "symfony/debug-bundle": "^4.4",
-    "symfony/web-profiler-bundle": "^4.4",
-    "symfony/web-server-bundle": "^4.4"
+    "phpspec/phpspec": "^7.2",
+    "phpunit/phpunit": "^9.0",
+    "squizlabs/php_codesniffer": "^3.7",
+    "overtrue/phplint": "^4.3",
+    "symfony/debug-bundle": "^5.4.0",
+    "symfony/web-profiler-bundle": "^5.4.0"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/flex": true
+    }
   }
 }

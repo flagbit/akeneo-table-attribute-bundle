@@ -11,7 +11,7 @@ class EnterpriseFilterStubPass implements CompilerPassInterface
     /**
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * @param string $type

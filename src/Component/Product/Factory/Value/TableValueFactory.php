@@ -19,7 +19,7 @@ final class TableValueFactory extends ScalarValueFactory
         if (!is_scalar($data) || (is_string($data) && '' === trim($data))) {
             throw InvalidPropertyTypeException::stringExpected(
                 $attribute->code(),
-                static::class,
+                TableValueFactory::class,
                 $data
             );
         }

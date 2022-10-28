@@ -1,12 +1,12 @@
 <?php
 
-namespace Flagbit\Bundle\TableAttributeBundle\Tests\Validator\ConstraintGuesser;
+namespace Flagbit\Bundle\TableAttributeBundle\Test\Validator\ConstraintGuesser;
 
+use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Akeneo\Pim\Structure\Component\Model\AttributeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Flagbit\Bundle\TableAttributeBundle\Entity\AttributeOption;
 use Flagbit\Bundle\TableAttributeBundle\Validator\Constraints\Table;
-use Akeneo\Pim\Structure\Component\Model\Attribute;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class TableGuesserTest extends KernelTestCase
@@ -14,9 +14,10 @@ class TableGuesserTest extends KernelTestCase
     public function testTableGuesserIsTaggedCorrectly(): void
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
-        $chainedAttributeConstraintGuesser = $container->get('pim_catalog.validator.constraint_guesser.chained_attribute');
+        $chainedAttributeConstraintGuesser =
+            $container->get('pim_catalog.validator.constraint_guesser.chained_attribute');
 
         $attribute = new Attribute();
         $attribute->setType('flagbit_catalog_table');
@@ -33,7 +34,7 @@ class TableGuesserTest extends KernelTestCase
     public function testValidTableData(string $tableValue): void
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $guesser = $container->get('flagbit_table_attribute.validator.constraint_guesser.table');
         $validator = $container->get('validator');

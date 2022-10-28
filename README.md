@@ -6,8 +6,8 @@
 <h4 align="center">Adds the new attribute type Table for Akeneo products.</h4>
 
 <p align="center">
-    <a href="https://travis-ci.org/flagbit/akeneo-table-attribute-bundle">
-        <img src="https://img.shields.io/travis/flagbit/akeneo-table-attribute-bundle/master.svg?style=flat-square"/>
+    <a href="https://github.com/flagbit/akeneo-table-attribute-bundle/actions">
+        <img src="https://github.com/flagbit/akeneo-table-attribute-bundle/actions/workflows/main.yml/badge.svg"/>
     </a>
     <img src="https://poser.pugx.org/flagbit/table-attribute-bundle/downloads?format=flat-square">
     <a href="https://scrutinizer-ci.com/g/Flagbit/akeneo-table-attribute-bundle">
@@ -42,13 +42,14 @@ Provides a _table_ as attribute type where you can define a set of columns of di
 
 #### Import/Export
 
-The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export profile for table information.
+The extension supports the standard Akeneo product import/export, so you don't need to create any special import/export
+profile for table information.
 
-All product information related to attributes of type _table_ will be imported/exported as JSON. 
+All product information related to attributes of type _table_ will be imported/exported as JSON.
 
 ## Installation
 
-Simply install the package with the following command: 
+Simply install the package with the following command:
 
 ``` bash
 composer require flagbit/table-attribute-bundle
@@ -124,6 +125,7 @@ php bin/console --env=prod doctrine:migrations:migrate
 
 This extension supports the latest Akeneo PIM CE/EE stable versions:
 
+* 6.0
 * 5.0
 * 4.0
 * 3.2 (LTS)

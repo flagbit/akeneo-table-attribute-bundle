@@ -3,24 +3,24 @@ define(
         'flagbit/JsonGenerator/Observer',
         'oro/translator',
     ],
-    function(JsonGeneratorObserver, __) {
+    function (JsonGeneratorObserver, __) {
 
         /**
          * @class
          */
-        var JsonGeneratorRendererDefault = function($editable, $container) {
+        var JsonGeneratorRendererDefault = function ($editable, $container) {
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
-            this.render = function($data) {
+            this.render = function ($data) {
                 var $text = document.createElement('span');
                 $text.innerText = __('flagbit.table_attribute.no_configuration.text');
                 $container.appendChild($text);
@@ -30,7 +30,7 @@ define(
              * @public
              * @returns {Object}
              */
-            this.read = function() {
+            this.read = function () {
                 return {};
             };
 

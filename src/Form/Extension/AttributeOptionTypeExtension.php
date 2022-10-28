@@ -19,12 +19,16 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type', TextType::class, [
+        $builder->add(
+            'type',
+            TextType::class,
+            [
             'required' => true,
             'constraints' => [
                 new Choice(['select', 'select_from_url', 'text', 'number']),
             ],
-        ]);
+            ]
+        );
         $builder->add('constraints', TextType::class, ['required' => true]);
         $builder->add('type_config', TextType::class, ['required' => true]);
 
@@ -37,10 +41,12 @@ class AttributeOptionTypeExtension extends AbstractTypeExtension
     /**
      * Returns the name of the type being extended.
      *
-     * @return string The name of the type being extended
+     * @return array<string> The names of the types being extended
      */
-    public function getExtendedType()
+    public static function getExtendedTypes(): iterable
     {
-        return AttributeOptionType::class;
+        return [
+            AttributeOptionType::class
+        ];
     }
 }

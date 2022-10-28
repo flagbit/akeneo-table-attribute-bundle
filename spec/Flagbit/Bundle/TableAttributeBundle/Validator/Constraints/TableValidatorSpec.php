@@ -58,13 +58,17 @@ class TableValidatorSpec extends ObjectBehavior
      */
     private function createTableConstraint()
     {
-        return new Table(['constraints' => [
-            new C\Collection([
+        return new Table(
+            ['constraints' => [
+            new C\Collection(
+                [
                 'fields' => [
                     'foo' => [new C\IsNull()],
                     'bar' => [new C\IsFalse()],
                 ],
-            ])
-        ]]);
+                ]
+            )
+            ]]
+        );
     }
 }

@@ -1,18 +1,20 @@
+name: Tests for Quality Assurance
+
 on:
   - "push"
   - "pull_request"
 
 jobs:
-  build:
-    runs-on: "ubuntu-18.04"
+  backend-tests:
+    runs-on: "ubuntu-20.04"
     strategy:
       matrix:
-        php-versions: ['7.4']
+        php-versions: [ '8.0' ]
 
     steps:
-      - uses: "actions/checkout@v2.0.0"
+      - uses: "actions/checkout@v3"
       - name: "Cache dependencies installed with composer"
-        uses: "actions/cache@v1.0.3"
+        uses: "actions/cache@v3"
         with:
           path: "~/.composer/cache"
           key: "composer-${{ matrix.php-version }}-${{ hashFiles('composer.json') }}"
@@ -22,40 +24,48 @@ jobs:
         uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-versions }}"
-          extensions: "intl, xdebug, imagick, apcu"
+          extensions: "intl, xdebug, imagick, apcu, mbstring, bcmath, zip, curl, xsl"
 
       - name: "Install PHP dependencies"
         run: "composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
 
       - name: "Linting"
         run: "vendor/bin/phplint ./src"
+
       - name: "Code Sniffer"
         run: "vendor/bin/phpcs -d memory_limit=-1 --standard=PSR2 --extensions=php ./src"
+
       - name: "PHPSpec"
         run: "vendor/bin/phpspec run"
+
       - name: "Integration tests"
         run: "vendor/bin/phpunit"
 
-  frontend:
-    runs-on: "ubuntu-18.04"
+  frontend-tests:
+    runs-on: "ubuntu-20.04"
     strategy:
       matrix:
-        php-versions: [ '7.4' ]
+        php-versions: [ '8.0' ]
 
     steps:
-      - uses: "actions/checkout@v2.0.0"
+      - uses: "actions/checkout@v3"
 
       - name: "Setup PHP Action"
         uses: "shivammathur/setup-php@v2"
         with:
           php-version: "${{ matrix.php-versions }}"
-          extensions: "intl, xdebug, imagick, apcu"
+          extensions: "intl, xdebug, imagick, apcu, mbstring, bcmath, zip, curl, xsl"
 
       - name: "Install PHP dependencies"
         run: "composer install --prefer-dist --no-interaction --optimize-autoloader --no-suggest --no-progress"
 
+      - name: "Setup Node with specific version"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 12
+
       - name: "yarn install"
-        uses: "borales/actions-yarn@v2.0.0"
+        uses: "borales/actions-yarn@v3.0.0"
         with:
           cmd: "install"
 

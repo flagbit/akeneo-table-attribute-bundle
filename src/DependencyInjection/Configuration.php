@@ -16,10 +16,9 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritDoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('flagbit_table_attribute');
+        $treeBuilder = new TreeBuilder('flagbit_table_attribute');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

@@ -1,5 +1,5 @@
-describe('Form Extensions', function() {
-    it('table attribute overrides akeneo-attribute-select-filter', function() {
+describe('Form Extensions', function () {
+    it('table attribute overrides akeneo-attribute-select-filter', function () {
         const formExtensions = require('../../tests/public/js/extensions.json');
 
         const expected = {

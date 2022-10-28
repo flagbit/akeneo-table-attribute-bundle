@@ -13,22 +13,22 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     /**
      * @var string
      */
-    private $type;
+    private string $type;
 
     /**
      * @var array
      */
-    private $constraints;
+    private array $constraints;
 
     /**
      * @var array
      */
-    private $typeConfig;
+    private array $typeConfig;
 
     /**
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
@@ -36,7 +36,7 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     /**
      * @param string $type
      */
-    public function setType($type)
+    public function setType(string $type)
     {
         $this->type = $type;
     }
@@ -44,7 +44,7 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     /**
      * @return array
      */
-    public function getConstraints()
+    public function getConstraints(): array
     {
         return $this->constraints;
     }
@@ -52,7 +52,7 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     /**
      * @param array $constraints
      */
-    public function setConstraints($constraints)
+    public function setConstraints(array $constraints)
     {
         $this->constraints = $constraints;
     }
@@ -60,15 +60,15 @@ class AttributeOption extends BaseAttributeOption implements ConstraintConfigInt
     /**
      * @return array
      */
-    public function getTypeConfig()
+    public function getTypeConfig(): array
     {
         return $this->typeConfig;
     }
-
+    
     /**
      * @param array $typeConfig
      */
-    public function setTypeConfig($typeConfig)
+    public function setTypeConfig(array $typeConfig)
     {
         $this->typeConfig = $typeConfig;
     }

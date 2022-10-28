@@ -3,26 +3,26 @@ define(
         'flagbit/JsonGenerator/Observer',
         'oro/translator',
     ],
-    function(JsonGeneratorObserver, __) {
+    function (JsonGeneratorObserver, __) {
 
         /**
          * @class
          */
-        var JsonGeneratorRendererNumber = function($editable, $container) {
+        var JsonGeneratorRendererNumber = function ($editable, $container) {
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
-            this.render = function($data) {
+            this.render = function ($data) {
 
-                if(!$data['is_decimal']) {
+                if (!$data['is_decimal']) {
                     $data['is_decimal'] = 'false';
                 }
 
@@ -39,8 +39,8 @@ define(
                     'false': __('No')
                 };
 
-                for(var $i in $options) {
-                    if($options.hasOwnProperty($i)) {
+                for (var $i in $options) {
+                    if ($options.hasOwnProperty($i)) {
                         var $option = document.createElement('option');
                         $option.value = $i;
                         $option.innerText = $options[$i];
@@ -57,13 +57,13 @@ define(
              * @public
              * @returns {Object}
              */
-            this.read = function() {
+            this.read = function () {
 
                 var $data = {};
 
                 var $collection = $container.querySelectorAll('select');
-                for(var $i in $collection) {
-                    if($collection.hasOwnProperty($i)) {
+                for (var $i in $collection) {
+                    if ($collection.hasOwnProperty($i)) {
                         var $dropdown = $collection[$i];
                         $data[$dropdown.name] = $dropdown.value === 'true';
                     }
@@ -75,10 +75,10 @@ define(
 
             /**
              * @protected
-             * @param {String} $name
-             * @return {HTMLSelectElement}
+             * @param     {String} $name
+             * @return    {HTMLSelectElement}
              */
-            var createDropdown = function($name) {
+            var createDropdown = function ($name) {
 
                 var $dropdown = document.createElement('select');
                 $dropdown.name = $name;
@@ -87,7 +87,7 @@ define(
 
                 observeChanges($dropdown);
 
-                if(!$editable) {
+                if (!$editable) {
                     $dropdown.disabled = true;
                 }
 
@@ -97,9 +97,9 @@ define(
 
             /**
              * @protected
-             * @param {HTMLSelectElement} $dropdown
+             * @param     {HTMLSelectElement} $dropdown
              */
-            var observeChanges = function($dropdown) {
+            var observeChanges = function ($dropdown) {
                 $dropdown.addEventListener('change', notify);
             }.bind(this);
 
@@ -107,7 +107,7 @@ define(
             /**
              * @protected
              */
-            var notify = function() {
+            var notify = function () {
 
                 this.observer.notify('update');
             }.bind(this);

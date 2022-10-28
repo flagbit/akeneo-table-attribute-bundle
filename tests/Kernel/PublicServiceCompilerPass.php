@@ -11,7 +11,7 @@ class PublicServiceCompilerPass implements CompilerPassInterface
     /**
      * @var array
      */
-    private $serviceIds;
+    private array $serviceIds;
 
     public function __construct(array $serviceIds)
     {

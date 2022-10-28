@@ -7,7 +7,7 @@ define(
         'flagbit/JsonGenerator/Renderer/Constraint',
         'flagbit/JsonGenerator/Renderer/Default'
     ],
-    function(
+    function (
         JsonGeneratorObserver,
         JsonGeneratorRendererNumber,
         JsonGeneratorRendererSelect,
@@ -16,128 +16,124 @@ define(
         JsonGeneratorRendererDefault
     ) {
 
-    /**
-     * @class
-     * @param {Boolean} $editable
-     * @param {HTMLElement} $container
-     */
-    var JsonGeneratorRenderer = function($editable, $container, $types) {
-
         /**
-         * @public
-         * @type {JsonGeneratorObserver}
+         * @class
+         * @param {Boolean} $editable
+         * @param {HTMLElement} $container
          */
-        this.observer = new JsonGeneratorObserver();
+        var JsonGeneratorRenderer = function ($editable, $container, $types) {
 
-        var $renderer = null;
+            /**
+             * @public
+             * @type   {JsonGeneratorObserver}
+             */
+            this.observer = new JsonGeneratorObserver();
 
-
-        /**
-         * @public
-         */
-        this.render = function($data) {
-
-            return getRenderer().render($data);
-        };
+            var $renderer = null;
 
 
-        /**
-         * @public
-         * @returns {Object}
-         */
-        this.read = function() {
+            /**
+             * @public
+             */
+            this.render = function ($data) {
 
-            return getRenderer().read();
-        };
-
-
-        /**
-         * @protected
-         * @returns {*}
-         */
-        var getRenderer = function() {
-
-            var renderers = {
-                'select': JsonGeneratorRendererSelect,
-                'select_from_url': JsonGeneratorRendererSelectFromUrl,
-                'text': JsonGeneratorRendererDefault,
-                'number': JsonGeneratorRendererNumber
+                return getRenderer().render($data);
             };
 
-            if($renderer === null) {
-                if($container.querySelector('.json-select-generator')) {
-                    $renderer = new JsonGeneratorRendererSelect($editable, $container);
-                }
-                else if($container.querySelector('.json-select_from_url-generator')) {
-                    $renderer = new JsonGeneratorRendererSelectFromUrl($editable, $container);
-                }
-                else if($container.querySelector('.json-number-generator')) {
-                    $renderer = new JsonGeneratorRendererNumber($editable, $container);
-                }
-                else if($container.querySelector('.json-constraint-generator')) {
-                    $renderer = new JsonGeneratorRendererConstraint($editable, $container);
-                }
-                else if($container.querySelector('.json-text-generator')) {
-                    $renderer = new JsonGeneratorRendererDefault($editable, $container);
-                }
-                else {
-                    $renderer = new renderers[$types[0].type]($editable, $container);
-                }
-            }
 
-            return $renderer;
-        }.bind(this);
+            /**
+             * @public
+             * @returns {Object}
+             */
+            this.read = function () {
+
+                return getRenderer().read();
+            };
 
 
-        /**
-         * @protected
-         */
-        var persist = function() {
+            /**
+             * @protected
+             * @returns   {*}
+             */
+            var getRenderer = function () {
 
-            this.observer.notify('persist');
-        }.bind(this);
+                var renderers = {
+                    'select': JsonGeneratorRendererSelect,
+                    'select_from_url': JsonGeneratorRendererSelectFromUrl,
+                    'text': JsonGeneratorRendererDefault,
+                    'number': JsonGeneratorRendererNumber
+                };
 
-
-        /**
-         * @protected
-         */
-        var save = function() {
-
-            this.observer.notify('save');
-        }.bind(this);
-
-
-        /**
-         * @protected
-         */
-        var addObserver = function() {
-
-            getRenderer().observer.watch('update', persist);
-            getRenderer().observer.watch('update', callDebounce(save));
-        }.bind(this);
-
-
-        /**
-         * @protected
-         * @param {Function} $callable
-         */
-        var callDebounce = function($callable) {
-
-            var $debounceTimer = null;
-
-            return function() {
-
-                if($debounceTimer) {
-                    window.clearTimeout($debounceTimer);
+                if ($renderer === null) {
+                    if ($container.querySelector('.json-select-generator')) {
+                        $renderer = new JsonGeneratorRendererSelect($editable, $container);
+                    } else if ($container.querySelector('.json-select_from_url-generator')) {
+                        $renderer = new JsonGeneratorRendererSelectFromUrl($editable, $container);
+                    } else if ($container.querySelector('.json-number-generator')) {
+                        $renderer = new JsonGeneratorRendererNumber($editable, $container);
+                    } else if ($container.querySelector('.json-constraint-generator')) {
+                        $renderer = new JsonGeneratorRendererConstraint($editable, $container);
+                    } else if ($container.querySelector('.json-text-generator')) {
+                        $renderer = new JsonGeneratorRendererDefault($editable, $container);
+                    } else {
+                        $renderer = new renderers[$types[0].type]($editable, $container);
+                    }
                 }
 
-                $debounceTimer = window.setTimeout($callable, 300);
-            }.bind(this)
-        }.bind(this);
+                return $renderer;
+            }.bind(this);
 
 
-        addObserver();
-    };
+            /**
+             * @protected
+             */
+            var persist = function () {
 
-    return JsonGeneratorRenderer;
-});
+                this.observer.notify('persist');
+            }.bind(this);
+
+
+            /**
+             * @protected
+             */
+            var save = function () {
+
+                this.observer.notify('save');
+            }.bind(this);
+
+
+            /**
+             * @protected
+             */
+            var addObserver = function () {
+
+                getRenderer().observer.watch('update', persist);
+                getRenderer().observer.watch('update', callDebounce(save));
+            }.bind(this);
+
+
+            /**
+             * @protected
+             * @param     {Function} $callable
+             */
+            var callDebounce = function ($callable) {
+
+                var $debounceTimer = null;
+
+                return function () {
+
+                    if ($debounceTimer) {
+                        window.clearTimeout($debounceTimer);
+                    }
+
+                    $debounceTimer = window.setTimeout($callable, 300);
+                }.bind(this)
+            }.bind(this);
+
+
+            addObserver();
+        };
+
+        return JsonGeneratorRenderer;
+    }
+);

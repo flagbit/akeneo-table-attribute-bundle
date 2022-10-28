@@ -1,5 +1,6 @@
 'use strict';
-define([
+define(
+    [
         'pim/field',
         'underscore',
         'jquery',
@@ -18,114 +19,125 @@ define([
         UserContext,
         i18n
     ) {
-        return Field.extend({
-            fieldTemplate: _.template(fieldTemplate),
-            events: {
-                'change .field-input:first .table-data': 'updateModel',
-                'change .field-input:first .flagbit-table-values': 'updateJson',
-                'click .field-input:first .flagbit-table-values .delete-row': 'deleteItem',
-                'click .field-input:first .flagbit-table-attribute .item-add': 'addItem'
-            },
-            columns: {},
-            renderInput: function (context) {
-                return this.fieldTemplate(context);
-            },
-            postRender: function() {
-                this.getColumnUrl().then(function (columnUrl) {
+        return Field.extend(
+            {
+                fieldTemplate: _.template(fieldTemplate),
+                events: {
+                    'change .field-input:first .table-data': 'updateModel',
+                    'change .field-input:first .flagbit-table-values': 'updateJson',
+                    'click .field-input:first .flagbit-table-values .delete-row': 'deleteItem',
+                    'click .field-input:first .flagbit-table-attribute .item-add': 'addItem'
+                },
+                columns: {},
+                renderInput: function (context) {
+                    return this.fieldTemplate(context);
+                },
+                postRender: function () {
+                    this.getColumnUrl().then(
+                        function (columnUrl) {
 
-                    $.ajax(
-                        {
-                            async: true,
-                            type: 'GET',
-                            url: columnUrl,
-                            success: function (response) {
-                                if (response) {
-                                    this.columns = {};
-                                    _.each(response, function (value) {
-                                        var column = this.convertBackendItem(value);
-                                        this.columns[column.id] = column;
-                                    }.bind(this));
-                                    initTable.init(this.$('.flagbit-table-attribute'), this.columns);
-                                    // initialize dran & drop sorting
-                                    this.$('.flagbit-table-values tbody').sortable({
-                                        handle: ".handle",
-                                        stop: function() {
-                                            this.updateJson();
-                                        }.bind(this)
-                                    });
+                            $.ajax(
+                                {
+                                    async: true,
+                                    type: 'GET',
+                                    url: columnUrl,
+                                    success: function (response) {
+                                        if (response) {
+                                            this.columns = {};
+                                            _.each(
+                                                response, function (value) {
+                                                    var column = this.convertBackendItem(value);
+                                                    this.columns[column.id] = column;
+                                                }.bind(this)
+                                            );
+                                            initTable.init(this.$('.flagbit-table-attribute'), this.columns);
+                                            // initialize dran & drop sorting
+                                            this.$('.flagbit-table-values tbody').sortable(
+                                                {
+                                                    handle: ".handle",
+                                                    stop: function () {
+                                                        this.updateJson();
+                                                    }.bind(this)
+                                                }
+                                            );
+                                        }
+                                    }.bind(this)
                                 }
-                            }.bind(this)
+                            );
+                        }.bind(this)
+                    );
+                },
+                getColumnUrl: function () {
+                    return $.Deferred().resolve(
+                        Routing.generate(
+                            'pim_enrich_attributeoption_get',
+                            {
+                                identifier: this.attribute.code
+                            }
+                        )
+                    ).promise();
+                },
+                updateModel: function () {
+                    var data = this.$('.field-input:first .table-data').val();
+
+                    this.setCurrentValue(data);
+                },
+                updateJson: function () {
+                    var rows = this.$('.flagbit-table-values tr.flagbit-table-row');
+
+                    var values = [];
+                    var columns = this.columns;
+                    _.each(
+                        rows, function (row) {
+                            var fields = {};
+
+                            _.each(
+                                $('td[data-code]', row), function (td) {
+                                    var id = $(td).data('code');
+                                    fields[id] = columns[id].func.parseValue($(td));
+                                }
+                            );
+
+                            values.push(fields);
                         }
                     );
-                }.bind(this));
-            },
-            getColumnUrl: function () {
-                return $.Deferred().resolve(
-                    Routing.generate(
-                        'pim_enrich_attributeoption_get',
-                        {
-                            identifier: this.attribute.code
+
+                    var valuesAsJson = JSON.stringify(values);
+                    this.$('.field-input:first .table-data').val(valuesAsJson);
+                    this.setCurrentValue(valuesAsJson);
+                },
+                deleteItem: function (event) {
+                    $(event.currentTarget).closest('tr').remove();
+                    this.updateJson();
+                },
+                addItem: function () {
+                    this.$('table.flagbit-table-values').append(initTable.createEmptyRow(this.columns));
+                },
+                convertBackendItem: function (item) {
+                    return {
+                        id: item.code,
+                        text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code),
+                        config: item.type_config,
+                        type: item.type,
+                        func: this.createColumnFunctions(item)
+                    };
+                },
+                createColumnFunctions: function (item) {
+                    var fieldTemplate;
+                    var parser = function (td) {
+                        return $('input', td).val();
+                    };
+                    var init = function (td, column, value) {
+                    };
+                    var formTypeValue = function (value) {
+                        if (typeof value === 'undefined' || null === value) {
+                            return '';
                         }
-                    )
-                ).promise();
-            },
-            updateModel: function () {
-                var data = this.$('.field-input:first .table-data').val();
 
-                this.setCurrentValue(data);
-            },
-            updateJson: function () {
-                var rows = this.$('.flagbit-table-values tr.flagbit-table-row');
+                        return value.toString();
+                    };
 
-                var values = [];
-                var columns = this.columns;
-                _.each(rows, function(row) {
-                    var fields = {};
-
-                    _.each($('td[data-code]', row), function(td) {
-                        var id = $(td).data('code');
-                        fields[id] = columns[id].func.parseValue($(td));
-                    });
-
-                    values.push(fields);
-                });
-
-                var valuesAsJson = JSON.stringify(values);
-                this.$('.field-input:first .table-data').val(valuesAsJson);
-                this.setCurrentValue(valuesAsJson);
-            },
-            deleteItem: function (event) {
-                $(event.currentTarget).closest('tr').remove();
-                this.updateJson();
-            },
-            addItem: function () {
-                this.$('table.flagbit-table-values').append(initTable.createEmptyRow(this.columns));
-            },
-            convertBackendItem: function (item) {
-                return {
-                    id: item.code,
-                    text: i18n.getLabel(item.labels, UserContext.get('catalogLocale'), item.code),
-                    config: item.type_config,
-                    type: item.type,
-                    func: this.createColumnFunctions(item)
-                };
-            },
-            createColumnFunctions: function(item) {
-                var fieldTemplate;
-                var parser = function (td) {
-                    return $('input', td).val();
-                };
-                var init = function (td, column, value) {
-                };
-                var formTypeValue = function (value) {
-                    if (typeof value === 'undefined' || null === value) {
-                        return '';
-                    }
-
-                    return value.toString();
-                };
-
-                switch (item.type) {
+                    switch (item.type) {
                     case "text":
                         fieldTemplate = "<input data-type='<%= column.type %>' type='text' name='<%= column.id %>' class='<%= column.id %> AknTextField' value='<%= _.escape(column.func.formTypeValue(value)) %>' />";
                         break;
@@ -161,16 +173,20 @@ define([
                             };
                             if ('options' in column.config) {
                                 var options = [];
-                                _.each(column.config.options, function(option, key) {
-                                    options.push({ id: key, text: option });
-                                });
+                                _.each(
+                                    column.config.options, function (option, key) {
+                                        options.push({ id: key, text: option });
+                                    }
+                                );
                                 select2Config.data = options;
                             }
 
                             var select2 = $('input', td).select2(select2Config);
-                            select2.on('select2-close', function () {
-                                this.updateJson();
-                            }.bind(this));
+                            select2.on(
+                                'select2-close', function () {
+                                    this.updateJson();
+                                }.bind(this)
+                            );
                         }.bind(this);
                         break;
                     case "select_from_url":
@@ -208,40 +224,49 @@ define([
                                     }
                                 };
                                 // initSelection needs to be cleaned up in the future without forcing a whole API
-                                select2Config.initSelection = function(element, callback) {
+                                select2Config.initSelection = function (element, callback) {
                                     var option = $(element).val();
 
                                     if (option !== '') {
-                                        $.ajax(column.config.options_url, {
-                                            dataType: "json",
-                                            cache: true
-                                        }).done(function (data) {
-                                            var selected = _.find(data.results, function (row) {
-                                                return row.id === option;
-                                            });
-                                            callback(selected);
-                                        });
+                                        $.ajax(
+                                            column.config.options_url, {
+                                                dataType: "json",
+                                                cache: true
+                                            }
+                                        ).done(
+                                            function (data) {
+                                                var selected = _.find(
+                                                    data.results, function (row) {
+                                                        return row.id === option;
+                                                    }
+                                                );
+                                                callback(selected);
+                                            }
+                                        );
                                     }
                                 };
                             }
 
                             var select2 = $('input', td).select2(select2Config);
-                            select2.on('select2-close', function () {
-                                this.updateJson();
-                            }.bind(this));
+                            select2.on(
+                                'select2-close', function () {
+                                    this.updateJson();
+                                }.bind(this)
+                            );
                         }.bind(this);
                         break;
                     default:
                         throw "Unknown type '"+item.type+"'";
-                }
+                    }
 
-                return {
-                    renderField: _.template(fieldTemplate), // renders the template of the field
-                    parseValue: parser, // parses the value into the proper type for the json result
-                    init: init, // an optional function that allows to initialize third party plugins
-                    formTypeValue: formTypeValue // changes the value when it is put to the form field(s)
-                };
+                    return {
+                        renderField: _.template(fieldTemplate), // renders the template of the field
+                        parseValue: parser, // parses the value into the proper type for the json result
+                        init: init, // an optional function that allows to initialize third party plugins
+                        formTypeValue: formTypeValue // changes the value when it is put to the form field(s)
+                    };
+                }
             }
-        });
+        );
     }
 );

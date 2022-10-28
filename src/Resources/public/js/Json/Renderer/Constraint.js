@@ -3,41 +3,43 @@ define(
         'flagbit/JsonGenerator/Observer',
         'jquery'
     ],
-    function(JsonGeneratorObserver, jQuery) {
+    function (JsonGeneratorObserver, jQuery) {
 
         /**
          * @class
          */
-        var JsonGeneratorRendererConstraint = function($editable, $container) {
+        var JsonGeneratorRendererConstraint = function ($editable, $container) {
 
             /**
              * @public
-             * @type {JsonGeneratorObserver}
+             * @type   {JsonGeneratorObserver}
              */
             this.observer = new JsonGeneratorObserver();
 
             /**
              * @public
-             * @param {Object} $data
+             * @param  {Object} $data
              */
-            this.render = function($data) {
+            this.render = function ($data) {
 
                 var $options = ['NotBlank', 'Blank', 'NotNull', 'IsNull', 'IsTrue', 'IsFalse', 'Email', 'Url', 'Ip', 'Uuid', 'Date', 'DateTime', 'Time', 'Language', 'Locale', 'Country', 'Currency', 'Luhn', 'Iban', 'Isbn', 'Issn'];
 
                 var $dropdown = createDropdown();
 
-                $options.forEach(function($value) {
+                $options.forEach(
+                    function ($value) {
 
-                    var $option = document.createElement('option');
-                    $option.value = $value;
-                    $option.innerText = $value;
+                        var $option = document.createElement('option');
+                        $option.value = $value;
+                        $option.innerText = $value;
 
-                    if($value in $data) {
-                        $option.selected = true;
+                        if ($value in $data) {
+                            $option.selected = true;
+                        }
+
+                        $dropdown.appendChild($option);
                     }
-
-                    $dropdown.appendChild($option);
-                });
+                );
 
                 var $select2 = jQuery($dropdown).select2({dropdownAutoWidth: true});
 
@@ -49,16 +51,16 @@ define(
              * @public
              * @returns {Object}
              */
-            this.read = function() {
+            this.read = function () {
 
                 var $data = {};
 
                 var $collection = $container.querySelector('select').querySelectorAll('option');
 
-                for(var $i in $collection) {
-                    if($collection.hasOwnProperty($i)) {
+                for (var $i in $collection) {
+                    if ($collection.hasOwnProperty($i)) {
                         var $option = $collection[$i];
-                        if($option.selected) {
+                        if ($option.selected) {
                             $data[$option.value] = {};
                         }
                     }
@@ -70,17 +72,17 @@ define(
 
             /**
              * @protected
-             * @param {String} $name
-             * @return {HTMLSelectElement}
+             * @param     {String} $name
+             * @return    {HTMLSelectElement}
              */
-            var createDropdown = function() {
+            var createDropdown = function () {
 
                 var $dropdown = document.createElement('select');
                 $dropdown.style.display = 'block';
                 $dropdown.multiple = true;
                 $container.appendChild($dropdown);
 
-                if(!$editable) {
+                if (!$editable) {
                     $dropdown.disabled = true;
                 }
 
@@ -90,9 +92,9 @@ define(
 
             /**
              * @protected
-             * @param {HTMLSelectElement} $dropdown
+             * @param     {HTMLSelectElement} $dropdown
              */
-            var observeChanges = function($select) {
+            var observeChanges = function ($select) {
                 $select.on('change', notify);
             }.bind(this);
 
@@ -100,7 +102,7 @@ define(
             /**
              * @protected
              */
-            var notify = function() {
+            var notify = function () {
 
                 this.observer.notify('update');
             }.bind(this);

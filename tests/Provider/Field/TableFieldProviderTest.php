@@ -10,12 +10,12 @@ class TableFieldProviderTest extends KernelTestCase
     public function testFieldProviderIsCompatible()
     {
         self::bootKernel();
-        $container = self::$container;
+        $container = self::getContainer();
 
         $chainedFieldProvider = $container->get('pim_enrich.provider.field.chained');
 
         $attribute = new Attribute();
-        $attribute->setAttributeType('flagbit_catalog_table');
+        $attribute->setType('flagbit_catalog_table');
 
         $fieldProvider = $chainedFieldProvider->getField($attribute);
 

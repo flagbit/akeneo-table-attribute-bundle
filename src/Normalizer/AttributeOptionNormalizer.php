@@ -7,7 +7,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class AttributeOptionNormalizer implements NormalizerInterface
 {
-    /** @var NormalizerInterface */
+    /**
+     * @var NormalizerInterface
+     */
     private $baseNormalizer;
 
     public function __construct(NormalizerInterface $baseNormalizer)
@@ -22,7 +24,9 @@ class AttributeOptionNormalizer implements NormalizerInterface
     {
         $normalizedValues = $this->baseNormalizer->normalize($object, $format, $context);
 
-        /** @var AttributeOption $object */
+        /**
+ * @var AttributeOption $object
+*/
         if ($object->isTableAttribute()) {
             $normalizedValues['type'] = $object->getType();
             $normalizedValues['type_config'] = $object->getTypeConfig();
@@ -33,8 +37,8 @@ class AttributeOptionNormalizer implements NormalizerInterface
     }
 
     /**
-     * @param mixed $data
-     * @param null $format
+     * @param  mixed $data
+     * @param  null  $format
      * @return bool
      */
     public function supportsNormalization($data, $format = null)

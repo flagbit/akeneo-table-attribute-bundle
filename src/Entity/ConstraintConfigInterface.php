@@ -7,5 +7,5 @@ interface ConstraintConfigInterface
     /**
      * @return array
      */
-    public function getConstraints();
+    public function getConstraints(): array;
 }
