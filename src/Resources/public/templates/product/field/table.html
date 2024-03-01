@@ -1,6 +1,8 @@
 <div class="flagbit-table-attribute asset-gallery">
     <header>
+        <% if(editMode === 'edit') { %>
         <button class="btn btn-success AknButton AknButton--apply item-add pull-right"><%- _.__('flagbit.table_attribute.add_new_row.label') %></button>
+        <% } %>
     </header>
     <table class="flagbit-table-values attribute-option-view ui-sortable AknGrid AknGrid--unclickable" style="width: 100%; overflow-x: visible">
         <thead>
@@ -16,6 +18,6 @@
         </tfoot>
     </table>
     <input type="hidden" class="table-data" data-locale="<%= value.locale %>" value="<%= _.escape(value.data) %>"
-           data-scope="<%= value.scope %>"/>
+           data-scope="<%= value.scope %>"
     <%= editMode === 'view' ? 'disabled' : '' %> />
 </div>

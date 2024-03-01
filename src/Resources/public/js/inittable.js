@@ -3,7 +3,7 @@ define(
     function ($, _) {
         'use strict';
         return {
-            init: function ($target, columns) {
+            init: function ($target, columns, editMode) {
 
                 var $headerRow = $target.find('thead tr');
                 if ($headerRow[0].innerHTML && $headerRow[0].innerHTML.length != 0) {
@@ -44,7 +44,7 @@ define(
                                 htmlColumns.push(this.createColumn(column, value));
                             }.bind(this)
                         );
-                        $tbody.append(this.createRow(htmlColumns));
+                        $tbody.append(this.createRow(htmlColumns, editMode));
                     }.bind(this)
                 );
             },
@@ -54,7 +54,7 @@ define(
 
                 return td;
             },
-            createRow: function (htmlColumns) {
+            createRow: function (htmlColumns, editMode) {
                 var row = $('<tr class="flagbit-table-row AknGrid-bodyRow editable-item-row"></tr>');
                 row.append($('<td class="AknGrid-bodyCell"><span class="handle"><i class="icon-reorder"></i></span></td>'));
                 _.each(
@@ -62,7 +62,11 @@ define(
                         row.append(htmlColumn);
                     }
                 );
-                row.append($('<td class="AknGrid-bodyCell"><span class="btn btn-small AknButton AknButton--small AknIconButton--important delete-row"><i class="icon-trash"></i></span></td>'));
+                if (editMode === 'view') {
+                    row.append($('<td class="AknGrid-bodyCell"></td>'));
+                } else {
+                    row.append($('<td class="AknGrid-bodyCell"><span class="btn btn-small AknButton AknButton--small AknIconButton--important delete-row"><i class="icon-trash"></i></span></td>'));
+                }
 
                 return row;
             },
