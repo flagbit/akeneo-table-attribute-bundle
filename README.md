@@ -150,7 +150,7 @@ vendor/bin/phpspec run
 ### Coding style
 
 TableAttributeBundle uses the [PSR-2](https://www.php-fig.org/psr/psr-2/) coding style and can be checked with
-[Codesniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+[Codesniffer](https://github.com/PHPCSStandards/PHP_CodeSniffer).
 
 ``` bash
 vendor/bin/phpcs --standard=PSR2 --extensions=php ./src
